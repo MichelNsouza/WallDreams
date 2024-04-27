@@ -77,6 +77,7 @@ import SupportIcon from './icons/IconSupport.vue'
 
   <WelcomeItem>
     <template #icon>
+
       <SupportIcon />
     </template>
     <template #heading>Support Vue</template>
