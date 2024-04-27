@@ -1,30 +1,31 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/teste">teste</RouterLink>
-        <RouterLink to="/paisagens">Paisagens</RouterLink>
-        <RouterLink to="/abstrato">Abstrato</RouterLink>
-        <RouterLink to="/animais">Animais</RouterLink>
-        <RouterLink to="/veiculos">Veiculos</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-  </header>
+  <div id="app">
 
-  <RouterView />
-  
-  <footer>
-    <p>
-      Teste de footer
-    </p>
-  </footer>
+    <header>
+      <nav>
+        <router-link to="/">Ir para a Primeira Página</router-link>
+        <router-link to="/pesquisa">Ir para a Segunda Página</router-link>
+      </nav>
+    </header>
+        
+    <router-view />
+
+    <footer>
+      Footer
+    </footer>
+
+  </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  name: 'App'
+}
+</script>
 
+<style>
+#app {
+  text-align: center;
+  color: #2c3e50;
+}
 </style>

@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import TesteView from '../views/TesteView.vue'
+import PesquisaView from '../views/PesquisaView.vue'
+
+//import TesteView from '../views/TesteView.vue'
 // import TodosView from '../views/TodosView.vue'
 // import PaisagensView from '../views/PaisagensView.vue'
 // import AbstratoView from '../views/AbstratoView.vue'
@@ -18,10 +20,15 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/teste',
-      name: 'teste',
-      component: TesteView
-    },
+      path: '/pesquisa',
+      name: 'pesquisa',
+      component: PesquisaView
+    }
+//{
+    //  path: '/teste',
+    //  name: 'teste',
+   //   component: TesteView
+  //  },
     // {
     //   path: '/todos',
     //   name: 'todos',
