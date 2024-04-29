@@ -1,9 +1,9 @@
 <script>
-import MeuComponente2 from '../components/MeuComponente2.vue'
+import MeuComponente from '../components/MeuComponente.vue'
 
 export default {
   components: {
-    MeuComponente2
+    MeuComponente
   }
 }
 </script>
@@ -12,7 +12,7 @@ export default {
   <div class="pesquisa-pagina">
     <h1>Esta é a Pesquisa!</h1>
     <p>testes</p>
-    <MeuComponente2 />
+    <MeuComponente/>
   </div>
 </template>
 
