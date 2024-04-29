@@ -11,6 +11,7 @@ export default {
 <template>
   <div class="pesquisa-pagina">
     <h1>Esta é a Pesquisa!</h1>
+    <p>testes</p>
     <MeuComponente2 />
   </div>
 </template>
