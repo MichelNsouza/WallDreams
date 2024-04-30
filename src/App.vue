@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <header class="nav">
       <div class="container">
         <nav class="navbar">
@@ -29,6 +28,8 @@
       </div>
     </header>
 
+
+   
     <main class="content">
       <router-view />
     </main>
