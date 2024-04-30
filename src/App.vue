@@ -61,7 +61,10 @@ export default {
     background-color: #4EB577;
     color: white;
 }
-
+.custom-link{
+  color: white;
+  text-decoration: none;
+}
 .navbar-url {
     font-size: 16px;
     list-style-type: none;
