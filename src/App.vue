@@ -63,6 +63,7 @@ export default {
 }
 .navbar-brand h1{
     color: white;
+    text-decoration: none;
 }
 
 .navbar-url {
