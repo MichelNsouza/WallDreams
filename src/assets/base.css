@@ -5,7 +5,7 @@
   font-family: var(--interTitulos);
     font-weight: var(--tituloWeight);
     --interTitulos: "Inter", sans-serif;
-    /* --tituloWeight: 400; */
+    --tituloWeight: 400; 
 }
 
 *,
