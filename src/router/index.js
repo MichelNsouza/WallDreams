@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PesquisaView from '../views/PesquisaView.vue'
+import CardEmail from '../views/CardEmail.vue' 
 
-//import TesteView from '../views/TesteView.vue'
 // import TodosView from '../views/TodosView.vue'
 // import PaisagensView from '../views/PaisagensView.vue'
 // import AbstratoView from '../views/AbstratoView.vue'
@@ -11,7 +11,7 @@ import PesquisaView from '../views/PesquisaView.vue'
 // import OutrosView from '../views/OutrosView.vue'
 // import Erro404View from '../views/Erro404View.vue'
 
-const router = createRouter({
+const router = createRouter({   
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -23,12 +23,12 @@ const router = createRouter({
       path: '/pesquisa',
       name: 'pesquisa',
       component: PesquisaView
-    }
-//{
-    //  path: '/teste',
-    //  name: 'teste',
-   //   component: TesteView
-  //  },
+    },
+    {                     
+     path: '/CardEmail',
+     name: 'CardEmail',
+     component: CardEmail
+    },   
     // {
     //   path: '/todos',
     //   name: 'todos',
