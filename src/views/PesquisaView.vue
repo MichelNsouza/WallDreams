@@ -5,7 +5,7 @@ export default {
   components: {
     MeuComponente
   }
-}
+} 
 </script>
 
 <template>
