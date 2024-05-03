@@ -11,7 +11,7 @@
           </router-link>
             
             <ul class="navbar-url p-3 mb-2"  v-for="(categoria, index) in categorias" :key="index">
-                <li> /*categorias do navbar*/
+                <li> <!-- colocar resto da nav - categoria -->
                   <router-link :to="'/' + categoria"><span>{{ categoria }}</span></router-link>
                 </li>
             </ul> 
@@ -92,7 +92,8 @@ export default {
     font-size: 18px;
   }
 
-h2{
+/*h2 global - se for mexer, cria uma classe ou id, vai quebrar*/ 
+h2{ 
     display: flex;
     justify-content: center;
     align-items: center;
