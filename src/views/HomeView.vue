@@ -4,8 +4,8 @@
 
       <div class="pt-5 text-center">
 
-        <h2>Acesse mais de 1.000.000 de Papeis de parede
-  e deixe seu computador com a sua cara!</h2>
+        <h3>Acesse mais de 1.000.000 de Papeis de parede<br>
+  e deixe seu computador com a sua cara!</h3>
       <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
         <input type="text" name="#" id="#">
