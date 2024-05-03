@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PesquisaView from '../views/PesquisaView.vue'
-
-//import TesteView from '../views/TesteView.vue'
+import ModalView from '../views/ModalView.vue'
 // import TodosView from '../views/TodosView.vue'
 // import PaisagensView from '../views/PaisagensView.vue'
 // import AbstratoView from '../views/AbstratoView.vue'
@@ -23,12 +22,12 @@ const router = createRouter({
       path: '/pesquisa',
       name: 'pesquisa',
       component: PesquisaView
-    }
-//{
-    //  path: '/teste',
-    //  name: 'teste',
-   //   component: TesteView
-  //  },
+    },
+    {
+      path: '/modal',
+      name: 'modal',
+      component: ModalView
+    },
     // {
     //   path: '/todos',
     //   name: 'todos',
