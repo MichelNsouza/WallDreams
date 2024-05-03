@@ -11,9 +11,9 @@ export default {
 <template>
   
     <div class="fundo">
-        a
+       
       <ModalComponente/>
-      aa
+     
     </div>
 
  
