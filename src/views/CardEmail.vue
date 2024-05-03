@@ -19,10 +19,9 @@ export default {
 
   .template-email{
 
-   background-color: black;
-   color: blanchedalmond;
-   width: 100%;
-   height: 100vh; 
+   background-color: pink;
+   width: 650px;
+   height: 650px; 
   }
    
 

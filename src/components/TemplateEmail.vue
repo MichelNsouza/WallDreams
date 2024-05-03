@@ -2,6 +2,9 @@
 
     <div class="containerMaior">
 
+
+      <h1>Boleira Bela</h1>
+
         
     </div>
 </template>
