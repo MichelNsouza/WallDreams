@@ -9,7 +9,7 @@
       <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
       <form>
-        <input type="text" v-model="pesquisa" placeholder="Digite o termo de busca...">
+        <input type="text" v-model="pesquisaAtual" placeholder="Digite o termo de busca...">
         <button type="button" @click="enviarPesquisa">Enviar</button>
       </form>
         <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      pesquisa:'',
+      pesquisaAtual:'',
       maisBuscado:['Paisagem','Animais','Veiculos'],
       cards: [
         { 
@@ -98,6 +98,13 @@ export default {
       ]
     }
   },
+  methods:{
+    enviarPesquisa() {
+      this.storePesquisa.setPesquisa(this.pesquisaAtual);
+      this.$router.push({ name: 'buscar' }); 
+      //aqui vamos por a logica para buscar na api
+    }
+  }
 }
 
 </script>
