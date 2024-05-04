@@ -1,15 +1,12 @@
 <template>
-  <div id="app">
+  <div id="app2">
+
     <HeaderComponente/>
 
-    <main class="content">
-      <router-view />
-    </main>
+    <main class="content"> <router-view /> </main>
 
     <FooterComponente/>
-   
-
-
+    
   </div>
 </template>
 
@@ -18,19 +15,15 @@ import FooterComponente from './components/FooterComponente.vue';
 import HeaderComponente from './components/HeaderComponente.vue';
 
 export default {
-  name: 'App',
+  name: 'App2',
   components:{
+    HeaderComponente,
     FooterComponente,
-    HeaderComponente
   },
   data() {
     return {
-      buscarQuery: '',
-      categoryQuery: '',
-      
-
     };
-  }
+  },
 }
 </script>
 

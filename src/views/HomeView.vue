@@ -8,7 +8,10 @@
   e deixe seu computador com a sua cara!</h3>
       <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-        <input type="text" name="#" id="#">
+      <form>
+        <input type="text" v-model="pesquisa" placeholder="Digite o termo de busca...">
+        <button type="button" @click="enviarPesquisa">Enviar</button>
+      </form>
         <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         </div>
 
@@ -58,12 +61,20 @@
 </template>
 
 <script>
+import { pesquisaStore } from '@/stores/pesquisa'
 export default {
+  setup() {
+    const storePesquisa = pesquisaStore() 
+    return {
+      storePesquisa
+    }
+  },
   components: {
-    
+    //
   },
   data() {
     return {
+      pesquisa:'',
       maisBuscado:['Paisagem','Animais','Veiculos'],
       cards: [
         { 
@@ -86,8 +97,18 @@ export default {
         }
       ]
     }
+  },
+  methods:{
+    enviarPesquisa() {
+
+      this.storePesquisa.setPesquisa(this.pesquisa);
+
+      this.$router.push({ name: 'buscar' }); 
+      
+    }
   }
 }
+
 </script>
 
 <style scoped>

@@ -1,30 +1,52 @@
 <template>
-  <div>
-
-    <input type="text" v-text="pesquisa" placeholder="Digite o termo de busca...">
-
-    <h3>{{pesquisa.quantidade}} Wallpapers foram encontrados com o termo: {{pesquisa.nome}}</h3>
-      
-      <div v-for="card in filteredCards" :key="card.id">
-        <div class="col">
-          <div class="card h-100">
-            <img :src="card.img" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">{{card.texto}}</p>
-              <h5 class="card-title">{{card.nome}}</h5>
-            </div>
-          </div>
-        </div>
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="pt-5 text-center">
+        <form>
+          <input type="text" v-model="pesquisaAtual" :placeholder="pesquisaRetorno.pesquisa ? pesquisaRetorno.pesquisa : 'Digite o termo de busca...'">
+          <button type="button" @click="enviarPesquisa">Enviar</button>
+        </form>
       </div>
-  </div>
+
+      <section class="mt-5">
+      <div v-if="pesquisaExiste == 'correto'">
+        <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: {{pesquisaRetorno.pesquisa}}</p>
+
+          <article class="row row-cols-1 row-cols-md-3 g-4 al">
+            <template v-for="card in cards" :key="card.id">
+              <div class="col">
+                <div class="card h-100">
+                  <img :src="card.img" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">{{card.texto}}</p>
+                    <h5 class="card-title">{{card.nome}}</h5>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <button>Ver mais Wallpapers</button><!-- componente btn aqui -->
+          </article>
+
+       
+      </div>
+      <div v-if="pesquisaExiste == 'errado'">
+        <p>Componente not found vem aqui</p>
+      </div>
+      </section>
+    </div>
+  </div> 
 </template>
 
 <script>
+import { pesquisaStore } from '@/stores/pesquisa'
 export default {
   data() {
     return {
-      buscaQuery: '',
-      query: '',
+      pesquisaAtual: '',
+      qtdWallpp: 10,
+      pesquisaRetorno: this.storePesquisa,
+      pesquisaExiste: 'correto', // correto exibe cards, errado exibe notfoud, nada exibe nada
       cards: [ 
         { 
           id: 1, 
@@ -83,12 +105,21 @@ export default {
       ]
     };
   },
-  computed: {
-
+  setup() {
+    const storePesquisa = pesquisaStore() 
+    return {
+      storePesquisa
+    }
+  },
+  methods:{
+    enviarPesquisa() {
+      this.storePesquisa.setPesquisa(this.pesquisaAtual);
+      //aqui vamos por a logica para buscar na api
+    }
   }
 };
 </script>
 
 <style scoped>
-/* Seus estilos */
+
 </style>
