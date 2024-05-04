@@ -9,9 +9,9 @@
               </svg>WallDreams</h1>
             </router-link>
               
-              <ul class="navbar-url p-3 mb-2 "   v-for="(categoria, index) in categorias" :key="index">
-                  <li class="list"> <!-- colocar resto da nav - categoria -->
-                    <router-link class="nav-info" :to="'/' + categoria"><span>{{ categoria }}</span></router-link>
+              <ul class="navbar-url p-3 mb-2 " v-for="(categoria, index) in categorias" :key="index">
+                  <li class="list" @click="enviarPesquisa(categoria)"> <!-- colocar resto da nav - categoria -->
+                    <router-link  class="nav-info" :to="'/buscar'" ><span>{{ categoria }}</span></router-link>
                   </li>
               </ul> 
             </nav>
@@ -21,7 +21,14 @@
 
   
 <script>
+import { pesquisaStore } from '@/stores/pesquisa'
 export default {
+  setup() {
+    const storePesquisa = pesquisaStore() 
+    return {
+      storePesquisa
+    }
+  },
   data() {
     return {
       categorias:[
@@ -34,6 +41,13 @@ export default {
       'Outros'
     ]
     };
+  },
+  methods:{
+    enviarPesquisa(pesquisaAtual) {
+
+      this.storePesquisa.setPesquisa(pesquisaAtual);
+      
+    }
   }
 }
 </script>

@@ -98,15 +98,6 @@ export default {
       ]
     }
   },
-  methods:{
-    enviarPesquisa() {
-
-      this.storePesquisa.setPesquisa(this.pesquisa);
-
-      this.$router.push({ name: 'buscar' }); 
-      
-    }
-  }
 }
 
 </script>
