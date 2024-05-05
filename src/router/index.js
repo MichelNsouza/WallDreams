@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PesquisaView from '../views/PesquisaView.vue'
+import BarraPesquisa from '../views/BarraPesquisa.vue'
 
 //import TesteView from '../views/TesteView.vue'
 // import TodosView from '../views/TodosView.vue'
@@ -23,7 +24,13 @@ const router = createRouter({
       path: '/pesquisa',
       name: 'pesquisa',
       component: PesquisaView
-    }
+    },
+    {
+      path: '/BarraPesquisa',
+      name: 'BarraPesquisa',
+      component: BarraPesquisa
+    },
+    
 //{
     //  path: '/teste',
     //  name: 'teste',
