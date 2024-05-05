@@ -1,5 +1,4 @@
 <template>
-  <div id="app2">
 
     <HeaderComponente/>
 
@@ -7,15 +6,13 @@
 
     <FooterComponente/>
     
-  </div>
 </template>
 
 <script>
-import FooterComponente from './components/FooterComponente.vue';
-import HeaderComponente from './components/HeaderComponente.vue';
+import FooterComponente from '@/components/FooterComponente.vue';
+import HeaderComponente from '@/components/HeaderComponente.vue';
 
 export default {
-  name: 'App2',
   components:{
     HeaderComponente,
     FooterComponente,
