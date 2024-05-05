@@ -12,6 +12,7 @@ export default {
   <div class="template-email">
  
     <TemplateEmail/> 
+    
   </div>
 </template>
 
@@ -19,9 +20,8 @@ export default {
 
   .template-email{
 
-   background-color: pink;
-   width: 650px;
-   height: 650px; 
+   background-color: rgba(236, 231, 224, 0.671);
+ 
   }
    
 
