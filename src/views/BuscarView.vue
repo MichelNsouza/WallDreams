@@ -53,55 +53,55 @@ export default {
           id: 1, 
           nome: 'Card1',
           texto: 'teste card 1',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 2, 
           nome: 'Card2',
           texto: 'teste card 2',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 3, 
           nome: 'Card3',
           texto: 'teste card 3',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 4, 
           nome: 'Card1',
           texto: 'teste card 1',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 5, 
           nome: 'Card2',
           texto: 'teste card 2',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 6, 
           nome: 'Card3',
           texto: 'teste card 3',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 7, 
           nome: 'Card1',
           texto: 'teste card 1',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 8, 
           nome: 'Card2',
           texto: 'teste card 2',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         },
         { 
           id: 9, 
           nome: 'Card3',
           texto: 'teste card 3',
-          img: './src/assets/image 6.png'
+          img: '/src/assets/image 6.png'
         }
       ]
     };
