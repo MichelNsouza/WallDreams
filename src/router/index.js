@@ -23,12 +23,7 @@ const router = createRouter({
       path: '/pesquisa',
       name: 'pesquisa',
       component: PesquisaView
-    },
-    {                     
-     path: '/CardEmail',
-     name: 'CardEmail',
-     component: CardEmail
-    },   
+    },  
     // {
     //   path: '/todos',
     //   name: 'todos',
