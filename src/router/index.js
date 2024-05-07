@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+<<<<<<< HEAD
 import HomeView from '../views/HomeView.vue'
 import PesquisaView from '../views/PesquisaView.vue'
 import CardEmail from '../views/CardEmail.vue' 
@@ -10,6 +11,12 @@ import CardEmail from '../views/CardEmail.vue'
 // import VeiculosView from '../views/VeiculosView.vue'
 // import OutrosView from '../views/OutrosView.vue'
 // import Erro404View from '../views/Erro404View.vue'
+=======
+import BuscarView from '@/views/BuscarView.vue'
+import HomeView from '@/views/HomeView.vue'
+import Notfound from '@/views/Notfound.vue'
+
+>>>>>>> develop
 
 const router = createRouter({   
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +27,7 @@ const router = createRouter({
       component: HomeView
     },
     {
+<<<<<<< HEAD
       path: '/pesquisa',
       name: 'pesquisa',
       component: PesquisaView
@@ -59,6 +67,17 @@ const router = createRouter({
     //   name: 'erro404',
     //   component: Erro404View
     // }
+=======
+      path: '/buscar',
+      name: 'buscar',
+      component: BuscarView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'não-encontrado',
+      component: Notfound
+    }
+>>>>>>> develop
   ]
 })
 
