@@ -8,11 +8,11 @@
               </svg>WallDreams</h1>
             </router-link>
               
-              <ul class="navbar-url p-3 mb-2 " v-for="(categoria, index) in categorias" :key="index">
-                  <li class="list" @click="enviarPesquisa(categoria)"> <!-- colocar resto da nav - categoria -->
-                    <router-link  class="nav-info" :to="'/buscar'" ><span>{{ categoria }}</span></router-link>
-                  </li>
-              </ul> 
+            <ul class="navbar-url p-3 mb-2">
+                    <li v-for="(categoria, index) in categorias" :key="index" class="list" @click="enviarPesquisa(categoria)"> 
+                        <router-link class="nav-info" :to="'/buscar'"><span>{{ categoria }}</span></router-link>
+                    </li>
+                </ul> 
            </nav>
         </div>
      </header>
@@ -71,7 +71,9 @@ export default {
   color: var(--whiteColor);
 }
 
-.list{
-  list-style: none;
+.navbar-url li{
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 20px;
 }
 </style>

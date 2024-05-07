@@ -1,4 +1,5 @@
 <template>
+
 <footer class="rodape">
     <h2>
         <svg class="svg-footer" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,17 +14,21 @@
         <h6>O projeto foi construído sob orientação do professor: Paulo Reis dos Santos</h6>
         
   </footer>
-    
+
 </template>
 <style scoped>
+
+
 .rodape {
     background-color: var(--footerColor);
     color: var(--whiteColor);
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     display: inline-block;
     text-align: center;
     font-size: 18px;
+    padding: 30px;
+ 
   }
 
 
