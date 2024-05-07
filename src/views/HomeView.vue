@@ -101,8 +101,7 @@ export default {
   methods:{
     enviarPesquisa() {
       this.storePesquisa.setPesquisa(this.pesquisaAtual);
-      this.$router.push({ name: 'buscar' }); 
-      //aqui vamos por a logica para buscar na api
+      this.$router.push({ name: 'buscar', params: { query:this.pesquisaAtual}});
     }
   }
 }
