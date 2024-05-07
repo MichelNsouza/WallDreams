@@ -9,11 +9,17 @@
             </router-link>
               
             <ul class="navbar-url p-3 mb-2">
-                    <li v-for="(categoria, index) in categorias" :key="index" class="list" @click="enviarPesquisa(categoria)"> 
-                        <router-link class="nav-info" :to="'/buscar'"><span>{{ categoria }}</span></router-link>
-                    </li>
-                </ul> 
-           </nav>
+                <li v-for="(categoria, index) in categorias" :key="index" class="list" @click="enviarPesquisa(categoria)"> 
+                    <router-link 
+                    @click="enviarPesquisa(categoria)" 
+                    :to="'/buscar/'+categoria" 
+                    class="nav-info"
+                    >
+                    <span>{{ categoria }}</span>
+                    </router-link>
+                </li>
+            </ul> 
+          </nav>
         </div>
      </header>
 </template>
@@ -43,9 +49,7 @@ export default {
   },
   methods:{
     enviarPesquisa(pesquisaAtual) {
-
       this.storePesquisa.setPesquisa(pesquisaAtual);
-      
     }
   }
 }
