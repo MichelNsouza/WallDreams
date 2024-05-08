@@ -7,6 +7,7 @@
           <button type="button" @click="enviarPesquisa">Enviar</button>
         </form>
       </div>
+      <div v-if="Notfound == true"><NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/></div>
 
       <section class="mt-5">
         <div v-if="pesquisaExiste == 'correto'">
@@ -40,10 +41,13 @@
 
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
+import NotfoundComponente from '../components/NotfoundComponente.vue';
 export default {
+  components: { NotfoundComponente },
   data() {
     return {
       pesquisaAtual: '',
+      Notfound: true,
       qtdWallpp: 10,
       pesquisaRetorno: this.storePesquisa,
       //ver como fazer isso com true false, pois precisa de 3 estados V, F e " "

@@ -1,17 +1,20 @@
 <template>
-<div class="row d-flex justify-content-center">
-<div class="col-md-8">
-
-<div class="input">
-    <input type="text" name="#" id="#">
-</div>
-    <b class="texto">Ops!!! Não encontramos nenhum Wallpaper para o termo:</b>
+    <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+    <b class="texto"> Ops!!! Não encontramos nenhum Wallpaper para o termo: <span class="vermelho">{{titulo}}</span></b>
 </div> 
-<div class="banimento">
+    <div class="banimento">
     <img src="/src/assets/img/banimento 1.svg" alt="erro">
 </div>
 </div>
 </template>
+
+<script>
+export default {
+    props:{titulo: String}
+}
+</script>
+
  
 
 <style>
@@ -30,7 +33,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    font-size: 28px;
+    font-size: 1.4em;
     margin-top: 30px;
     
 }
@@ -41,5 +44,8 @@
    height: 329px;
   
 }
-
+.vermelho{
+    color: red;
+    
+}
 </style>
