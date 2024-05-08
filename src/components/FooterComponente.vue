@@ -2,7 +2,7 @@
 
 <footer class="rodape">
     <h2>
-        <img src="\src\assets\iconFoto.svg" alt="Icone de fotografia">
+        <img src="\src\assets\icons\iconFoto.svg" alt="Icone de fotografia">
         WallDreams
     </h2>
     <p class="rodape-paragrafo"><b>WallDreams</b> é um projeto acadêmico desenvolvido pela turma de Web 1 - 2024.1 do Centro universitário<br>

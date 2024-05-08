@@ -3,7 +3,7 @@
         <div class="container">
           <nav class="navbar">            
             <router-link to="/" class="custom-link">
-               <h1><img src="\src\assets\iconFoto.svg" alt="Icone de fotografia"> WallDreams</h1>
+               <h1><img src="\src\assets\icons\iconFoto.svg" alt="Icone de fotografia"> WallDreams</h1>
             </router-link>
               
             <ul class="navbar-url p-3 mb-2">
