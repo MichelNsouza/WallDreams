@@ -8,7 +8,10 @@
   e deixe seu computador com a sua cara!</h3>
       <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-        <input type="text" name="#" id="#">
+      <form>
+        <input type="text" v-model="pesquisaAtual" placeholder="Digite o termo de busca...">
+        <button type="button" @click="enviarPesquisa">Enviar</button>
+      </form>
         <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         </div>
 
@@ -55,39 +58,58 @@
 
     </div>
   </div> 
+
+  <ModalComponente/>
 </template>
 
 <script>
+import { pesquisaStore } from '@/stores/pesquisa'
+import ModalComponente from '../components/ModalComponente.vue'
+
 export default {
+  setup() {
+    const storePesquisa = pesquisaStore() 
+    return {
+      storePesquisa
+    }
+  },
   components: {
-    
+    ModalComponente
   },
   data() {
     return {
+      pesquisaAtual:'',
       maisBuscado:['Paisagem','Animais','Veiculos'],
       cards: [
         { 
           id: 1, 
           nome: 'Card1',
           texto: 'teste card 1',
-          img: '/src/assets/image 6.png'
+          img: './src/assets/image 6.png'
         },
         { 
           id: 2, 
           nome: 'Card2',
           texto: 'teste card 2',
-          img: '/src/assets/image 6.png'
+          img: './src/assets/image 6.png'
         },
         { 
           id: 3, 
           nome: 'Card3',
           texto: 'teste card 3',
-          img: '/src/assets/image 6.png'
+          img: './src/assets/image 6.png'
         }
       ]
     }
+  },
+  methods:{
+    enviarPesquisa() {
+      this.storePesquisa.setPesquisa(this.pesquisaAtual);
+      this.$router.push({ name: 'buscar', params: { query:this.pesquisaAtual}});
+    }
   }
 }
+
 </script>
 
 <style scoped>
