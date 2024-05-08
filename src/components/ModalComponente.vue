@@ -1,11 +1,19 @@
 <template>
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card mb-3">
+  <div class="card col-md-12 mb-3">
   <div class="row no-gutters d-flex align-items-stretch" style="height:100%;">
     <div class="col-md-8">
       <img src="/src/assets/image 6.png" class="card-img mt-3 p-3" alt="...">
-      <p class="p-3 text-lg ">O ratinho corredor</p>
+      <div class="div d-flex justify-content-beetween">
+        <p class="p-3 text-lg flex-grow-1 ">O ratinho corredor</p>
+       
+          <button class="btn btn-secondary m-2"><img src="/src/assets/icons/frame-coracao.png" alt=""></button>
+          <button class="btn btn-secondary m-2"><img src="/src/assets/icons/frame-compartilhar.png" alt=""></button>
+       
+       
+      </div>
+    
     </div>
   
     <div class="col-md-4">
@@ -46,6 +54,7 @@ export default {
 .card {
   width: 1001px;
   height: 553px;
+ 
 }
 
 .img {
@@ -63,6 +72,15 @@ export default {
 
 .iconeDownload {
   margin-right: 8px;
+}
+
+ .btn-secondary {
+  width: 47px;
+  height: 41px;
+  background: #E8E8E8;
+  border: none;
+
+
 }
 
 
