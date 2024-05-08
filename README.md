@@ -14,4 +14,4 @@ O projeto foi construído sob orientação do professor Paulo Reis dos Santos.
 - Vite -  Pré-empacotamento de dependência
 
 ## Backend
-O código-fonte do backend associado a este projeto pode ser encontrado no seguinte repositório do GitHub: [walldreams_backend]().
+O código-fonte do backend associado a este projeto pode ser encontrado no seguinte repositório do GitHub: [walldreams_backend](https://github.com/louiseugenes/walldreams_backend).
