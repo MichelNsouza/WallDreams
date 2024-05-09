@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import BuscarView from '@/views/BuscarView.vue'
 import HomeView from '@/views/HomeView.vue'
-import Notfound from '@/components/NotfoundComponente.vue'
+import NotfoundView from '@/views/NotfoundView.vue'
 
 
 const router = createRouter({   
@@ -20,9 +20,9 @@ const router = createRouter({
       component: BuscarView
     },
     {
-      path: '/:pathMatch(.)',
+      path: '/:pathMatch(.*)*',
       name: 'não-encontrado',
-      component: Notfound
+      component: NotfoundView
     }
   ]
 })

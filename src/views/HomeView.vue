@@ -6,11 +6,13 @@
 
         <h3>Acesse mais de 1.000.000 de Papeis de parede<br>
   e deixe seu computador com a sua cara!</h3>
-      <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
+          <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-      <BarraPesquisa/> 
-        <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
-        </div>
+        <BarraPesquisa/> 
+
+          <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
+        
+      </div>
 
       <section class="mt-5">
 
@@ -56,13 +58,17 @@
     </div>
   </div> 
 
-  <ModalComponente/>
+  <div v-if="exibeModal == true">
+  
+    <ModalComponente/>
+
+  </div> 
 </template>
 
 <script>
+import BarraPesquisa from '@/components/BarraPesquisa.vue'
+import ModalComponente from '@/components/ModalComponente.vue'
 import { pesquisaStore } from '@/stores/pesquisa'
-import ModalComponente from '../components/ModalComponente.vue'
-import BarraPesquisa from '../components/BarraPesquisa.vue'
 
 export default {
   setup() {
@@ -78,6 +84,7 @@ export default {
   data() {
     return {
       pesquisaAtual:'',
+      exibeModal:false,
       maisBuscado:['Paisagem','Animais','Veiculos'],
       cards: [
         { 

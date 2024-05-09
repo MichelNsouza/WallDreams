@@ -1,13 +1,19 @@
 <template>
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
-      <div class="pt-5 text-center">
+
         <BarraPesquisa/> 
+
+      <div v-if="pesquisaExiste == false">
+        <section class="mt-5">
+
+          <NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/>
+
+        </section>
       </div>
-      <div v-if="Notfound == true"><NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/></div>
 
       <section class="mt-5">
-        <div v-if="pesquisaExiste == 'correto'">
+        <div v-if="pesquisaExiste == true">
           <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: {{pesquisaRetorno.pesquisa}}</p>
 
             <article class="row row-cols-1 row-cols-md-3 g-4 al">
@@ -28,9 +34,6 @@
 
         
         </div>
-        <div v-if="pesquisaExiste == 'errado'">
-          <p>Componente not found vem aqui</p>
-        </div>
       </section>
     </div>
   </div> 
@@ -38,8 +41,8 @@
 
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
-import NotfoundComponente from '../components/NotfoundComponente.vue';
-import BarraPesquisa from '../components/BarraPesquisa.vue'
+import NotfoundComponente from '@/components/NotfoundComponente.vue';
+import BarraPesquisa from '@/components/BarraPesquisa.vue'
 export default {
   components:  
   { NotfoundComponente,
@@ -47,11 +50,9 @@ export default {
   data() {
     return {
       pesquisaAtual: '',
-      Notfound: true,
+      pesquisaExiste: true,
       qtdWallpp: 10,
       pesquisaRetorno: this.storePesquisa,
-      //ver como fazer isso com true false, pois precisa de 3 estados V, F e " "
-      pesquisaExiste: 'correto', // correto exibe cards, errado exibe notfoud, nada exibe nada
       cards: [ 
         { 
           id: 1, 
