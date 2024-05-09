@@ -58,10 +58,14 @@
 
     </div>
   </div> 
+
+  <ModalComponente/>
 </template>
 
 <script>
 import { pesquisaStore } from '@/stores/pesquisa'
+import ModalComponente from '../components/ModalComponente.vue'
+
 export default {
   setup() {
     const storePesquisa = pesquisaStore() 
@@ -70,7 +74,7 @@ export default {
     }
   },
   components: {
-    //
+    ModalComponente
   },
   data() {
     return {
