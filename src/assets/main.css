@@ -1,9 +1,9 @@
 /* configuração global de css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-:root {
+:root { 
     font-family: var(--interTitulos);
-    font-weight: var(--tituloWeight);
+    font-weight: var(--tituloWeight); 
     --interTitulos: "Inter", sans-serif;
     --tituloWeight: 400; 
 }
