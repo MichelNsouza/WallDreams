@@ -2,10 +2,7 @@
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
       <div class="pt-5 text-center">
-        <form>
-          <input type="text" v-model="pesquisaAtual" :placeholder="pesquisaRetorno.pesquisa ? pesquisaRetorno.pesquisa : 'Digite o termo de busca...'">
-          <button type="button" @click="enviarPesquisa">Enviar</button>
-        </form>
+        <BarraPesquisa/> 
       </div>
       <div v-if="Notfound == true"><NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/></div>
 
@@ -42,8 +39,11 @@
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
 import NotfoundComponente from '../components/NotfoundComponente.vue';
+import BarraPesquisa from '../components/BarraPesquisa.vue'
 export default {
-  components: { NotfoundComponente },
+  components:  
+  { NotfoundComponente,
+    BarraPesquisa, },
   data() {
     return {
       pesquisaAtual: '',

@@ -8,10 +8,7 @@
   e deixe seu computador com a sua cara!</h3>
       <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-      <form>
-        <input type="text" v-model="pesquisaAtual" placeholder="Digite o termo de busca...">
-        <button type="button" @click="enviarPesquisa">Enviar</button>
-      </form>
+      <BarraPesquisa/> 
         <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         </div>
 
@@ -65,6 +62,7 @@
 <script>
 import { pesquisaStore } from '@/stores/pesquisa'
 import ModalComponente from '../components/ModalComponente.vue'
+import BarraPesquisa from '../components/BarraPesquisa.vue'
 
 export default {
   setup() {
@@ -74,7 +72,8 @@ export default {
     }
   },
   components: {
-    ModalComponente
+    ModalComponente,
+    BarraPesquisa
   },
   data() {
     return {
