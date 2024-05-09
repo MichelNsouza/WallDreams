@@ -1,7 +1,7 @@
 <template>
     <div class="row d-flex justify-content-center">
     <div class="col-md-8">
-    <b class="texto"> Ops!!! Não encontramos nenhum Wallpaper para o termo: <span class="vermelho">{{titulo}}</span></b>
+    <b class="texto"> Ops!!! Não encontramos nenhum Wallpaper para o termo:<span class="vermelho">{{titulo}}</span></b>
 </div> 
     <div class="banimento">
     <img src="/src/assets/img/banimento 1.svg" alt="erro">
