@@ -1,19 +1,16 @@
 <template>
-
-<div class="containerMaior">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="Search" placeholder="O que você procura ?" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+    <div class="containerMaior">
+      <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid d-flex justify-content-center">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </div>
         </form>
-      </div>
-    </div> 
-  </nav> 
-</div>
-
-  </template> 
+      </nav>
+    </div>
+</template>
+  
   
   <script>
   export default {
@@ -32,14 +29,11 @@
 
   }
 
-  
+
   .form-control{
 
     width: 784px;
 
   }
-
- 
-    
    
   </style>
