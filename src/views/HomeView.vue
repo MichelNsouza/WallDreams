@@ -24,7 +24,7 @@
             </template>
           </article>
 
-        <button>Ver mais lançamentos</button><!-- componente btn aqui -->
+          <ButtonComponente :titulo="'Ver mais'"/>
       
       </section>
 
@@ -42,16 +42,17 @@
     </div>
   </div> 
 
-  <div v-if="exibeModal == true">
+  <template v-if="exibeModal == true">
   
     <ModalComponente/>
 
-  </div> 
+  </template> 
 </template>
 
 <script>
-import CardComponente from '@/components/CardComponente.vue';
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
+import ButtonComponente from '@/components/ButtonComponente.vue';
+import CardComponente from '@/components/CardComponente.vue';
 import ModalComponente from '@/components/ModalComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
 
@@ -66,6 +67,7 @@ export default {
     ModalComponente,
     BarraPesquisa,
     CardComponente,
+    ButtonComponente,
   },
   data() {
     return {
