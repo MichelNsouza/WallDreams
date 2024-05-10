@@ -18,21 +18,15 @@
 
         <h2 class="mt-5 mb-3">Lançamentos</h2>
 
-          <article class="row row-cols-1 row-cols-md-3 g-4"> <!-- aqui vem um for com os 3 ultimos card's incluidos na api -->
+          <article class="row row-cols-1 row-cols-md-3 g-4">
+            
             <template v-for="card in cards" :key="card.id">
-              <div class="col">
-                <div class="card h-100">
-                  <img :src="card.img" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">{{card.texto}}</p>
-                    <h5 class="card-title">{{card.nome}}</h5>
-                  </div>
-                </div>
-              </div>
+              <CardComponente :card="card"/>
             </template>
+          
           </article>
 
-        <button>Ver mais lançamentos</button><!-- componente btn aqui -->
+          <ButtonComponente :titulo="'Ver mais'"/>
       
       </section>
 
@@ -41,17 +35,11 @@
         <h2>Mais baixados nos últimos 30 dias</h2>
 
         <article class="row row-cols-1 row-cols-md-3 g-4"> <!-- aqui vem um for com os 3 ultimos card's incluidos na api -->
+          
           <template v-for="card in cards" :key="card.id">
-            <div class="col">
-                <div class="card h-100">
-                  <img :src="card.img" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">{{card.texto}}</p>
-                    <h5 class="card-title">{{card.nome}}</h5>
-                  </div>
-                </div>
-              </div>
+            <CardComponente :card="card"/>
           </template>
+        
         </article>
       </section>
 
@@ -66,20 +54,23 @@
 </template>
 
 <script>
-import BarraPesquisa from '@/components/BarraPesquisa.vue'
-import ModalComponente from '@/components/ModalComponente.vue'
-import { pesquisaStore } from '@/stores/pesquisa'
+import { pesquisaStore } from '@/stores/pesquisa';
+
+import BarraPesquisa from '@/components/BarraPesquisa.vue';
+import ButtonComponente from '@/components/ButtonComponente.vue';
+import CardComponente from '@/components/CardComponente.vue';
+import ModalComponente from '@/components/ModalComponente.vue';
 
 export default {
-  setup() {
-    const storePesquisa = pesquisaStore() 
-    return {
-      storePesquisa
-    }
-  },
+  name: 'HomeView',
   components: {
     ModalComponente,
-    BarraPesquisa
+    BarraPesquisa,
+    CardComponente,
+    ButtonComponente,
+  },
+  created() {
+    this.storePesquisa = pesquisaStore();
   },
   data() {
     return {

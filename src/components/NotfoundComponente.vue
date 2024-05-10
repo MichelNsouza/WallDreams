@@ -11,7 +11,10 @@
 
 <script>
 export default {
-    props:{titulo: String}
+    name: 'NotFoundComponente',
+    props:{
+        titulo: String
+    },
 }
 </script>
 

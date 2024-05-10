@@ -17,22 +17,14 @@
           <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: {{pesquisaRetorno.pesquisa}}</p>
 
             <article class="row row-cols-1 row-cols-md-3 g-4 al">
+              
               <template v-for="card in cards" :key="card.id">
-                <div class="col">
-                  <div class="card h-100">
-                    <img :src="card.img" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">{{card.texto}}</p>
-                      <h5 class="card-title">{{card.nome}}</h5>
-                    </div>
-                  </div>
-                </div>
+                <CardComponente :card="card"/>
               </template>
 
-              <button>Ver mais Wallpapers</button><!-- componente btn aqui -->
-            </article>
+              <ButtonComponente :titulo="'Ver mais'"/>
 
-        
+            </article>
         </div>
       </section>
     </div>
@@ -41,12 +33,23 @@
 
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
+
+import BarraPesquisa from '@/components/BarraPesquisa.vue';
+import ButtonComponente from '@/components/ButtonComponente.vue';
+import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
-import BarraPesquisa from '@/components/BarraPesquisa.vue'
+
 export default {
-  components:  
-  { NotfoundComponente,
-    BarraPesquisa, },
+  name: 'BuscarView',
+  components:{
+    NotfoundComponente,
+    BarraPesquisa,
+    CardComponente,
+    ButtonComponente,
+  },
+  created() {
+    this.storePesquisa = pesquisaStore();
+  },
   data() {
     return {
       pesquisaAtual: '',
@@ -108,14 +111,8 @@ export default {
           texto: 'teste card 3',
           img: '/src/assets/image 6.png'
         }
-      ]
+      ],
     };
-  },
-  setup() {
-    const storePesquisa = pesquisaStore() 
-    return {
-      storePesquisa
-    }
   },
   methods:{
     enviarPesquisa() {
