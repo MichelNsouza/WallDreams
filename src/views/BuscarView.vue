@@ -23,7 +23,7 @@
               </template>
 
               <ButtonComponente :titulo="'Ver mais'"/>
-
+            
             </article>
         </div>
       </section>
@@ -32,30 +32,26 @@
 </template>
 
 <script>
-import { pesquisaStore } from '@/stores/pesquisa';
-
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
+import { pesquisaStore } from '@/stores/pesquisa';
 
 export default {
-  name: 'BuscarView',
-  components:{
+  components: {
     NotfoundComponente,
     BarraPesquisa,
     CardComponente,
     ButtonComponente,
   },
-  created() {
-    this.storePesquisa = pesquisaStore();
-  },
   data() {
+    const storePesquisa = pesquisaStore();
     return {
       pesquisaAtual: '',
       pesquisaExiste: true,
       qtdWallpp: 10,
-      pesquisaRetorno: this.storePesquisa,
+      pesquisaRetorno: storePesquisa,
       cards: [ 
         { 
           id: 1, 
@@ -111,17 +107,18 @@ export default {
           texto: 'teste card 3',
           img: '/src/assets/image 6.png'
         }
-      ],
+      ]
     };
   },
-  methods:{
+  methods: {
     enviarPesquisa() {
-      this.storePesquisa.setPesquisa(this.pesquisaAtual);
-      this.$router.push({ name: 'buscar', params: { query:this.pesquisaAtual}});
+      this.pesquisaRetorno.setPesquisa(this.pesquisaAtual);
+      this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
     }
   }
 };
 </script>
+
 
 <style scoped>
 
