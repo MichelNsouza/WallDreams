@@ -18,15 +18,7 @@
 
             <article class="row row-cols-1 row-cols-md-3 g-4 al">
               <template v-for="card in cards" :key="card.id">
-                <div class="col">
-                  <div class="card h-100">
-                    <img :src="card.img" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">{{card.texto}}</p>
-                      <h5 class="card-title">{{card.nome}}</h5>
-                    </div>
-                  </div>
-                </div>
+                <CardComponente :card="card"/>
               </template>
 
               <button>Ver mais Wallpapers</button><!-- componente btn aqui -->
@@ -40,13 +32,17 @@
 </template>
 
 <script>
+import CardComponente from '@/components/CardComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import BarraPesquisa from '@/components/BarraPesquisa.vue'
 export default {
   components:  
-  { NotfoundComponente,
-    BarraPesquisa, },
+  { 
+    NotfoundComponente,
+    BarraPesquisa,
+    CardComponente, 
+  },
   data() {
     return {
       pesquisaAtual: '',

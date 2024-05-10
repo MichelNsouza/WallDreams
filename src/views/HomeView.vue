@@ -20,15 +20,7 @@
 
           <article class="row row-cols-1 row-cols-md-3 g-4"> <!-- aqui vem um for com os 3 ultimos card's incluidos na api -->
             <template v-for="card in cards" :key="card.id">
-              <div class="col">
-                <div class="card h-100">
-                  <img :src="card.img" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">{{card.texto}}</p>
-                    <h5 class="card-title">{{card.nome}}</h5>
-                  </div>
-                </div>
-              </div>
+              <CardComponente :card="card"/>
             </template>
           </article>
 
@@ -42,15 +34,7 @@
 
         <article class="row row-cols-1 row-cols-md-3 g-4"> <!-- aqui vem um for com os 3 ultimos card's incluidos na api -->
           <template v-for="card in cards" :key="card.id">
-            <div class="col">
-                <div class="card h-100">
-                  <img :src="card.img" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">{{card.texto}}</p>
-                    <h5 class="card-title">{{card.nome}}</h5>
-                  </div>
-                </div>
-              </div>
+            <CardComponente :card="card"/>
           </template>
         </article>
       </section>
@@ -66,9 +50,10 @@
 </template>
 
 <script>
-import BarraPesquisa from '@/components/BarraPesquisa.vue'
-import ModalComponente from '@/components/ModalComponente.vue'
-import { pesquisaStore } from '@/stores/pesquisa'
+import CardComponente from '@/components/CardComponente.vue';
+import BarraPesquisa from '@/components/BarraPesquisa.vue';
+import ModalComponente from '@/components/ModalComponente.vue';
+import { pesquisaStore } from '@/stores/pesquisa';
 
 export default {
   setup() {
@@ -79,7 +64,8 @@ export default {
   },
   components: {
     ModalComponente,
-    BarraPesquisa
+    BarraPesquisa,
+    CardComponente,
   },
   data() {
     return {
