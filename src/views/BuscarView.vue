@@ -39,20 +39,21 @@ import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
+
 export default {
-  components:  
-  { 
+  components: {
     NotfoundComponente,
     BarraPesquisa,
-    CardComponente, 
+    CardComponente,
     ButtonComponente,
   },
   data() {
+    const storePesquisa = pesquisaStore();
     return {
       pesquisaAtual: '',
       pesquisaExiste: true,
       qtdWallpp: 10,
-      pesquisaRetorno: this.storePesquisa,
+      pesquisaRetorno: storePesquisa,
       cards: [ 
         { 
           id: 1, 
@@ -111,16 +112,10 @@ export default {
       ]
     };
   },
-  setup() {
-    const storePesquisa = pesquisaStore() 
-    return {
-      storePesquisa
-    }
-  },
-  methods:{
+  methods: {
     enviarPesquisa() {
-      this.storePesquisa.setPesquisa(this.pesquisaAtual);
-      this.$router.push({ name: 'buscar', params: { query:this.pesquisaAtual}});
+      this.pesquisaRetorno.setPesquisa(this.pesquisaAtual);
+      this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
     }
   }
 };

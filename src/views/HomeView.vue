@@ -57,12 +57,6 @@ import ModalComponente from '@/components/ModalComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
 
 export default {
-  setup() {
-    const storePesquisa = pesquisaStore() 
-    return {
-      storePesquisa
-    }
-  },
   components: {
     ModalComponente,
     BarraPesquisa,
@@ -71,39 +65,24 @@ export default {
   },
   data() {
     return {
-      pesquisaAtual:'',
-      exibeModal:false,
-      maisBuscado:['Paisagem','Animais','Veiculos'],
+      pesquisaAtual: '',
+      exibeModal: false,
+      maisBuscado: ['Paisagem', 'Animais', 'Veiculos'],
       cards: [
-        { 
-          id: 1, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 2, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 3, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: './src/assets/image 6.png'
-        }
+        { id: 1, nome: 'Card1', texto: 'teste card 1', img: './src/assets/image 6.png' },
+        { id: 2, nome: 'Card2', texto: 'teste card 2', img: './src/assets/image 6.png' },
+        { id: 3, nome: 'Card3', texto: 'teste card 3', img: './src/assets/image 6.png' }
       ]
     }
   },
-  methods:{
+  methods: {
     enviarPesquisa() {
-      this.storePesquisa.setPesquisa(this.pesquisaAtual);
-      this.$router.push({ name: 'buscar', params: { query:this.pesquisaAtual}});
+      const storePesquisa = pesquisaStore();
+      storePesquisa.setPesquisa(this.pesquisaAtual);
+      this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
     }
   }
 }
-
 </script>
 
 <style scoped>
