@@ -10,7 +10,7 @@
     
         <BarraPesquisa/> 
 
-          <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
+          <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0].name}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1].name}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2].name}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         
       </div>
 
@@ -20,7 +20,7 @@
 
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
-            <template v-for="card in cards" :key="card.id">
+            <template v-for="card in cardsLancamentos" :key="card.wallpaper_id">
               <CardComponente :card="card"/>
             </template>
           
@@ -42,8 +42,8 @@
 
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
-          <template v-for="card in cards" :key="card.id">
-            <CardComponente :card="card"/>
+          <template v-for="card in cards3MaisBaixados30dias" :key="card.wallpaper_id">
+              <CardComponente :card="card"/>
           </template>
         
         </article>
@@ -59,12 +59,13 @@
   </template> 
 </template>
 
-<script>
+<script>//json-server --watch api.json
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import ModalComponente from '@/components/ModalComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
+import axios from 'axios';
 
 export default {
   components: {
@@ -77,15 +78,29 @@ export default {
     return {
       pesquisaAtual: '',
       exibeModal: false,
-      maisBuscado: ['Paisagem', 'Animais', 'Veiculos'],
-      cards: [
-        { id: 1, nome: 'Card1', texto: 'teste card 1', img: './src/assets/image 6.png' },
-        { id: 2, nome: 'Card2', texto: 'teste card 2', img: './src/assets/image 6.png' },
-        { id: 3, nome: 'Card3', texto: 'teste card 3', img: './src/assets/image 6.png' }
-      ]
+      maisBuscado: [],
+      cardsLancamentos: [],
+      cards3MaisBaixados30dias: [],
     }
   },
+  created() {
+    this.fetchData();
+  },
   methods: {
+    async fetchData() {
+      try {
+        const responseTopBuscas = await axios.get('http://localhost:3000/topBuscas');
+        const responsecards3MaisBaixados30dias = await axios.get('http://localhost:3000/maisBaixadosCards');
+        const responseLancamentosCards = await axios.get('http://localhost:3000/lancamentosCards');
+
+        this.maisBuscado = responseTopBuscas.data;
+        this.cardsLancamentos = responseLancamentosCards.data;
+        this.cards3MaisBaixados30dias = responsecards3MaisBaixados30dias.data;
+
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    },
     enviarPesquisa() {
       const storePesquisa = pesquisaStore();
       storePesquisa.setPesquisa(this.pesquisaAtual);

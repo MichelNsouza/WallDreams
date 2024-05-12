@@ -7,13 +7,13 @@
             </router-link>
               
             <ul class="navbar-url p-3 mb-2">
-                <li v-for="(categoria, index) in categorias" :key="index" class="list" @click="enviarPesquisa(categoria)"> 
+                <li v-for="(categoria) in categorias" :key="category_id" class="list" @click="enviarPesquisa(categoria)"> 
                     <router-link 
-                    @click="enviarPesquisa(categoria)" 
-                    :to="'/buscar/'+categoria" 
+                    @click="enviarPesquisa(categoria.name)" 
+                    :to="'/buscar/'+categoria.name" 
                     class="nav-info"
                     >
-                    <span>{{ categoria }}</span>
+                    <span>{{ categoria.name }}</span>
                     </router-link>
                 </li>
             </ul> 
@@ -25,6 +25,7 @@
   
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
+import axios from 'axios';
 export default {
   setup() {
     const storePesquisa = pesquisaStore() 
@@ -34,20 +35,25 @@ export default {
   },
   data() {
     return {
-      categorias:[
-      'Todos',
-      'Paisagem',
-      'Tecnologia',
-      'Abstratos',
-      'Animais',
-      'Veiculos',
-      'Outros'
-    ]
+      categorias:[]
     };
   },
+  created() {
+    this.fetchData();
+  },
   methods:{
+    async fetchData() {
+      try {
+        const responseCategorias = await axios.get('http://localhost:3000/categories');
+        this.categorias = responseCategorias.data;
+
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    },
     enviarPesquisa(pesquisaAtual) {
-      this.storePesquisa.setPesquisa(pesquisaAtual);
+      //enviar contador de busca para api
+      this.storePesquisa.setPesquisa(pesquisaAtual.name);
     }
   }
 }

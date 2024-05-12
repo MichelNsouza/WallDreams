@@ -41,6 +41,7 @@ import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
+import axios from 'axios';
 
 export default {
   components: {
@@ -53,68 +54,39 @@ export default {
     const storePesquisa = pesquisaStore();
     return {
       pesquisaAtual: '',
-      pesquisaExiste: true,
+      pesquisaExiste: false,
       qtdWallpp: 10,
       pesquisaRetorno: storePesquisa,
-      cards: [ 
-        { 
-          id: 1, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 2, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 3, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 4, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 5, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 6, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 7, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 8, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: '/src/assets/image 6.png'
-        },
-        { 
-          id: 9, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: '/src/assets/image 6.png'
-        }
-      ]
+      cards: []
     };
   },
+  mounted() {
+    this.fetchData();
+  },
   methods: {
+    async fetchData() {
+      try {
+        const responseCategorias = await axios.get('http://localhost:3000/categories');
+        const categorias = responseCategorias.data;
+      
+        const categoria = categorias.find(cat => cat.name === this.pesquisaRetorno);// pesquisar como filtrar as categorias
+
+        if (categoria) {
+          const responseTodosCards = await axios.get('http://localhost:3000/todosCards', {
+            params: {
+              category_id: categoria.category_id
+            },
+            
+          });
+          this.cards = responseTodosCards.data;
+          this.pesquisaExiste = true;
+        } else {
+          this.pesquisaExiste = false;
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    },
     enviarPesquisa() {
       this.pesquisaRetorno.setPesquisa(this.pesquisaAtual);
       this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});

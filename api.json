@@ -1,0 +1,161 @@
+{
+    "topBuscas": [
+      {
+        "category_id": 1,
+        "name": "Veículos"
+      },
+      {
+        "category_id": 2,
+        "name": "Paisagem"
+      },
+      {
+        "category_id": 5,
+        "name": "Animais"
+      }
+    ],
+    "todosCards": [
+      { 
+        "wallpaper_id": 1,
+        "title": "Porsche 911 GT3",
+        "url": "/src/assets/image 6.png", 
+        "description": "Um Porsche 911 GT3 em alta velocidade",
+        "week_download_count": 10,
+        "category_id": 1,
+        "like_count": 20
+      },
+      { 
+        "wallpaper_id": 2,
+        "title": "Montanha Rochosa",
+        "url": "/src/assets/image 6.png", 
+        "description": "Vista panorâmica de uma montanha rochosa",
+        "week_download_count": 8,
+        "category_id": 2,
+        "like_count": 15
+      },
+      { 
+        "wallpaper_id": 3,
+        "title": "Gato Persa",
+        "url": "/src/assets/image 6.png", 
+        "description": "Um lindo gato persa descansando",
+        "week_download_count": 12,
+        "category_id": 5,
+        "like_count": 25
+      }
+    ],
+    "maisBaixadosCards": [
+      { 
+        "wallpaper_id": 4,
+        "title": "Ferrari 488 Pista",
+        "url": "/src/assets/image 6.png", 
+        "description": "Uma Ferrari 488 Pista em uma pista de corrida",
+        "week_download_count": 6,
+        "category_id": 1,
+        "like_count": 18
+      },
+      { 
+        "wallpaper_id": 5,
+        "title": "Praia do Caribe",
+        "url": "/src/assets/image 6.png", 
+        "description": "Uma bela praia do Caribe com águas cristalinas",
+        "week_download_count": 9,
+        "category_id": 2,
+        "like_count": 22
+      },
+      { 
+        "wallpaper_id": 6,
+        "title": "Leão Africano",
+        "url": "/src/assets/image 6.png", 
+        "description": "Um majestoso leão africano descansando",
+        "week_download_count": 11,
+        "category_id": 5,
+        "like_count": 20
+      }
+    ],
+    "lancamentosCards": [
+    { 
+        "wallpaper_id": 4,
+        "title": "Ferrari 488 Pista",
+        "url": "/src/assets/image 6.png", 
+        "description": "Uma Ferrari 488 Pista em uma pista de corrida",
+        "week_download_count": 6,
+        "category_id": 1,
+        "like_count": 18
+      },
+      { 
+        "wallpaper_id": 5,
+        "title": "Praia do Caribe",
+        "url": "/src/assets/image 6.png", 
+        "description": "Uma bela praia do Caribe com águas cristalinas",
+        "week_download_count": 9,
+        "category_id": 2,
+        "like_count": 22
+      },
+      { 
+        "wallpaper_id": 6,
+        "title": "Leão Africano",
+        "url": "/src/assets/image 6.png", 
+        "description": "Um majestoso leão africano descansando",
+        "week_download_count": 11,
+        "category_id": 5,
+        "like_count": 20
+      },
+      { 
+        "wallpaper_id": 7,
+        "title": "Lamborghini Huracán",
+        "url": "/src/assets/image 6.png", 
+        "description": "Uma Lamborghini Huracán em uma estrada sinuosa",
+        "week_download_count": 7,
+        "category_id": 1,
+        "like_count": 16
+      },
+      { 
+        "wallpaper_id": 8,
+        "title": "Campo de Girassóis",
+        "url": "/src/assets/image 6.png", 
+        "description": "Um campo de girassóis em plena floração",
+        "week_download_count": 13,
+        "category_id": 2,
+        "like_count": 24
+      },
+      { 
+        "wallpaper_id": 9,
+        "title": "Elefante Africano",
+        "url": "/src/assets/image 6.png", 
+        "description": "Um elefante africano atravessando a savana",
+        "week_download_count": 5,
+        "category_id": 5,
+        "like_count": 14
+      }
+    ],
+    "categories": [
+      {
+        "category_id": 1,
+        "name": "Veículos"
+      },
+      {
+        "category_id": 2,
+        "name": "Paisagem"
+      },
+      {
+        "category_id": 3,
+        "name": "Tecnologia"
+      },
+      {
+        "category_id": 4,
+        "name": "Abstratos"
+      },
+      {
+        "category_id": 5,
+        "name": "Animais"
+      },
+      {
+        "category_id": 6,
+        "name": "Veiculos"
+      },
+      {
+        "category_id": 7,
+        "name": "Outros"
+      }
+    ]
+  }
+  

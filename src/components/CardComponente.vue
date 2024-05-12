@@ -1,10 +1,10 @@
 <template>
   <div class="col">
       <div class="card h-100">
-          <img :src="card.img" class="card-img-top" alt="...">
+          <img :src="card.url" class="card-img-top" alt="...">
           <div class="card-body">
-          <p class="card-text">{{card.texto}}</p>
-          <h5 class="card-title">{{card.nome}}</h5>
+          <p class="card-text">{{card.description}}</p>
+          <h5 class="card-title">{{card.title}}</h5>
           </div>
       </div>
   </div>
