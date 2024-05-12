@@ -14,7 +14,7 @@
         
       </div>
 
-      <section class="mt-5">
+      <section class="mt-5 ">
 
         <h2 class="mt-5 mb-3">Lançamentos</h2>
 
@@ -25,16 +25,22 @@
             </template>
           
           </article>
+          <div class="mt-5 d-flex justify-content-center align-items-center">
+          
+            <ButtonComponente 
+            :texto="'Ver mais lançamentos'" 
+            :tamanho="'grande'" 
+            :cor="'bgCinzaClaro'"
+            />
 
-          <ButtonComponente :titulo="'Ver mais'"/>
-      
+          </div>
       </section>
 
       <section class="mt-5 mb-5">
 
         <h2>Mais baixados nos últimos 30 dias</h2>
 
-        <article class="row row-cols-1 row-cols-md-3 g-4"> <!-- aqui vem um for com os 3 ultimos card's incluidos na api -->
+        <article class="row row-cols-1 row-cols-md-3 g-4">
           
           <template v-for="card in cards" :key="card.id">
             <CardComponente :card="card"/>

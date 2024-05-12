@@ -16,13 +16,17 @@
         <div v-if="pesquisaExiste == true">
           <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: {{pesquisaRetorno.pesquisa}}</p>
 
-            <article class="row row-cols-1 row-cols-md-3 g-4 al">
+            <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
               
               <template v-for="card in cards" :key="card.id">
                 <CardComponente :card="card"/>
               </template>
 
-              <ButtonComponente :titulo="'Ver mais'"/>
+              <ButtonComponente 
+                :texto="'Ver mais lançamentos'" 
+                :tamanho="'grande'" 
+                :cor="'bgCinzaClaro'"
+                />
             
             </article>
         </div>

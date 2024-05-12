@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import NotfoundView from '@/views/NotfoundView.vue';
 import BuscarView from '@/views/BuscarView.vue';
 import HomeView from '@/views/HomeView.vue';
-import NotfoundView from '@/views/NotFoundView.vue';
 
 
 const router = createRouter({   
@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'não-encontrado',
-      component: NotFoundView
+      component: NotfoundView
     }
   ]
 })
