@@ -21,7 +21,7 @@
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
             <template v-for="card in cardsLancamentos" :key="card.wallpaper_id">
-              <CardComponente :card="card"/>
+              <CardComponente :card="card" @card-clicado="abrirModal"/>
             </template>
           
           </article>
@@ -31,6 +31,7 @@
             :texto="'Ver mais lançamentos'" 
             :tamanho="'grande'" 
             :cor="'bgCinzaClaro'"
+            
             />
 
           </div>
@@ -43,7 +44,7 @@
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
           <template v-for="card in cards3MaisBaixados30dias" :key="card.wallpaper_id">
-              <CardComponente :card="card"/>
+              <CardComponente :card="card" @card-clicado="abrirModal"/>
           </template>
         
         </article>
@@ -52,11 +53,11 @@
     </div>
   </div> 
 
-  <template v-if="exibeModal == true">
+   <template v-if="exibeModal"> 
   
-    <ModalComponente/>
+    <ModalComponente @fechar-modal = "fecharModal"  />
 
-  </template> 
+   </template>  
 </template>
 
 <script>//json-server --watch api.json
@@ -77,7 +78,7 @@ export default {
   data() {
     return {
       pesquisaAtual: '',
-      exibeModal: false,
+       exibeModal: false,
       maisBuscado: [],
       cardsLancamentos: [],
       cards3MaisBaixados30dias: [],
@@ -105,6 +106,12 @@ export default {
       const storePesquisa = pesquisaStore();
       storePesquisa.setPesquisa(this.pesquisaAtual);
       this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
+    },
+    fecharModal(){
+      this.exibeModal = false;
+    },
+    abrirModal(){
+      this.exibeModal = true;
     }
   }
 }

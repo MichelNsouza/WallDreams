@@ -1,6 +1,6 @@
 <template>
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<div  class="container d-flex justify-content-center align-items-center vh-100">
   <div class="card col-md-12 mb-3">
   <div class="row no-gutters d-flex align-items-stretch" style="height:100%;">
     <div class="col-md-8">
@@ -31,7 +31,22 @@
     </div>
   
     <div class="col-md-4">
-      <div class="card-body d-flex flex-column">
+
+      <div class="card-body d-flex flex-column"> 
+
+        <div class="d-flex justify-content-end">
+          <ButtonComponente @click="fecharModal"
+          :texto="''"
+          :tamanho="'icone'"
+          :cor="'bgCinza'"
+          :corTexto="''"
+          :src="'/src/assets/icons/icone-x.png'"
+          :alt="'icone botão de fechar'"
+          class=""
+          
+        />
+        </div>     
+
         <ButtonComponente 
           :texto="'Baixar em 4K'" 
           :tamanho="'pequeno'" 
@@ -80,6 +95,11 @@ export default {
   components: {
     ButtonComponente,
   },
+  methods: {
+    fecharModal(){
+      this.$emit('fechar-modal')
+    }
+  }
 
 }
 </script>

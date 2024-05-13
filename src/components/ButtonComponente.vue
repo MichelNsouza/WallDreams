@@ -40,9 +40,9 @@ export default {
 </script>
 
 <style scoped>
-button{
+/* button{
 
-}
+} */
 img{
   margin-right: 8px;
 }
@@ -90,5 +90,7 @@ background-color: #292929;
 .bgCinzaClaro {
 background-color: #E8E8E8;
 }
+
+
 
 </style>

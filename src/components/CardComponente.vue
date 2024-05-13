@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col" @click="abrirModal">
       <div class="card h-100">
           <img :src="card.url" class="card-img-top" alt="...">
           <div class="card-body">
@@ -17,6 +17,12 @@
       card: {
         type: Object,
       },
+    },
+    methods: {
+      abrirModal(){
+        this.$emit('card-clicado');
+      }
+    
     }
   }
   </script>
