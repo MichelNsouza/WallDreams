@@ -2,7 +2,7 @@
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
 
-        <BarraPesquisa/> 
+        <BarraPesquisa @pesquisar="receberPesquisa"/> 
 
       <div v-if="pesquisaExiste == false">
         <section class="mt-5">
@@ -35,7 +35,7 @@
   </div> 
 </template>
 
-<script>
+<script>//json-server --watch api.json
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
@@ -67,18 +67,19 @@ export default {
     async fetchData() {
       try {
         const responseCategorias = await axios.get('http://localhost:3000/categories');
+        
         const categorias = responseCategorias.data;
       
-        const categoria = categorias.find(cat => cat.name === this.pesquisaRetorno);// pesquisar como filtrar as categorias
+        const categoria = categorias.find(categoria => categoria.name === this.pesquisaRetorno);// pesquisar como filtrar as categorias
 
         if (categoria) {
-          const responseTodosCards = await axios.get('http://localhost:3000/todosCards', {
+          const responseCardFiltrados = await axios.get('http://localhost:3000/todosCards', {
             params: {
               category_id: categoria.category_id
             },
             
           });
-          this.cards = responseTodosCards.data;
+          this.cards = responseCardFiltrados.data;
           this.pesquisaExiste = true;
         } else {
           this.pesquisaExiste = false;
@@ -90,6 +91,10 @@ export default {
     enviarPesquisa() {
       this.pesquisaRetorno.setPesquisa(this.pesquisaAtual);
       this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
+    },
+    receberPesquisa(texto) {
+      this.pesquisaAtual = texto;
+      this.fetchData();
     }
   }
 };

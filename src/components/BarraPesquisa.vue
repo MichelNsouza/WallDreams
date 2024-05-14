@@ -4,7 +4,7 @@
         <form class="container-fluid d-flex justify-content-center">
           <div class="input-group">
             <input type="text" v-model="buscar" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <button class="btn btn-outline-success" @click="enviar" type="submit">Search</button>
+            <button class="btn btn-outline-success" @click="enviar()" type="submit">Search</button>
           </div>
         </form>
       </nav>
@@ -24,8 +24,8 @@
       }},
   
     methods: {
-    buscar(){
-      this.$emit("pesquisar",this.buscar)
+      enviar() {
+      this.$emit("pesquisar", this.buscar);
     }
   }
 
