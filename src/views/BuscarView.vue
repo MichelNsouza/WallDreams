@@ -69,7 +69,7 @@ export default {
         const todasCategorias = await axios.get('http://localhost:3000/categories');
         const categorias = todasCategorias.data;
       
-        const categoriaEncontrada = categorias.find(categoria => categoria.name === this.pesquisaRetorno.pesquisa);
+        const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase());
 
         if (categoriaEncontrada) {
           const todosCards = await axios.get('http://localhost:3000/todosCards');
