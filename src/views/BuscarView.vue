@@ -2,15 +2,7 @@
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
 
-        <BarraPesquisa @pesquisar="receberPesquisa"/> 
-
-      <div v-if="pesquisaExiste == false">
-        <section class="mt-5">
-
-          <NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/>
-
-        </section>
-      </div>
+      <BarraPesquisa/>  
 
       <section class="mt-5">
         <div v-if="pesquisaExiste == true">
@@ -30,6 +22,9 @@
             
             </article>
         </div>
+        <div v-if="pesquisaExiste == false">
+          <NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/>
+        </div>
       </section>
     </div>
   </div> 
@@ -42,7 +37,7 @@ import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
 import axios from 'axios';
-
+ 
 export default {
   components: {
     NotfoundComponente,
@@ -53,49 +48,55 @@ export default {
   data() {
     const storePesquisa = pesquisaStore();
     return {
-      pesquisaAtual: '',
       pesquisaExiste: false,
-      qtdWallpp: 10,
+      qtdWallpp: 0,
       pesquisaRetorno: storePesquisa,
-      cards: []
+      cards: [],
     };
   },
   mounted() {
-    this.fetchData();
+    this.fetchData()
+  },
+  watch: {
+    '$route'() {
+      this.fetchData();
+    }
   },
   methods: {
     async fetchData() {
       try {
-        const responseCategorias = await axios.get('http://localhost:3000/categories');
-        
-        const categorias = responseCategorias.data;
+        this.cards = [];
+        const todasCategorias = await axios.get('http://localhost:3000/categories');
+        const categorias = todasCategorias.data;
       
-        const categoria = categorias.find(categoria => categoria.name === this.pesquisaRetorno);// pesquisar como filtrar as categorias
+        const categoriaEncontrada = categorias.find(categoria => categoria.name === this.pesquisaRetorno.pesquisa);
 
-        if (categoria) {
-          const responseCardFiltrados = await axios.get('http://localhost:3000/todosCards', {
-            params: {
-              category_id: categoria.category_id
-            },
-            
-          });
-          this.cards = responseCardFiltrados.data;
-          this.pesquisaExiste = true;
-        } else {
+        if (categoriaEncontrada) {
+          const todosCards = await axios.get('http://localhost:3000/todosCards');
+          const cardsEncontrados = todosCards.data.filter(card => card.category_id === categoriaEncontrada.category_id);
+
+          this.cards = cardsEncontrados;
+          this.pesquisaExiste = cardsEncontrados.length > 0;
+          this.qtdWallpp = cardsEncontrados.length;
+
+        } else if(!categoriaEncontrada) {
+          const todosCards = await axios.get('http://localhost:3000/todosCards');
+          const cardsEncontrados = todosCards.data.filter(card => card.description.includes(this.pesquisaRetorno.pesquisa));
+          
+
+          this.cards = cardsEncontrados;
+          this.pesquisaExiste = cardsEncontrados.length > 0;
+          this.qtdWallpp = cardsEncontrados.length;
+        }else {
+          this.cards = [];
           this.pesquisaExiste = false;
+          this.qtdWallpp = 0;
         }
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
     },
-    enviarPesquisa() {
-      this.pesquisaRetorno.setPesquisa(this.pesquisaAtual);
-      this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
-    },
-    receberPesquisa(texto) {
-      this.pesquisaAtual = texto;
-      this.fetchData();
-    }
+
   }
 };
 </script>

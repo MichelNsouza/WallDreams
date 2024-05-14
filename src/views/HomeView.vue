@@ -8,7 +8,7 @@
   e deixe seu computador com a sua cara!</h3>
           <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-        <BarraPesquisa @pesquisar="buscar"/> 
+        <BarraPesquisa/> 
 
           <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0].name}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1].name}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2].name}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         
@@ -65,7 +65,6 @@ import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import ModalComponente from '@/components/ModalComponente.vue';
-import { pesquisaStore } from '@/stores/pesquisa';
 import axios from 'axios';
 
 export default {
@@ -78,7 +77,7 @@ export default {
   data() {
     return {
       pesquisaAtual: '',
-       exibeModal: false,
+      exibeModal: false,
       maisBuscado: [],
       cardsLancamentos: [],
       cards3MaisBaixados30dias: [],
@@ -93,19 +92,12 @@ export default {
         const responseTopBuscas = await axios.get('http://localhost:3000/topBuscas');
         const responsecards3MaisBaixados30dias = await axios.get('http://localhost:3000/maisBaixadosCards');
         const responseLancamentosCards = await axios.get('http://localhost:3000/lancamentosCards');
-
         this.maisBuscado = responseTopBuscas.data;
         this.cardsLancamentos = responseLancamentosCards.data;
         this.cards3MaisBaixados30dias = responsecards3MaisBaixados30dias.data;
-
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    },
-    enviarPesquisa() {
-      const storePesquisa = pesquisaStore();
-      storePesquisa.setPesquisa(this.pesquisaAtual);
-      this.$router.push({ name: 'buscar', params: { query: this.pesquisaAtual }});
     },
     fecharModal(){
       this.exibeModal = false;
@@ -113,10 +105,6 @@ export default {
     abrirModal(){
       this.exibeModal = true;
     },
-    buscar(texto){
-      this.pesquisaAtual=texto;
-      this.enviarPesquisa()
-    }
   }
 }
 </script>

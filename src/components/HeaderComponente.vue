@@ -51,9 +51,9 @@ export default {
         console.error('Erro ao buscar dados:', error);
       }
     },
-    enviarPesquisa(pesquisaAtual) {
+    enviarPesquisa(categoria) {
       //enviar contador de busca para api
-      this.storePesquisa.setPesquisa(pesquisaAtual.name);
+      this.storePesquisa.setPesquisa(categoria.name);
     }
   }
 }
