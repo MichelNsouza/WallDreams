@@ -4,7 +4,7 @@
         <form class="container-fluid d-flex justify-content-center">
           <div class="input-group">
             <input type="text" v-model="buscarAtual" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-            <button class="btn btn-outline-success" @click.prevent="enviar">Enviar</button>
+            <button class="btn btn-success" @click.prevent="enviar"><img src="/src/assets/icons/lupaPesquisa.svg"></button>
           </div>
         </form>
       </nav>

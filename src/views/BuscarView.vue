@@ -2,11 +2,11 @@
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
 
-      <BarraPesquisa/>  
+      <BarraPesquisa  class="mt-5"/>  
 
       <section class="mt-5">
         <div v-if="pesquisaExiste == true">
-          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: {{pesquisaRetorno.pesquisa}}</p>
+          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque">{{pesquisaRetorno.pesquisa}}</span></p>
 
             <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
               
@@ -14,11 +14,16 @@
                 <CardComponente :card="card"/>
               </template>
 
-              <ButtonComponente 
-                :texto="'Ver mais lançamentos'" 
-                :tamanho="'grande'" 
-                :cor="'bgCinzaClaro'"
+              <div class="w-100"></div> <!-- Adiciona um elemento vazio para forçar o envolvimento flexível -->
+
+              <template v-if="qtdWallpp > 9 && quantidadevisivel<=qtdWallpp" class="mt-3 d-flex justify-content-center">
+                <ButtonComponente 
+                  :texto="'Ver mais Wallpapers'" 
+                  :tamanho="'grande'" 
+                  :cor="'bgCinzaClaro'"
+                  @click.prevent="incrementaCards()"
                 />
+              </template>
             
             </article>
         </div>
@@ -50,6 +55,7 @@ export default {
     return {
       pesquisaExiste: false,
       qtdWallpp: 0,
+      quantidadevisivel:9,
       pesquisaRetorno: storePesquisa,
       cards: [],
     };
@@ -59,10 +65,17 @@ export default {
   },
   watch: {
     '$route'() {
+      this.quantidadevisivel=9;
       this.fetchData();
-    }
+  
+    },
+
   },
   methods: {
+    incrementaCards() {
+      this.quantidadevisivel += 9;
+      this.fetchData(); // procurar como fazer para a pagina não atualizar
+    },
     async fetchData() {
       try {
         this.cards = [];
@@ -75,7 +88,7 @@ export default {
           const todosCards = await axios.get('http://localhost:3000/todosCards');
           const cardsEncontrados = todosCards.data.filter(card => card.category_id === categoriaEncontrada.category_id);
 
-          this.cards = cardsEncontrados;
+          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
           this.pesquisaExiste = cardsEncontrados.length > 0;
           this.qtdWallpp = cardsEncontrados.length;
 
@@ -84,24 +97,27 @@ export default {
           const cardsEncontrados = todosCards.data.filter(card => card.description.includes(this.pesquisaRetorno.pesquisa));
           
 
-          this.cards = cardsEncontrados;
+          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
           this.pesquisaExiste = cardsEncontrados.length > 0;
           this.qtdWallpp = cardsEncontrados.length;
         }else {
           this.cards = [];
           this.pesquisaExiste = false;
           this.qtdWallpp = 0;
+          this.quantidadevisivel = 0;
         }
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    },
-
+    }
   }
 };
 </script>
 
 
 <style scoped>
-
+.destaque{
+  color: var(--headerColor);
+  font-weight: bold;
+}
 </style>

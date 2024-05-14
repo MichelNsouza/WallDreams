@@ -13,89 +13,6 @@
         "name": "Animais"
       }
     ],
-    "todosCards": [
-      { 
-        "wallpaper_id": 1,
-        "title": "Porsche 911 GT3",
-        "url": "/src/assets/image 6.png", 
-        "description": "Um Porsche 911 GT3 em alta velocidade",
-        "week_download_count": 10,
-        "category_id": 6,
-        "like_count": 20
-      },
-      { 
-        "wallpaper_id": 2,
-        "title": "Montanha Rochosa",
-        "url": "/src/assets/image 6.png", 
-        "description": "Vista panorâmica de uma montanha rochosa",
-        "week_download_count": 8,
-        "category_id": 2,
-        "like_count": 15
-      },
-      { 
-        "wallpaper_id": 3,
-        "title": "Gato Persa",
-        "url": "/src/assets/image 6.png", 
-        "description": "Um lindo gato persa descansando",
-        "week_download_count": 12,
-        "category_id": 5,
-        "like_count": 25
-      },
-      { 
-        "wallpaper_id": 4,
-        "title": "Ferrari 488 Pista",
-        "url": "/src/assets/image 6.png", 
-        "description": "Uma Ferrari 488 Pista em uma pista de corrida",
-        "week_download_count": 6,
-        "category_id": 6,
-        "like_count": 18
-      },
-      { 
-        "wallpaper_id": 5,
-        "title": "Praia do Caribe",
-        "url": "/src/assets/image 6.png", 
-        "description": "Uma bela praia do Caribe com águas cristalinas",
-        "week_download_count": 9,
-        "category_id": 2,
-        "like_count": 22
-      },
-      { 
-        "wallpaper_id": 6,
-        "title": "Leão Africano",
-        "url": "/src/assets/image 6.png", 
-        "description": "Um majestoso leão africano descansando",
-        "week_download_count": 11,
-        "category_id": 5,
-        "like_count": 20
-      },
-      { 
-        "wallpaper_id": 7,
-        "title": "Lamborghini Huracán",
-        "url": "/src/assets/image 6.png", 
-        "description": "Uma Lamborghini Huracán em uma estrada sinuosa",
-        "week_download_count": 7,
-        "category_id": 6,
-        "like_count": 16
-      },
-      { 
-        "wallpaper_id": 8,
-        "title": "Campo de Girassóis",
-        "url": "/src/assets/image 6.png", 
-        "description": "Um campo de girassóis em plena floração",
-        "week_download_count": 13,
-        "category_id": 2,
-        "like_count": 24
-      },
-      { 
-        "wallpaper_id": 9,
-        "title": "Elefante Africano",
-        "url": "/src/assets/image 6.png", 
-        "description": "Um elefante africano atravessando a savana",
-        "week_download_count": 5,
-        "category_id": 5,
-        "like_count": 14
-      }
-    ],
     "maisBaixadosCards": [
       { 
         "wallpaper_id": 4,
@@ -209,6 +126,881 @@
       {
         "category_id": 7,
         "name": "Outros"
+      }
+    ],
+    "todosCards": [
+      {
+        "wallpaper_id": 1,
+        "title": "Porsche 911 GT3",
+        "url": "/src/assets/image 6.png",
+        "description": "Um Porsche 911 GT3 em alta velocidade",
+        "week_download_count": 10,
+        "category_id": 6,
+        "like_count": 20
+      },
+      {
+        "wallpaper_id": 2,
+        "title": "Montanha Rochosa",
+        "url": "/src/assets/image 6.png",
+        "description": "Vista panorâmica de uma montanha rochosa",
+        "week_download_count": 8,
+        "category_id": 2,
+        "like_count": 15
+      },
+      {
+        "wallpaper_id": 3,
+        "title": "Gato Persa",
+        "url": "/src/assets/image 6.png",
+        "description": "Um lindo gato persa descansando",
+        "week_download_count": 12,
+        "category_id": 5,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 4,
+        "title": "Ferrari 488 Pista",
+        "url": "/src/assets/image 6.png",
+        "description": "Uma Ferrari 488 Pista em uma pista de corrida",
+        "week_download_count": 6,
+        "category_id": 6,
+        "like_count": 18
+      },
+      {
+        "wallpaper_id": 5,
+        "title": "Praia do Caribe",
+        "url": "/src/assets/image 6.png",
+        "description": "Uma bela praia do Caribe com águas cristalinas",
+        "week_download_count": 9,
+        "category_id": 2,
+        "like_count": 22
+      },
+      {
+        "wallpaper_id": 6,
+        "title": "Leão Africano",
+        "url": "/src/assets/image 6.png",
+        "description": "Um majestoso leão africano descansando",
+        "week_download_count": 11,
+        "category_id": 5,
+        "like_count": 20
+      },
+      {
+        "wallpaper_id": 7,
+        "title": "Lamborghini Huracán",
+        "url": "/src/assets/image 6.png",
+        "description": "Uma Lamborghini Huracán em uma estrada sinuosa",
+        "week_download_count": 7,
+        "category_id": 6,
+        "like_count": 16
+      },
+      {
+        "wallpaper_id": 8,
+        "title": "Campo de Girassóis",
+        "url": "/src/assets/image 6.png",
+        "description": "Um campo de girassóis em plena floração",
+        "week_download_count": 13,
+        "category_id": 2,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 9,
+        "title": "Elefante Africano",
+        "url": "/src/assets/image 6.png",
+        "description": "Um elefante africano atravessando a savana",
+        "week_download_count": 5,
+        "category_id": 5,
+        "like_count": 14
+      },
+      {
+        "wallpaper_id": 10,
+        "title": "Pôr do Sol no Deserto",
+        "url": "/src/assets/image.png",
+        "description": "Um belo pôr do sol no deserto",
+        "week_download_count": 17,
+        "category_id": 2,
+        "like_count": 30
+      },
+      {
+        "wallpaper_id": 11,
+        "title": "Cachoeira Tropical",
+        "url": "/src/assets/image.png",
+        "description": "Uma deslumbrante cachoeira em meio à vegetação tropical",
+        "week_download_count": 14,
+        "category_id": 2,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 12,
+        "title": "Placa de Circuito Impresso",
+        "url": "/src/assets/image.png",
+        "description": "Close-up de uma placa de circuito impresso de alta tecnologia",
+        "week_download_count": 11,
+        "category_id": 3,
+        "like_count": 18
+      },
+      {
+        "wallpaper_id": 13,
+        "title": "Nebulosa Abstrata",
+        "url": "/src/assets/image.png",
+        "description": "Representação artística de uma nebulosa abstrata",
+        "week_download_count": 9,
+        "category_id": 4,
+        "like_count": 20
+      },
+      {
+        "wallpaper_id": 14,
+        "title": "Cão Labrador",
+        "url": "/src/assets/image.png",
+        "description": "Um adorável cão da raça Labrador brincando",
+        "week_download_count": 16,
+        "category_id": 5,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 15,
+        "title": "Foguete Espacial",
+        "url": "/src/assets/image.png",
+        "description": "Lançamento de um foguete espacial rumo ao espaço sideral",
+        "week_download_count": 13,
+        "category_id": 3,
+        "like_count": 22
+      },
+      {
+        "wallpaper_id": 16,
+        "title": "Helicóptero Apache",
+        "url": "/src/assets/image.png",
+        "description": "Um poderoso helicóptero Apache em voo",
+        "week_download_count": 10,
+        "category_id": 6,
+        "like_count": 19
+      },
+      {
+        "wallpaper_id": 17,
+        "title": "Arte Abstrata em Cores",
+        "url": "/src/assets/image.png",
+        "description": "Pintura abstrata em cores vibrantes",
+        "week_download_count": 12,
+        "category_id": 4,
+        "like_count": 25
+      },
+    {
+        "wallpaper_id": 18,
+        "title": "Aurora Boreal",
+        "url": "/src/assets/image.png",
+        "description": "Fenômeno natural da aurora boreal iluminando o céu noturno",
+        "week_download_count": 15,
+        "category_id": 2,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 19,
+        "title": "Computador Gamer",
+        "url": "/src/assets/image.png",
+        "description": "Um computador gamer de última geração em pleno funcionamento",
+        "week_download_count": 18,
+        "category_id": 3,
+        "like_count": 32
+      },
+      {
+        "wallpaper_id": 20,
+        "title": "Grafite Abstrato na Cidade",
+        "url": "/src/assets/image.png",
+        "description": "Arte de rua abstrata em meio urbano",
+        "week_download_count": 13,
+        "category_id": 4,
+        "like_count": 23
+      },
+      {
+        "wallpaper_id": 21,
+        "title": "Borboleta Monarca",
+        "url": "/src/assets/image.png",
+        "description": "Uma bela borboleta monarca pousada em uma flor",
+        "week_download_count": 14,
+        "category_id": 5,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 22,
+        "title": "Carro Esportivo na Cidade",
+        "url": "/src/assets/image.png",
+        "description": "Um elegante carro esportivo nas ruas da cidade",
+        "week_download_count": 16,
+        "category_id": 6,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 23,
+        "title": "Fantasia de Carnaval",
+        "url": "/src/assets/image.png",
+        "description": "Desfile de carnaval com fantasias coloridas e exuberantes",
+        "week_download_count": 11,
+        "category_id": 7,
+        "like_count": 20
+      },
+      {
+        "wallpaper_id": 24,
+        "title": "Circuitos Integrados",
+        "url": "/src/assets/image.png",
+        "description": "Close-up de circuitos integrados em uma placa de circuito",
+        "week_download_count": 9,
+        "category_id": 3,
+        "like_count": 18
+      },
+      {
+        "wallpaper_id": 25,
+        "title": "Arte Abstrata em Preto e Branco",
+        "url": "/src/assets/image.png",
+        "description": "Pintura abstrata em tons de preto e branco",
+        "week_download_count": 12,
+        "category_id": 4,
+        "like_count": 22
+      },
+      {
+        "wallpaper_id": 26,
+        "title": "Filhote de Panda",
+        "url": "/src/assets/image.png",
+        "description": "Um adorável filhote de panda brincando",
+        "week_download_count": 10,
+        "category_id": 5,
+        "like_count": 21
+      },
+      {
+        "wallpaper_id": 27,
+        "title": "Nave Espacial Futurista",
+        "url": "/src/assets/image.png",
+        "description": "Nave espacial futurista em órbita ao redor de um planeta distante",
+        "week_download_count": 14,
+        "category_id": 3,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 28,
+        "title": "Motocicleta Customizada",
+        "url": "/src/assets/image.png",
+        "description": "Uma motocicleta customizada em estilo vintage",
+        "week_download_count": 15,
+        "category_id": 6,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 29,
+        "title": "Padrão Geométrico Abstrato",
+        "url": "/src/assets/image.png",
+        "description": "Padrão geométrico abstrato em tons vibrantes",
+        "week_download_count": 11,
+        "category_id": 4,
+        "like_count": 20
+      },
+      {
+        "wallpaper_id": 30,
+        "title": "Tigre Siberiano",
+        "url": "/src/assets/image.png",
+        "description": "Um majestoso tigre siberiano em seu habitat natural",
+        "week_download_count": 13,
+        "category_id": 5,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 31,
+        "title": "Avião de Combate",
+        "url": "/src/assets/image.png",
+        "description": "Um avião de combate em pleno voo",
+        "week_download_count": 17,
+        "category_id": 6,
+        "like_count": 30
+      },
+      {
+        "wallpaper_id": 32,
+        "title": "Flores Exóticas",
+        "url": "/src/assets/image.png",
+        "description": "Flores exóticas em cores vibrantes",
+        "week_download_count": 16,
+        "category_id": 2,
+        "like_count": 27
+      },
+    {
+        "wallpaper_id": 33,
+        "title": "Placa-Mãe de Computador",
+        "url": "/src/assets/image.png",
+        "description": "Close-up de uma placa-mãe de computador com componentes eletrônicos",
+        "week_download_count": 12,
+        "category_id": 3,
+        "like_count": 23
+      },
+      {
+        "wallpaper_id": 34,
+        "title": "Pintura Abstrata em Aquarela",
+        "url": "/src/assets/image.png",
+        "description": "Pintura abstrata em técnica de aquarela",
+        "week_download_count": 14,
+        "category_id": 4,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 35,
+        "title": "Cavalos Correndo",
+        "url": "/src/assets/image.png",
+        "description": "Cavalos em plena corrida em uma paisagem rural",
+        "week_download_count": 15,
+        "category_id": 5,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 36,
+        "title": "Caminhão de Carga",
+        "url": "/src/assets/image.png",
+        "description": "Um imponente caminhão de carga em uma estrada",
+        "week_download_count": 16,
+        "category_id": 6,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 37,
+        "title": "Pintura Mural Urbana",
+        "url": "/src/assets/image.png",
+        "description": "Arte mural urbana em uma cidade cosmopolita",
+        "week_download_count": 17,
+        "category_id": 7,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 38,
+        "title": "Smartphone de Última Geração",
+        "url": "/src/assets/image.png",
+        "description": "Um smartphone de última geração com tela OLED",
+        "week_download_count": 13,
+        "category_id": 3,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 39,
+        "title": "Escultura Abstrata em Metal",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata em metal com formas geométricas",
+        "week_download_count": 11,
+        "category_id": 4,
+        "like_count": 21
+      },
+      {
+        "wallpaper_id": 40,
+        "title": "Macaco Gibão",
+        "url": "/src/assets/image.png",
+        "description": "Um curioso macaco gibão em uma árvore",
+        "week_download_count": 15,
+        "category_id": 5,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 41,
+        "title": "Carro Elétrico",
+        "url": "/src/assets/image.png",
+        "description": "Um carro elétrico moderno em carregamento",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 31
+      },
+      {
+        "wallpaper_id": 42,
+        "title": "Grafite Urbano",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite em uma parede",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 43,
+        "title": "Teclado Gamer Iluminado",
+        "url": "/src/assets/image.png",
+        "description": "Close-up de um teclado gamer iluminado",
+        "week_download_count": 16,
+        "category_id": 3,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 44,
+        "title": "Pintura Abstrata com Textura",
+        "url": "/src/assets/image.png",
+        "description": "Pintura abstrata com textura em tons pastéis",
+        "week_download_count": 12,
+        "category_id": 4,
+        "like_count": 22
+      },
+      {
+        "wallpaper_id": 45,
+        "title": "Leopardo das Neves",
+        "url": "/src/assets/image.png",
+        "description": "Um leopardo das neves camuflado na neve",
+        "week_download_count": 14,
+        "category_id": 5,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 46,
+        "title": "Moto Esportiva",
+        "url": "/src/assets/image.png",
+        "description": "Uma moto esportiva em alta velocidade",
+        "week_download_count": 17,
+        "category_id": 6,
+        "like_count": 30
+      },
+      {
+        "wallpaper_id": 47,
+        "title": "Arte de Rua",
+        "url": "/src/assets/image.png",
+        "description": "Arte de rua colorida e expressiva em uma cidade urbana",
+        "week_download_count": 13,
+        "category_id": 7,
+        "like_count": 24
+      },
+    {
+        "wallpaper_id": 48,
+        "title": "Placa de Vídeo Gamer",
+        "url": "/src/assets/image.png",
+        "description": "Uma potente placa de vídeo gamer com sistema de refrigeração avançado",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 49,
+        "title": "Pintura Abstrata em Spray",
+        "url": "/src/assets/image.png",
+        "description": "Pintura abstrata criada com técnicas de spray",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 50,
+        "title": "Pinguins Imperadores",
+        "url": "/src/assets/image.png",
+        "description": "Grupo de pinguins imperadores em seu habitat natural",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 51,
+        "title": "Caminhão de Bombeiros",
+        "url": "/src/assets/image.png",
+        "description": "Um robusto caminhão de bombeiros em ação",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 30
+      },
+      {
+        "wallpaper_id": 52,
+        "title": "Edifício Futurista",
+        "url": "/src/assets/image.png",
+        "description": "Um impressionante edifício futurista em uma cidade moderna",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 53,
+        "title": "Processador de Computador",
+        "url": "/src/assets/image.png",
+        "description": "Close-up de um processador de computador de última geração",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 54,
+        "title": "Escultura Abstrata em Madeira",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata esculpida em madeira nobre",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 55,
+        "title": "Tartaruga Marinha",
+        "url": "/src/assets/image.png",
+        "description": "Uma graciosa tartaruga marinha nadando no oceano",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 56,
+        "title": "Carro Antigo Clássico",
+        "url": "/src/assets/image.png",
+        "description": "Um elegante carro antigo clássico em perfeito estado",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 57,
+        "title": "Grafite Urbano em 3D",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite em efeito tridimensional",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 58,
+        "title": "Monitor Ultrawide Gamer",
+        "url": "/src/assets/image.png",
+        "description": "Um monitor ultrawide gamer com taxa de atualização de 240Hz",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 59,
+        "title": "Grafite Realista",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite com estilo realista",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 60,
+        "title": "Leão Marinho",
+        "url": "/src/assets/image.png",
+        "description": "Um majestoso leão marinho nadando no oceano",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 61,
+        "title": "Caminhão de Transporte de Carga",
+        "url": "/src/assets/image.png",
+        "description": "Um robusto caminhão de transporte de carga em uma estrada",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 62,
+        "title": "Escultura de Metal Abstrata",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata em metal com formas orgânicas",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 63,
+        "title": "Teclado Mecânico Gamer",
+        "url": "/src/assets/image.png",
+        "description": "Close-up de um teclado mecânico gamer com retroiluminação RGB",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 64,
+        "title": "Escultura Abstrata em Pedra",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata esculpida em pedra de mármore",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 65,
+        "title": "Orca Saltando",
+        "url": "/src/assets/image.png",
+        "description": "Uma orca saltando em um espetáculo de acrobacias aquáticas",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 66,
+        "title": "Caminhão de Bombeiros Antigo",
+        "url": "/src/assets/image.png",
+        "description": "Um antigo caminhão de bombeiros restaurado e em exposição",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 67,
+        "title": "Grafite Urbano em Muro",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite em um grande muro",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 23
+      },
+      {
+        "wallpaper_id": 68,
+        "title": "Placa de Vídeo RTX 3090",
+        "url": "/src/assets/image.png",
+        "description": "Uma poderosa placa de vídeo RTX 3090 da NVIDIA",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 69,
+        "title": "Grafite em Perspectiva",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite criando uma ilusão de perspectiva",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 70,
+        "title": "Tucano Colorido",
+        "url": "/src/assets/image.png",
+        "description": "Um vibrante tucano em meio à natureza exuberante da Amazônia",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 71,
+        "title": "Caminhão de Transporte de Carga Antigo",
+        "url": "/src/assets/image.png",
+        "description": "Um antigo caminhão de transporte de carga restaurado e em exposição",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 72,
+        "title": "Grafite Colorido",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite com explosão de cores",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 73,
+        "title": "Mouse Gamer",
+        "url": "/src/assets/image.png",
+        "description": "Um mouse gamer de alta precisão e design ergonômico",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 74,
+        "title": "Escultura Abstrata em Metal Oxidado",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata em metal com efeito de oxidação",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 75,
+        "title": "Baleia Jubarte Saltando",
+        "url": "/src/assets/image.png",
+        "description": "Uma baleia jubarte saltando em um espetáculo magnífico",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 76,
+        "title": "Carro Antigo em Restauração",
+        "url": "/src/assets/image.png",
+        "description": "Um carro antigo sendo restaurado em uma oficina especializada",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 77,
+        "title": "Grafite de Retrato",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite retratando figuras humanas",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 23
+      },
+      {
+        "wallpaper_id": 78,
+        "title": "Placa de Som Profissional",
+        "url": "/src/assets/image.png",
+        "description": "Uma placa de som profissional para produção musical de alta qualidade",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 79,
+        "title": "Grafite em Escadaria",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite decorando uma escadaria",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 80,
+        "title": "Papagaio Brasileiro",
+        "url": "/src/assets/image.png",
+        "description": "Um belo papagaio brasileiro em seu habitat natural na floresta tropical",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 81,
+        "title": "Caminhão de Transporte de Gado",
+        "url": "/src/assets/image.png",
+        "description": "Um caminhão de transporte de gado movimentando animais na zona rural",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 82,
+        "title": "Grafite em Ponte",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite decorando uma ponte",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 83,
+        "title": "Fone de Ouvido Gamer",
+        "url": "/src/assets/image.png",
+        "description": "Um fone de ouvido gamer com cancelamento de ruído e som surround",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 84,
+        "title": "Escultura Abstrata em Pedra",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata esculpida em pedra de granito",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 85,
+        "title": "Arraia Gigante",
+        "url": "/src/assets/image.png",
+        "description": "Um impressionante arraia gigante nadando nas águas profundas do oceano",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 86,
+        "title": "Caminhão de Transporte de Lixo",
+        "url": "/src/assets/image.png",
+        "description": "Um caminhão de transporte de lixo trabalhando nas ruas da cidade",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 87,
+        "title": "Grafite em Tunel",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite decorando um túnel subterrâneo",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 23
+      },
+      {
+        "wallpaper_id": 88,
+        "title": "Placa de Captura de Vídeo",
+        "url": "/src/assets/image.png",
+        "description": "Uma placa de captura de vídeo para gravações e transmissões de alta qualidade",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 89,
+        "title": "Grafite em Viaduto",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite em um viaduto urbano",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 90,
+        "title": "Arara Azul",
+        "url": "/src/assets/image.png",
+        "description": "Uma deslumbrante arara azul em meio à vegetação da floresta tropical",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 91,
+        "title": "Caminhão de Transporte de Minério",
+        "url": "/src/assets/image.png",
+        "description": "Um gigantesco caminhão de transporte de minério operando em uma mina",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 29
+      },
+      {
+        "wallpaper_id": 92,
+        "title": "Grafite em Parede de Prédio",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite em uma parede lateral de prédio",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 24
+      },
+      {
+        "wallpaper_id": 93,
+        "title": "Teclado Ergonômico",
+        "url": "/src/assets/image.png",
+        "description": "Um teclado ergonômico projetado para maior conforto durante longas horas de uso",
+        "week_download_count": 15,
+        "category_id": 3,
+        "like_count": 25
+      },
+      {
+        "wallpaper_id": 94,
+        "title": "Escultura Abstrata em Madeira",
+        "url": "/src/assets/image.png",
+        "description": "Escultura abstrata esculpida em madeira de lei",
+        "week_download_count": 16,
+        "category_id": 4,
+        "like_count": 26
+      },
+      {
+        "wallpaper_id": 95,
+        "title": "Peixe-Palhaço",
+        "url": "/src/assets/image.png",
+        "description": "Um colorido peixe-palhaço nadando entre anêmonas no oceano",
+        "week_download_count": 17,
+        "category_id": 5,
+        "like_count": 27
+      },
+      {
+        "wallpaper_id": 96,
+        "title": "Caminhão de Bombeiros em Ação",
+        "url": "/src/assets/image.png",
+        "description": "Um caminhão de bombeiros em ação durante um incêndio",
+        "week_download_count": 18,
+        "category_id": 6,
+        "like_count": 28
+      },
+      {
+        "wallpaper_id": 97,
+        "title": "Grafite em Estação de Metrô",
+        "url": "/src/assets/image.png",
+        "description": "Arte urbana em forma de grafite em uma estação de metrô movimentada",
+        "week_download_count": 14,
+        "category_id": 7,
+        "like_count": 23
       }
     ]
   }
