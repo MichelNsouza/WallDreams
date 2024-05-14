@@ -1,0 +1,96 @@
+<template>
+  <button
+  :class="`btn ${tamanho} ${cor} ${corTexto}`"
+  >
+  <img :src="src" :alt="alt">
+  {{texto}}
+  </button>
+</template>
+
+<script>
+export default {
+  name: 'ComponenteBotao',
+  props: {
+    texto: {
+      type: String,
+      default: 'Click aqui' 
+    },
+    tamanho: {
+      type: String,
+      default: 'medio' 
+    },
+    cor: {
+      type: String,
+      default: '' 
+    },
+    corTexto: {
+      type: String,
+      default: '' 
+    },
+    src: {
+      type: String,
+      default: '' 
+    },
+    alt: {
+      type: String,
+      default: '' 
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* button{
+
+} */
+img{
+  margin-right: 8px;
+}
+.branco{
+  color: white;
+}
+.preto{
+  color: black;
+}
+
+
+.icone {
+  width: 30px;
+  height: 30px;
+}
+.pequeno{
+  width: 250px;
+  height: 75px;
+  border-radius: 8px;
+}
+.medio {
+  width: 308px;
+  height: 80px;
+  border-radius: 8px;
+}
+.grande {
+  width: 344px;
+  height: 76px;
+  border-radius: 10px;
+  font-weight:700;
+}
+
+.bgVerde {
+background-color: #4EB577;
+}
+.bgVerdeClaro{
+  background-color: #78CB99
+}
+.bgAzul {
+background-color: #1E97EE;
+}
+.bgCinzaEscuro {
+background-color: #292929;
+}
+.bgCinzaClaro {
+background-color: #E8E8E8;
+}
+
+
+
+</style>

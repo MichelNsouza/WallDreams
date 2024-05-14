@@ -1,0 +1,52 @@
+<template>
+    <div class="containerMaior">
+      <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid d-flex justify-content-center">
+          <div class="input-group">
+            <input type="text" v-model="buscarAtual" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            <button class="btn btn-success" @click.prevent="enviar"><img src="/src/assets/icons/lupaPesquisa.svg"></button>
+          </div>
+        </form>
+      </nav>
+    </div>
+</template>
+  
+  
+  <script>
+  import { pesquisaStore } from '@/stores/pesquisa';
+  export default {
+    name: 'BarraPesquisa',
+    
+    data(){
+      return{
+        buscarAtual:'',
+      }
+    },
+    methods: {
+      enviar(){
+      const storePesquisa = pesquisaStore();
+      storePesquisa.setPesquisa(this.buscarAtual.toLowerCase().trim());
+      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual.toLowerCase().trim()}});
+    },
+  }
+
+  }
+  </script>
+  
+  <style scoped>
+
+  .containerMaior {
+
+     justify-content: center;
+     display: flex;
+     align-items: center;
+  }
+
+
+  .form-control{
+
+    width: 784px;
+
+  }
+   
+  </style>

@@ -1,126 +1,123 @@
 <template>
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
-      <div class="pt-5 text-center">
-        <form>
-          <input type="text" v-model="pesquisaAtual" :placeholder="pesquisaRetorno.pesquisa ? pesquisaRetorno.pesquisa : 'Digite o termo de busca...'">
-          <button type="button" @click="enviarPesquisa">Enviar</button>
-        </form>
-      </div>
+
+      <BarraPesquisa  class="mt-5"/>  
 
       <section class="mt-5">
-        <div v-if="pesquisaExiste == 'correto'">
-          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: {{pesquisaRetorno.pesquisa}}</p>
+        <div v-if="pesquisaExiste == true">
+          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque">{{pesquisaRetorno.pesquisa}}</span></p>
 
-            <article class="row row-cols-1 row-cols-md-3 g-4 al">
+            <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
+              
               <template v-for="card in cards" :key="card.id">
-                <div class="col">
-                  <div class="card h-100">
-                    <img :src="card.img" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">{{card.texto}}</p>
-                      <h5 class="card-title">{{card.nome}}</h5>
-                    </div>
-                  </div>
-                </div>
+                <CardComponente :card="card"/>
               </template>
 
-              <button>Ver mais Wallpapers</button><!-- componente btn aqui -->
-            </article>
+              <div class="w-100"></div> <!-- Adiciona um elemento vazio para forçar o envolvimento flexível -->
 
-        
+              <template v-if="qtdWallpp > 9 && quantidadevisivel<=qtdWallpp" class="mt-3 d-flex justify-content-center">
+                <ButtonComponente 
+                  :texto="'Ver mais Wallpapers'" 
+                  :tamanho="'grande'" 
+                  :cor="'bgCinzaClaro'"
+                  @click.prevent="incrementaCards()"
+                />
+              </template>
+            
+            </article>
         </div>
-        <div v-if="pesquisaExiste == 'errado'">
-          <p>Componente not found vem aqui</p>
+        <div v-if="pesquisaExiste == false">
+          <NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/>
         </div>
       </section>
     </div>
   </div> 
 </template>
 
-<script>
+<script>//json-server --watch api.json
+import BarraPesquisa from '@/components/BarraPesquisa.vue';
+import ButtonComponente from '@/components/ButtonComponente.vue';
+import CardComponente from '@/components/CardComponente.vue';
+import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
+import axios from 'axios';
+ 
 export default {
+  components: {
+    NotfoundComponente,
+    BarraPesquisa,
+    CardComponente,
+    ButtonComponente,
+  },
   data() {
+    const storePesquisa = pesquisaStore();
     return {
-      pesquisaAtual: '',
-      qtdWallpp: 10,
-      pesquisaRetorno: this.storePesquisa,
-      //ver como fazer isso com true false, pois precisa de 3 estados V, F e " "
-      pesquisaExiste: 'correto', // correto exibe cards, errado exibe notfoud, nada exibe nada
-      cards: [ 
-        { 
-          id: 1, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 2, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 3, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 4, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 5, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 6, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 7, 
-          nome: 'Card1',
-          texto: 'teste card 1',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 8, 
-          nome: 'Card2',
-          texto: 'teste card 2',
-          img: './src/assets/image 6.png'
-        },
-        { 
-          id: 9, 
-          nome: 'Card3',
-          texto: 'teste card 3',
-          img: './src/assets/image 6.png'
-        }
-      ]
+      pesquisaExiste: false,
+      qtdWallpp: 0,
+      quantidadevisivel:9,
+      pesquisaRetorno: storePesquisa,
+      cards: [],
     };
   },
-  setup() {
-    const storePesquisa = pesquisaStore() 
-    return {
-      storePesquisa
-    }
+  mounted() {
+    this.fetchData()
   },
-  methods:{
-    enviarPesquisa() {
-      this.storePesquisa.setPesquisa(this.pesquisaAtual);
-      //aqui vamos por a logica para buscar na api
+  watch: {
+    '$route'() {
+      this.quantidadevisivel=9;
+      this.fetchData();
+  
+    },
+
+  },
+  methods: {
+    incrementaCards() {
+      this.quantidadevisivel += 9;
+      this.fetchData(); // procurar como fazer para a pagina não atualizar
+    },
+    async fetchData() {
+      try {
+        this.cards = [];
+        const todasCategorias = await axios.get('http://localhost:3000/categories');
+        const categorias = todasCategorias.data;
+      
+        const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+
+        if (categoriaEncontrada) {
+          const todosCards = await axios.get('http://localhost:3000/todosCards');
+          const cardsEncontrados = todosCards.data.filter(card => card.category_id === categoriaEncontrada.category_id);
+
+          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+          this.pesquisaExiste = cardsEncontrados.length > 0;
+          this.qtdWallpp = cardsEncontrados.length;
+
+        } else if(!categoriaEncontrada) {
+          const todosCards = await axios.get('http://localhost:3000/todosCards');
+          const cardsEncontrados = todosCards.data.filter(card => card.description.toLowerCase().trim().includes(this.pesquisaRetorno.pesquisa.toLowerCase().trim()));
+          
+
+          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+          this.pesquisaExiste = cardsEncontrados.length > 0;
+          this.qtdWallpp = cardsEncontrados.length;
+        }else {
+          this.cards = [];
+          this.pesquisaExiste = false;
+          this.qtdWallpp = 0;
+          this.quantidadevisivel = 0;
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
     }
   }
 };
 </script>
 
-<style scoped>
 
+<style scoped>
+.destaque{
+  color: var(--headerColor);
+  font-weight: bold;
+}
 </style>
