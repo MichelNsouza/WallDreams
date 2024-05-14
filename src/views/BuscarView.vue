@@ -82,7 +82,7 @@ export default {
         const todasCategorias = await axios.get('http://localhost:3000/categories');
         const categorias = todasCategorias.data;
       
-        const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase());
+        const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase().trim());
 
         if (categoriaEncontrada) {
           const todosCards = await axios.get('http://localhost:3000/todosCards');
@@ -94,7 +94,7 @@ export default {
 
         } else if(!categoriaEncontrada) {
           const todosCards = await axios.get('http://localhost:3000/todosCards');
-          const cardsEncontrados = todosCards.data.filter(card => card.description.includes(this.pesquisaRetorno.pesquisa));
+          const cardsEncontrados = todosCards.data.filter(card => card.description.toLowerCase().trim().includes(this.pesquisaRetorno.pesquisa.toLowerCase().trim()));
           
 
           this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);

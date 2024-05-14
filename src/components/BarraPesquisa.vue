@@ -25,8 +25,8 @@
     methods: {
       enviar(){
       const storePesquisa = pesquisaStore();
-      storePesquisa.setPesquisa(this.buscarAtual);
-      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual }});
+      storePesquisa.setPesquisa(this.buscarAtual.toLowerCase().trim());
+      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual.toLowerCase().trim()}});
     },
   }
 
