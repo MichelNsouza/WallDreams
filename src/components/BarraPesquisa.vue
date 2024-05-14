@@ -3,8 +3,8 @@
       <nav class="navbar bg-body-tertiary">
         <form class="container-fluid d-flex justify-content-center">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input type="text" v-model="buscar" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <button class="btn btn-outline-success" @click="enviar" type="submit">Search</button>
           </div>
         </form>
       </nav>
@@ -14,7 +14,21 @@
   
   <script>
   export default {
-    name: 'BarraPesquisa'
+
+    name: 'BarraPesquisa',
+
+    data()
+    {
+      return{
+        buscar:""
+      }},
+  
+    methods: {
+    buscar(){
+      this.$emit("pesquisar",this.buscar)
+    }
+  }
+
   }
   </script>
   

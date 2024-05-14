@@ -8,7 +8,7 @@
   e deixe seu computador com a sua cara!</h3>
           <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-        <BarraPesquisa/> 
+        <BarraPesquisa @pesquisar="buscar"/> 
 
           <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0].name}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1].name}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2].name}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         
@@ -112,6 +112,10 @@ export default {
     },
     abrirModal(){
       this.exibeModal = true;
+    },
+    buscar(texto){
+      this.pesquisaAtual=texto;
+      this.enviarPesquisa()
     }
   }
 }
