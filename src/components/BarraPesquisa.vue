@@ -3,8 +3,8 @@
       <nav class="navbar bg-body-tertiary">
         <form class="container-fluid d-flex justify-content-center">
           <div class="input-group">
-            <input type="text" v-model="buscar" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <button class="btn btn-outline-success" @click="enviar()" type="submit">Search</button>
+            <input type="text" v-model="buscarAtual" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            <button class="btn btn-outline-success" @click.prevent="enviar">Enviar</button>
           </div>
         </form>
       </nav>
@@ -13,20 +13,21 @@
   
   
   <script>
+  import { pesquisaStore } from '@/stores/pesquisa';
   export default {
-
     name: 'BarraPesquisa',
-
-    data()
-    {
+    
+    data(){
       return{
-        buscar:""
-      }},
-  
+        buscarAtual:'',
+      }
+    },
     methods: {
-      enviar() {
-      this.$emit("pesquisar", this.buscar);
-    }
+      enviar(){
+      const storePesquisa = pesquisaStore();
+      storePesquisa.setPesquisa(this.buscarAtual);
+      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual }});
+    },
   }
 
   }
@@ -39,8 +40,6 @@
      justify-content: center;
      display: flex;
      align-items: center;
-     vh: -100px;
-
   }
 
 
