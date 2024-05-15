@@ -21,7 +21,7 @@
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
             <template v-for="card in cardsLancamentos" :key="card.wallpaper_id">
-              <CardComponente :card="card" @card-clicado="abrirModal"/>
+              <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, 'lancamentos')"/>
             </template>
           
           </article>
@@ -44,7 +44,7 @@
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
           <template v-for="card in cards3MaisBaixados30dias" :key="card.wallpaper_id">
-              <CardComponente :card="card" @card-clicado="abrirModal"/>
+              <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, 'mais_baixados')"/>
           </template>
         
         </article>
@@ -55,7 +55,7 @@
 
    <template v-if="exibeModal"> 
   
-    <ModalComponente @fechar-modal = "fecharModal"  />
+    <ModalComponente :titulo-modal="tituloModal" @fechar-modal = "fecharModal"  />
 
    </template>  
 </template>
@@ -81,6 +81,7 @@ export default {
       maisBuscado: [],
       cardsLancamentos: [],
       cards3MaisBaixados30dias: [],
+      tituloModal: '',
     }
   },
   created() {
@@ -102,8 +103,20 @@ export default {
     fecharModal(){
       this.exibeModal = false;
     },
-    abrirModal(){
+    abrirModal(cardId, tipo){
       this.exibeModal = true;
+      let cardSelecionado
+
+      if(tipo === 'lancamentos'){
+        cardSelecionado = this.cardsLancamentos.find(card => card.wallpaper_id === cardId);
+
+      } else if(tipo === 'mais_baixados') {
+        cardSelecionado = this.cards3MaisBaixados30dias.find(card => card.wallpaper_id === cardId);
+
+      }
+      this.tituloModal = cardSelecionado.title;
+      console.log(this.tituloModal);
+
     },
   }
 }
