@@ -75,7 +75,7 @@
           class="mb-2"
         />
         <p class="h5 mt-3">Categoria</p>
-        <p>Veiculos</p>
+        <p>{{ nomeCategoria }}</p>
         <p class="h5"><strong>Donwloads semanais</strong></p>
         <p>123.789</p>
       </div>
@@ -96,7 +96,8 @@ export default {
     ButtonComponente,
   },
   props: {
-    tituloModal: String
+    tituloModal: String,
+    nomeCategoria: String
   },
   
   methods: {
