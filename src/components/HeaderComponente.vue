@@ -52,7 +52,6 @@ export default {
       }
     },
     enviarPesquisa(categoria) {
-      //enviar contador de busca para api
       this.storePesquisa.setPesquisa(categoria.name);
     }
   }
