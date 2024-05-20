@@ -21,7 +21,7 @@
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
             <template v-for="card in cardsLancamentos" :key="card.wallpaper_id">
-              <CardComponente :card="card" @card-clicado="abrirModal"/>
+              <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'lancamentos')"/>
             </template>
           
           </article>
@@ -44,7 +44,7 @@
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
           <template v-for="card in cards3MaisBaixados30dias" :key="card.wallpaper_id">
-              <CardComponente :card="card" @card-clicado="abrirModal"/>
+              <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'mais_baixados')"/>
           </template>
         
         </article>
@@ -55,7 +55,7 @@
 
    <template v-if="exibeModal"> 
   
-    <ModalComponente @fechar-modal = "fecharModal"  />
+    <ModalComponente :nome-categoria="nomeCategoria"  :titulo-modal="tituloModal" @fechar-modal = "fecharModal"  />
 
    </template>  
 </template>
@@ -81,6 +81,9 @@ export default {
       maisBuscado: [],
       cardsLancamentos: [],
       cards3MaisBaixados30dias: [],
+      categoriasCards: [],
+      tituloModal: '',
+      nomeCategoria: '',
     }
   },
   created() {
@@ -92,6 +95,8 @@ export default {
         const responseTopBuscas = await axios.get('http://localhost:3000/topBuscas');
         const responsecards3MaisBaixados30dias = await axios.get('http://localhost:3000/maisBaixadosCards');
         const responseLancamentosCards = await axios.get('http://localhost:3000/lancamentosCards');
+        const responseCategoriasCards = await axios.get('http://localhost:3000/categories')
+        this.categoriasCards = responseCategoriasCards.data;
         this.maisBuscado = responseTopBuscas.data;
         this.cardsLancamentos = responseLancamentosCards.data;
         this.cards3MaisBaixados30dias = responsecards3MaisBaixados30dias.data;
@@ -102,8 +107,23 @@ export default {
     fecharModal(){
       this.exibeModal = false;
     },
-    abrirModal(){
+    abrirModal(cardId, cardCatId, tipo){
       this.exibeModal = true;
+      let cardSelecionado;
+      let categoriaSelecionada;
+
+      if(tipo === 'lancamentos'){
+        cardSelecionado = this.cardsLancamentos.find(card => card.wallpaper_id === cardId);
+        categoriaSelecionada = this.categoriasCards.find(card => card.category_id === cardCatId);
+
+      } else if(tipo === 'mais_baixados') {
+        cardSelecionado = this.cards3MaisBaixados30dias.find(card => card.wallpaper_id === cardId);
+        categoriaSelecionada = this.categoriasCards.find(card => card.category_id === cardCatId)
+      }
+      this.tituloModal = cardSelecionado.title;
+      this.nomeCategoria = categoriaSelecionada.name;
+      console.log(this.tituloModal);
+
     },
   }
 }

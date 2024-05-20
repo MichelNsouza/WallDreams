@@ -40,9 +40,6 @@ export default {
 </script>
 
 <style scoped>
-/* button{
-
-} */
 img{
   margin-right: 8px;
 }

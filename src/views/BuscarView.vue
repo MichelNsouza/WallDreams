@@ -14,7 +14,7 @@
                 <CardComponente :card="card"/>
               </template>
 
-              <div class="w-100"></div> <!-- Adiciona um elemento vazio para forçar o envolvimento flexível -->
+              <div class="w-100"></div>
 
               <template v-if="qtdWallpp > 9 && quantidadevisivel<=qtdWallpp" class="mt-3 d-flex justify-content-center">
                 <ButtonComponente 
@@ -74,9 +74,9 @@ export default {
   methods: {
     incrementaCards() {
       this.quantidadevisivel += 9;
-      this.fetchData(); // procurar como fazer para a pagina não atualizar
+      this.fetchData();
     },
-    async fetchData() {
+    async fetchData() {//para simular pesquisa
       try {
         this.cards = [];
         const todasCategorias = await axios.get('http://localhost:3000/categories');
@@ -109,7 +109,29 @@ export default {
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    }
+    },// para consumir api
+    // async fetchData() {
+    //   try {
+    //     this.cards = [];
+    //     const pesquisa = await axios.get('http://localhost:3000/search/'+this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+
+    //     if (pesquisa) {
+    //       const cardsEncontrados = pesquisa.data;
+
+    //       this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+    //       this.pesquisaExiste = cardsEncontrados.length > 0;
+    //       this.qtdWallpp = cardsEncontrados.length;
+
+    //     }else {
+    //       this.cards = [];
+    //       this.pesquisaExiste = false;
+    //       this.qtdWallpp = 0;
+    //       this.quantidadevisivel = 0;
+    //     }
+    //   } catch (error) {
+    //     console.error('Erro ao buscar dados:', error);
+    //   }
+    // },
   }
 };
 </script>
