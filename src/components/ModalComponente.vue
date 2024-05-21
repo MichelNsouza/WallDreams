@@ -1,6 +1,6 @@
 <template>
 
-<div  class="container d-flex justify-content-center align-items-center vh-100  ">
+<div  class="container d-flex justify-content-center align-items-center vh-100 z-1  ">
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">

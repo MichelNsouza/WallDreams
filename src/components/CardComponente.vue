@@ -29,7 +29,9 @@ import ModalComponente from '@/components/ModalComponente.vue';
   data(){
     
     return {
-      exibeModal: false
+      exibeModal: false,
+      tituloModal: '',
+      nomeCategoria: ''
     }
   },
     props:{
@@ -40,6 +42,9 @@ import ModalComponente from '@/components/ModalComponente.vue';
     methods: {
       mudaModal(){
         this.exibeModal = !this.exibeModal;
+        this.tituloModal = this.card.title;
+        this.nomeCategoria = this.card.category_id;
+        
       },
       fecharModal(){
         this.mudaModal();
