@@ -35,7 +35,7 @@
       <div class="card-body d-flex flex-column"> 
 
         <div class="d-flex justify-content-end">
-          <ButtonComponente @click="fecharModal"
+          <ButtonComponente @click="fecharModal()"
           :texto="''"
           :tamanho="'icone'"
           :cor="'bgCinza'"

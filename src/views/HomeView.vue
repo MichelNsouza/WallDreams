@@ -53,23 +53,16 @@
     </div>
   </div> 
 
-   <template v-if="exibeModal"> 
-  
-    <ModalComponente :nome-categoria="nomeCategoria"  :titulo-modal="tituloModal" @fechar-modal = "fecharModal"  />
-
-   </template>  
 </template>
 
 <script>//json-server --watch api.json
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
-import ModalComponente from '@/components/ModalComponente.vue';
 import axios from 'axios';
 
 export default {
   components: {
-    ModalComponente,
     BarraPesquisa,
     CardComponente,
     ButtonComponente,
@@ -77,7 +70,6 @@ export default {
   data() {
     return {
       pesquisaAtual: '',
-      exibeModal: false,
       maisBuscado: [],
       cardsLancamentos: [],
       cards3MaisBaixados30dias: [],
@@ -103,28 +95,7 @@ export default {
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    },
-    fecharModal(){
-      this.exibeModal = false;
-    },
-    abrirModal(cardId, cardCatId, tipo){
-      this.exibeModal = true;
-      let cardSelecionado;
-      let categoriaSelecionada;
-
-      if(tipo === 'lancamentos'){
-        cardSelecionado = this.cardsLancamentos.find(card => card.wallpaper_id === cardId);
-        categoriaSelecionada = this.categoriasCards.find(card => card.category_id === cardCatId);
-
-      } else if(tipo === 'mais_baixados') {
-        cardSelecionado = this.cards3MaisBaixados30dias.find(card => card.wallpaper_id === cardId);
-        categoriaSelecionada = this.categoriasCards.find(card => card.category_id === cardCatId)
-      }
-      this.tituloModal = cardSelecionado.title;
-      this.nomeCategoria = categoriaSelecionada.name;
-      console.log(this.tituloModal);
-
-    },
+    }
   }
 }
 </script>
