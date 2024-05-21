@@ -20,7 +20,7 @@
 
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
-            <template v-for="card in cardsLancamentos" :key="card.wallpaper_id">
+            <template v-for="card in list_latest_wallpapers_released" :key="card.wallpaper_id">
               <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'lancamentos')"/>
             </template>
           
@@ -43,7 +43,7 @@
 
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
-          <template v-for="card in cards3MaisBaixados30dias" :key="card.wallpaper_id">
+          <template v-for="card in list_most_downloaded_wallpapers" :key="card.wallpaper_id">
               <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'mais_baixados')"/>
           </template>
         
@@ -71,11 +71,9 @@ export default {
     return {
       pesquisaAtual: '',
       maisBuscado: [],
-      cardsLancamentos: [],
-      cards3MaisBaixados30dias: [],
+      list_latest_wallpapers_released: [],
+      list_most_downloaded_wallpapers: [],
       categoriasCards: [],
-      tituloModal: '',
-      nomeCategoria: '',
     }
   },
   created() {
@@ -85,13 +83,15 @@ export default {
     async fetchData() {
       try {
         const responseTopBuscas = await axios.get('http://localhost:3000/topBuscas');
-        const responsecards3MaisBaixados30dias = await axios.get('http://localhost:3000/maisBaixadosCards');
-        const responseLancamentosCards = await axios.get('http://localhost:3000/lancamentosCards');
+        const responselist_most_downloaded_wallpapers = await axios.get('http://localhost:3000/list_most_downloaded_wallpapers');
+        const responselist_latest_wallpapers_released = await axios.get('http://localhost:3000/list_latest_wallpapers_released');
         const responseCategoriasCards = await axios.get('http://localhost:3000/categories')
+        
         this.categoriasCards = responseCategoriasCards.data;
         this.maisBuscado = responseTopBuscas.data;
-        this.cardsLancamentos = responseLancamentosCards.data;
-        this.cards3MaisBaixados30dias = responsecards3MaisBaixados30dias.data;
+        this.list_latest_wallpapers_released = responselist_latest_wallpapers_released.data;
+        this.list_most_downloaded_wallpapers = responselist_most_downloaded_wallpapers.data;
+
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }

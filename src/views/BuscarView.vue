@@ -85,7 +85,7 @@ export default {
         const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase().trim());
 
         if (categoriaEncontrada) {
-          const todosCards = await axios.get('http://localhost:3000/todosCards');
+          const todosCards = await axios.get('http://localhost:3000/list_all_wallpapers');
           const cardsEncontrados = todosCards.data.filter(card => card.category_id === categoriaEncontrada.category_id);
 
           this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
@@ -93,7 +93,7 @@ export default {
           this.qtdWallpp = cardsEncontrados.length;
 
         } else if(!categoriaEncontrada) {
-          const todosCards = await axios.get('http://localhost:3000/todosCards');
+          const todosCards = await axios.get('http://localhost:3000/list_all_wallpapers');
           const cardsEncontrados = todosCards.data.filter(card => card.description.toLowerCase().trim().includes(this.pesquisaRetorno.pesquisa.toLowerCase().trim()));
           
 
