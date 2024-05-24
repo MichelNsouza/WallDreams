@@ -41,7 +41,11 @@ import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
-import axios from 'axios';
+import { 
+  getWallpaperPesquisa,
+  getTodosWallpapers
+
+} from '@/services/api';
  
 export default {
   components: {
@@ -76,62 +80,29 @@ export default {
       this.quantidadevisivel += 9;
       this.fetchData();
     },
-    async fetchData() {//para simular pesquisa
-      try {
-        this.cards = [];
-        const todasCategorias = await axios.get('http://localhost:3000/categories');
-        const categorias = todasCategorias.data;
-      
-        const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+     async fetchData() {
+       try {
+         this.cards = [];
+         const todos = await getTodosWallpapers();
+         this.cards = todos.data.wallpapers;
+         //  const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+         
+        //  if (pesquisa) {
+        //    const cardsEncontrados = pesquisa.data
+        //    this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+        //    this.pesquisaExiste = cardsEncontrados.length > 0;
+        //    this.qtdWallpp = cardsEncontrados.length;
 
-        if (categoriaEncontrada) {
-          const todosCards = await axios.get('http://localhost:3000/list_all_wallpapers');
-          const cardsEncontrados = todosCards.data.filter(card => card.category_id === categoriaEncontrada.category_id);
-
-          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-          this.pesquisaExiste = cardsEncontrados.length > 0;
-          this.qtdWallpp = cardsEncontrados.length;
-
-        } else if(!categoriaEncontrada) {
-          const todosCards = await axios.get('http://localhost:3000/list_all_wallpapers');
-          const cardsEncontrados = todosCards.data.filter(card => card.description.toLowerCase().trim().includes(this.pesquisaRetorno.pesquisa.toLowerCase().trim()));
-          
-
-          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-          this.pesquisaExiste = cardsEncontrados.length > 0;
-          this.qtdWallpp = cardsEncontrados.length;
-        }else {
-          this.cards = [];
-          this.pesquisaExiste = false;
-          this.qtdWallpp = 0;
-          this.quantidadevisivel = 0;
-        }
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-      }
-    },// para consumir api
-    // async fetchData() {
-    //   try {
-    //     this.cards = [];
-    //     const pesquisa = await axios.get('http://localhost:3000/search/'+this.pesquisaRetorno.pesquisa.toLowerCase().trim());
-
-    //     if (pesquisa) {
-    //       const cardsEncontrados = pesquisa.data;
-
-    //       this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-    //       this.pesquisaExiste = cardsEncontrados.length > 0;
-    //       this.qtdWallpp = cardsEncontrados.length;
-
-    //     }else {
-    //       this.cards = [];
-    //       this.pesquisaExiste = false;
-    //       this.qtdWallpp = 0;
-    //       this.quantidadevisivel = 0;
-    //     }
-    //   } catch (error) {
-    //     console.error('Erro ao buscar dados:', error);
-    //   }
-    // },
+        //  }else {
+        //      this.qtdWallpp = 0;
+        //      this.cards = [];
+        //      this.pesquisaExiste = false;
+        //      this.quantidadevisivel = 0;
+        //  }
+       } catch (error) {
+         console.error('Erro ao buscar dados:', error);
+       }
+     },
   }
 };
 </script>

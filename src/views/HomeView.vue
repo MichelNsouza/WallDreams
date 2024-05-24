@@ -59,7 +59,12 @@
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
-import axios from 'axios';
+import { 
+  getTodasCategorias,
+  getMaisBaixadosWallpapers,
+  getLancamentosWallpapers,
+  getTodosWallpapers
+} from '@/services/api';
 
 export default {
   components: {
@@ -71,9 +76,10 @@ export default {
     return {
       pesquisaAtual: '',
       maisBuscado: [],
-      list_latest_wallpapers_released: [],
-      list_most_downloaded_wallpapers: [],
-      categoriasCards: [],
+      lancamentosWallpapers: [],
+      maisBaixadosWallpapers: [],
+      todasCategorias: ['a', 'b', 'c'],
+      
     }
   },
   created() {
@@ -82,15 +88,18 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const responseTopBuscas = await axios.get('http://localhost:3000/topBuscas');
-        const responselist_most_downloaded_wallpapers = await axios.get('http://localhost:3000/list_most_downloaded_wallpapers');
-        const responselist_latest_wallpapers_released = await axios.get('http://localhost:3000/list_latest_wallpapers_released');
-        const responseCategoriasCards = await axios.get('http://localhost:3000/categories')
+        const todos = await getTodosWallpapers();
+        const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
+        const responseLancamentosWallpapers = await getLancamentosWallpapers();
+        const responseTodasCategorias = await getTodasCategorias();
         
-        this.categoriasCards = responseCategoriasCards.data;
-        this.maisBuscado = responseTopBuscas.data;
-        this.list_latest_wallpapers_released = responselist_latest_wallpapers_released.data;
-        this.list_most_downloaded_wallpapers = responselist_most_downloaded_wallpapers.data;
+        // this.todasCategorias = responseTodasCategorias.data;
+        // this.lancamentosWallpapers = responseLancamentosWallpapers.data;
+        // this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
+
+        this.todasCategorias = todos.data;
+        this.lancamentosWallpapers = todos.data;
+        this.maisBaixadosWallpapers = todos.data.wallpapers;
 
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
