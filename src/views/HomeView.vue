@@ -91,13 +91,13 @@ export default {
         const todos = await getTodosWallpapers();
         const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
         const responseLancamentosWallpapers = await getLancamentosWallpapers();
-        const responseTodasCategorias = await getTodasCategorias();
+        //const responseTodasCategorias = await getTodasCategorias();
         
         // this.todasCategorias = responseTodasCategorias.data;
         // this.lancamentosWallpapers = responseLancamentosWallpapers.data;
         // this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
 
-        this.todasCategorias = todos.data;
+        //this.todasCategorias = todos.data;
         this.lancamentosWallpapers = todos.data;
         this.maisBaixadosWallpapers = todos.data.wallpapers;
 
