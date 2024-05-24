@@ -1,7 +1,7 @@
 <template>
   <div class="col" @click="mudaModal">
       <div class="card h-100">
-          <img :src="card.url" class="card-img-top" alt="...">
+          <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img-top" alt="...">
           <div class="card-body">
           <p class="card-text">{{card.description}}</p>
           <h5 class="card-title">{{card.title}}</h5>

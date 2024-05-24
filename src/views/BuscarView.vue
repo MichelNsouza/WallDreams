@@ -40,10 +40,10 @@ import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
-import { pesquisaStore } from '@/stores/pesquisa';
-import { 
+import {
   getTodosWallpapers
 } from '@/services/api';
+import { pesquisaStore } from '@/stores/pesquisa';
  
 export default {
   components: {
@@ -83,6 +83,7 @@ export default {
          this.cards = [];
          const todos = await getTodosWallpapers();
          this.cards = todos.data.wallpapers;
+         this.pesquisaExiste = true;
          //  const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
          
         //  if (pesquisa) {

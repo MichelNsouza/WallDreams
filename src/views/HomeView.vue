@@ -65,6 +65,7 @@ import {
 } from '@/services/api';
 
 export default {
+  name: 'HomeView',
   components: {
     BarraPesquisa,
     CardComponente,
