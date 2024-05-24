@@ -35,16 +35,14 @@
   </div> 
 </template>
 
-<script>//json-server --watch api.json
+<script>
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import { pesquisaStore } from '@/stores/pesquisa';
 import { 
-  getWallpaperPesquisa,
   getTodosWallpapers
-
 } from '@/services/api';
  
 export default {

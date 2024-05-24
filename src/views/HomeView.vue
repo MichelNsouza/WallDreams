@@ -20,7 +20,7 @@
 
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
-            <template v-for="card in list_latest_wallpapers_released" :key="card.wallpaper_id">
+            <template v-for="card in lancamentosWallpapers" :key="card.wallpaper_id">
               <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'lancamentos')"/>
             </template>
           
@@ -43,7 +43,7 @@
 
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
-          <template v-for="card in list_most_downloaded_wallpapers" :key="card.wallpaper_id">
+          <template v-for="card in maisBaixadosWallpapers" :key="card.wallpaper_id">
               <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'mais_baixados')"/>
           </template>
         
@@ -55,15 +55,13 @@
 
 </template>
 
-<script>//json-server --watch api.json
+<script>
 import BarraPesquisa from '@/components/BarraPesquisa.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import { 
-  getTodasCategorias,
   getMaisBaixadosWallpapers,
   getLancamentosWallpapers,
-  getTodosWallpapers
 } from '@/services/api';
 
 export default {
@@ -77,9 +75,7 @@ export default {
       pesquisaAtual: '',
       maisBuscado: [],
       lancamentosWallpapers: [],
-      maisBaixadosWallpapers: [],
-      todasCategorias: ['a', 'b', 'c'],
-      
+      maisBaixadosWallpapers: []
     }
   },
   created() {
@@ -88,19 +84,27 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const todos = await getTodosWallpapers();
         const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
         const responseLancamentosWallpapers = await getLancamentosWallpapers();
-        const responseTodasCategorias = await getTodasCategorias();
+        //const responseMaisBuscadosCategorias = await getMaisBuscadosCategorias();
+        this.lancamentosWallpapers = responseLancamentosWallpapers.data;
+        this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
+        //this.maisBuscado = responseMaisBuscadosCategorias.data;
         
-        // this.todasCategorias = responseTodasCategorias.data;
-        // this.lancamentosWallpapers = responseLancamentosWallpapers.data;
-        // this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
-
-        this.todasCategorias = todos.data;
-        this.lancamentosWallpapers = todos.data;
-        this.maisBaixadosWallpapers = todos.data.wallpapers;
-
+        
+        this.maisBuscado = [
+      {
+        "category_id": 1,
+        "name": "Veículos"
+      },
+      {
+        "category_id": 2,
+        "name": "Paisagem"
+      },
+      {
+        "category_id": 5,
+        "name": "Animais"
+        }];
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }

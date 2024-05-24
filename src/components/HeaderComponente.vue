@@ -25,7 +25,9 @@
   
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
-import axios from 'axios';
+import { 
+  getTodasCategorias
+} from '@/services/api';
 export default {
   setup() {
     const storePesquisa = pesquisaStore() 
@@ -44,8 +46,22 @@ export default {
   methods:{
     async fetchData() {
       try {
-        const responseCategorias = await axios.get('http://localhost:3000/categories');
-        this.categorias = responseCategorias.data;
+       // const todasCategorias = await getTodasCategorias();
+        //this.categorias = todasCategorias.data;
+        this.categorias = [
+      {
+        "category_id": 1,
+        "name": "Veículos"
+      },
+      {
+        "category_id": 2,
+        "name": "Paisagem"
+      },
+      {
+        "category_id": 5,
+        "name": "Animais"
+      }
+    ];
 
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
