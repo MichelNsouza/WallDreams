@@ -37,14 +37,14 @@ export default {
   },
   data() {
     return {
-      categorias:[]
+      categorias:['paisagem', 'outros', 'teste']
     };
   },
   created() {
     this.fetchData();
   },
   methods:{
-    async fetchData() {
+   /* async fetchData() {
       try {
        // const todasCategorias = await getTodasCategorias();
         //this.categorias = todasCategorias.data;
@@ -66,7 +66,7 @@ export default {
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    },
+    },*/
     enviarPesquisa(categoria) {
       this.storePesquisa.setPesquisa(categoria.name);
     }
