@@ -1,18 +1,18 @@
 <template>
 
-<div  class="container d-flex justify-content-center align-items-center vh-100 z-1  ">
+<div  class="container d-flex justify-content-center align-items-center vh-100 z-3">
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
-      <img src="/src/assets/image 6.png" class="card-img mt-3 p-3 h-auto w-100" alt="...">
+      <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
-        <p class="h5 p-3 text-lg flex-grow-1">{{ tituloModal }}</p>
+        <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
         
         <ButtonComponente 
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-coracao.png'"
+          :src="'/src/assets/icons/frame-coracao.svg'"
           :alt="'ícone botão de download'"
           class=" p-1 m-2 d-flex justify-content-center align-items-center"
         />
@@ -21,9 +21,10 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-compartilhar.png'"
+          :src="'/src/assets/icons/frame-compartilhar.svg'"
           :alt="'ícone botão de download'"
           class="p-1 m-2 d-flex justify-content-center align-items-center"
+          @click="compartilhar"
         />
        
       </div>
@@ -40,7 +41,7 @@
           :tamanho="'icone'"
           :cor="'bgCinza'"
           :corTexto="''"
-          :src="'/src/assets/icons/icone-x.png'"
+          :src="'/src/assets/icons/icone-x.svg'"
           :alt="'icone botão de fechar'"
           class=""
           
@@ -52,7 +53,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          :src="'/src/assets/icons/icone-download.png'"
+          :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
         />
@@ -61,7 +62,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.png'"
+          :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
         />
@@ -70,14 +71,14 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.png'"
+          :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
         />
         <p class="h5 mt-3">Categoria</p>
-        <p>{{ nomeCategoria }}</p>
+        <p>{{card.category_id}}</p> <!--Fazer requeste para exbir categoria name-->
         <p class="h5"><strong>Donwloads semanais</strong></p>
-        <p>123.789</p>
+        <p>{{card.download_count}}</p>
       </div>
         
     </div>
@@ -97,15 +98,21 @@ export default {
   },
   props: {
     tituloModal: String,
-    nomeCategoria: String
+    nomeCategoria: String,
+    card: {
+        type: Object,
+      },
   },
   
   methods: {
    
     fecharModal(){
       this.$emit('fechar-modal')
+    }, 
+    compartilhar() {
+
     }
-  }
+  },
 
 }
 </script>

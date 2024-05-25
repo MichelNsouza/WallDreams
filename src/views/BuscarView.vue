@@ -63,8 +63,8 @@ export default {
     };
   },
   mounted() {
-    this.fetchData()
-  },
+  this.fetchData();
+},
   watch: {
     '$route'() {
       this.quantidadevisivel=9;

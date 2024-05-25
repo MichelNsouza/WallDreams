@@ -1,5 +1,5 @@
 <template>
-  <div class="col" @click="mudaModal">
+  <div class="col" @click="abrirModal">
       <div class="card h-100">
           <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img-top" alt="...">
           <div class="card-body">
@@ -12,7 +12,7 @@
 
   <template v-if="exibeModal"> 
   
-  <ModalComponente :nome-categoria="nomeCategoria"  :titulo-modal="tituloModal" @fechar-modal = "fecharModal"  />
+  <ModalComponente :card="card" @fechar-modal = "fecharModal"  />
 
  </template>  
 
@@ -27,11 +27,8 @@ import ModalComponente from '@/components/ModalComponente.vue';
       ModalComponente
   },
   data(){
-    
     return {
       exibeModal: false,
-      tituloModal: '',
-      nomeCategoria: ''
     }
   },
     props:{
@@ -40,18 +37,16 @@ import ModalComponente from '@/components/ModalComponente.vue';
       },
     },
     methods: {
-      mudaModal(){
-        this.exibeModal = !this.exibeModal;
-        this.tituloModal = this.card.title;
-        this.nomeCategoria = this.card.category_id;
+      abrirModal(){
         
+        this.exibeModal = true;
       },
       fecharModal(){
-        this.mudaModal();
+        this.exibeModal = false;
     }
-    
     }
   }
+  
   </script>
   
   <style scoped>
