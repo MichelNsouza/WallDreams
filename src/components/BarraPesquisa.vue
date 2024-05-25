@@ -41,7 +41,7 @@
   }
   .input-group {
     width: 100%;
-    max-width: 600px; /* Limita a largura máxima */
+    max-width: 600px; 
   }
   .form-control {
     flex: 1;
