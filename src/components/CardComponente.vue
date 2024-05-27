@@ -12,7 +12,7 @@
 
   <template v-if="exibeModal"> 
   
-  <ModalComponente :card="card" @fechar-modal = "fecharModal"  />
+  <ModalComponente :card="card" :categories="categories" @fechar-modal = "fecharModal"  />
 
  </template>  
 
@@ -20,6 +20,7 @@
   
   <script>
 import ModalComponente from '@/components/ModalComponente.vue';
+import axios from 'axios';
 
   export default {
     name: 'CardComponente',
@@ -29,11 +30,14 @@ import ModalComponente from '@/components/ModalComponente.vue';
   data(){
     return {
       exibeModal: false,
+      categories: [],
     }
   },
     props:{
       card: {
         type: Object,
+        required: true,
+
       },
     },
     methods: {
@@ -43,9 +47,21 @@ import ModalComponente from '@/components/ModalComponente.vue';
       },
       fecharModal(){
         this.exibeModal = false;
+    },
+    async fetchCategories() {
+      try {
+        const response = await axios.get('http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/walldreams/category/');
+        this.categories = response.data;
+      } catch (error) {
+        console.error('Erro ao buscar categorias:', error);
+      }
     }
-    }
+    },
+    mounted() {
+    this.fetchCategories();
   }
+
+  };
   
   </script>
   
