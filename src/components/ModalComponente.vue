@@ -45,7 +45,7 @@
           :alt="'icone botão de fechar'"
           class=""
           
-        />
+          />
         </div>     
 
         <ButtonComponente 
@@ -76,7 +76,7 @@
           class="mb-2"
         />
         <p class="h5 mt-3">Categoria</p>
-        <p>{{card.category_id}}</p> <!--Fazer requeste para exbir categoria name-->
+        <p>{{categoria}}</p> <!--Fazer request para exbir categoria name-->
         <p class="h5"><strong>Donwloads semanais</strong></p>
         <p>{{card.download_count}}</p>
       </div>
@@ -90,31 +90,27 @@
 
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
-
 export default {
-  name: 'ModalComponente',
   components: {
     ButtonComponente,
   },
   props: {
-    tituloModal: String,
-    nomeCategoria: String,
+    categoria: {
+      type:String
+    },
     card: {
         type: Object,
       },
   },
-  
   methods: {
-   
     fecharModal(){
       this.$emit('fechar-modal')
     }, 
     compartilhar() {
 
     }
-  },
-
-}
+    },
+  }
 </script>
 
 <style scoped>

@@ -12,7 +12,7 @@
 
   <template v-if="exibeModal"> 
   
-  <ModalComponente :card="card" @fechar-modal = "fecharModal"  />
+  <ModalComponente :card="card" :categoria="categoria" @fechar-modal = "fecharModal"  />
 
  </template>  
 
@@ -20,6 +20,9 @@
   
   <script>
 import ModalComponente from '@/components/ModalComponente.vue';
+import { 
+  getCategoria
+} from '@/services/api';
 
   export default {
     name: 'CardComponente',
@@ -29,6 +32,7 @@ import ModalComponente from '@/components/ModalComponente.vue';
   data(){
     return {
       exibeModal: false,
+      categoria: "" 
     }
   },
     props:{
@@ -38,12 +42,21 @@ import ModalComponente from '@/components/ModalComponente.vue';
     },
     methods: {
       abrirModal(){
-        
+        this.fetchCategoria(card.category_id);
         this.exibeModal = true;
       },
       fecharModal(){
         this.exibeModal = false;
+    },
+    async fetchCategoria(categoriaid) {
+    try {
+        const response = await getCategoria(categoriaid);
+        this.categoria = response.result.name;
+    } catch (error) {
+        console.error('Erro ao requisitar categoria:', error);
     }
+}
+
     }
   }
   

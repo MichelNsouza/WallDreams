@@ -10,7 +10,7 @@
 
             <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
               
-              <template v-for="card in cards" :key="card.id">
+              <template v-for="card in cards">
                 <CardComponente :card="card"/>
               </template>
 

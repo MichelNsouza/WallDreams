@@ -7,7 +7,7 @@
             </router-link>
               
             <ul class="navbar-url p-3 mb-2">
-                <li v-for="(categoria) in categorias" :key="category_id" class="list" @click="enviarPesquisa(categoria)"> 
+                <li v-for="(categoria) in categorias" class="list"> 
                     <router-link 
                     @click="enviarPesquisa(categoria.name)" 
                     :to="'/buscar/'+categoria.name" 
@@ -46,29 +46,15 @@ export default {
   methods:{
     async fetchData() {
       try {
-       // const todasCategorias = await getTodasCategorias();
-        //this.categorias = todasCategorias.data;
-        this.categorias = [
-      {
-        "category_id": 1,
-        "name": "Veículos"
-      },
-      {
-        "category_id": 2,
-        "name": "Paisagem"
-      },
-      {
-        "category_id": 5,
-        "name": "Animais"
-      }
-    ];
+        const todasCategorias = await getTodasCategorias();
+        this.categorias = todasCategorias.data;
 
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
     },
     enviarPesquisa(categoria) {
-      this.storePesquisa.setPesquisa(categoria.name);
+      this.storePesquisa.setPesquisa(categoria);
     }
   }
 }

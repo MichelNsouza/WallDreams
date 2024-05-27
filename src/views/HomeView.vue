@@ -8,32 +8,32 @@
   e deixe seu computador com a sua cara!</h3>
           <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
     
-        <BarraPesquisa/> 
+          <BarraPesquisa/> 
 
-          <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0].name}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1].name}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2].name}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
+          <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         
       </div>
 
       <section class="mt-5 ">
 
         <h2 class="mt-5 mb-3">Lançamentos</h2>
-
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
-            <template v-for="card in lancamentosWallpapers" :key="card.wallpaper_id">
-              <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'lancamentos')"/>
+            <template v-for="card in lancamentosWallpapers">
+              <CardComponente :card="card"/>
             </template>
           
           </article>
           <div class="mt-5 d-flex justify-content-center align-items-center">
-          
+            <!--trocar para 3-->
+            <template v-if="qtdLancamentos > 2 && quantidadevisivel<=qtdLancamentos" class="mt-3 d-flex justify-content-center">
             <ButtonComponente 
-            :texto="'Ver mais lançamentos'" 
-            :tamanho="'grande'" 
-            :cor="'bgCinzaClaro'"
-            
+              :texto="'Ver mais lançamentos'" 
+              :tamanho="'grande'" 
+              :cor="'bgCinzaClaro'"
+              @click.prevent="incrementaCards()"
             />
-
+          </template>
           </div>
       </section>
 
@@ -43,8 +43,8 @@
 
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
-          <template v-for="card in maisBaixadosWallpapers" :key="card.wallpaper_id">
-              <CardComponente :card="card" @card-clicado="abrirModal(card.wallpaper_id, card.category_id, 'mais_baixados')"/>
+          <template v-for="card in maisBaixadosWallpapers">
+              <CardComponente :card="card"/>
           </template>
         
         </article>
@@ -74,26 +74,12 @@ export default {
   data() {
     return {
       pesquisaAtual: '',
+      quantidadevisivel:3,
+      qtdLancamentos:0,
       maisBuscado: [],
       lancamentosWallpapers: [],
-      maisBaixadosWallpapers: []
-    }
-  },
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      try {
-        const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
-        const responseLancamentosWallpapers = await getLancamentosWallpapers();
-        //const responseMaisBuscadosCategorias = await getMaisBuscadosCategorias();
-        this.lancamentosWallpapers = responseLancamentosWallpapers.data;
-        this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
-        //this.maisBuscado = responseMaisBuscadosCategorias.data;
-        
-        
-        this.maisBuscado = [
+      maisBaixadosWallpapers: [],
+      maisBuscadoArray: [
       {
         "category_id": 1,
         "name": "Veículos"
@@ -103,9 +89,39 @@ export default {
         "name": "Paisagem"
       },
       {
-        "category_id": 5,
+        "category_id": 3,
         "name": "Animais"
-        }];
+        }]
+    }
+  },
+  created() {
+    this.fetchData();
+  },
+  watch: {
+    '$route'() {
+      this.quantidadevisivel=3;
+      this.fetchData();
+    },
+  },
+  methods: {
+    incrementaCards() {
+        this.quantidadevisivel += 3;
+        this.fetchData();
+    },
+    async fetchData() {
+      try {
+        const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
+        const responseLancamentosWallpapers = await getLancamentosWallpapers();
+        //const responseMaisBuscadosCategorias = await getCategoriasMaisBuscadas();
+        this.lancamentosWallpapers = responseLancamentosWallpapers.data;
+        this.qtdLancamentos = this.lancamentosWallpapers.length;
+        this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
+        //this.maisBuscado = responseMaisBuscadosCategorias.data;
+        
+        this.maisBuscadoArray.forEach(categoria => {
+          this.maisBuscado.push(categoria.name);
+        });
+
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }

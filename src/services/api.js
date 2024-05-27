@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 // Category endpoints
-export const getTodasCategorias = () => api.get('/category');
+export const getTodasCategorias = () => api.get('/category/');
 export const getCategoria = (id) => api.get(`/category/${id}`);
 
 // Wallpaper endpoints
@@ -19,5 +19,3 @@ export const getWallpaper = (id) => api.get(`/wallpaper/${id}`);
 
 
 export const getWallpaperPesquisa = (pesquisa) => api.get(`/wallpaper/search/${pesquisa}`);
-
-export const getTeste = () => api.get('/wallpaper/download_wallpaper/5/');
