@@ -76,7 +76,7 @@
           class="mb-2"
         />
         <p class="h5 mt-3">Categoria</p>
-        <p>{{categoria}}</p> <!--Fazer request para exbir categoria name-->
+        <p>{{  getCategoryName(card.category_id) }}</p> <!--Fazer requeste para exbir categoria name-->
         <p class="h5"><strong>Donwloads semanais</strong></p>
         <p>{{card.download_count}}</p>
       </div>
@@ -95,12 +95,15 @@ export default {
     ButtonComponente,
   },
   props: {
-    categoria: {
-      type:String
-    },
+    // tituloModal: String,
+    // nomeCategoria: String,
     card: {
         type: Object,
       },
+      categories: {
+      type: Array,
+      required: true,
+    }
   },
   methods: {
     fecharModal(){
@@ -108,6 +111,10 @@ export default {
     }, 
     compartilhar() {
 
+    },
+    getCategoryName(category_id) {
+      const category = this.categories.find(cat => cat.category_id === category_id);
+      return category ? category.name : 'Categoria desconhecida';
     }
     },
   }
