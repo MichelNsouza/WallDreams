@@ -67,6 +67,11 @@ export default {
     color:var(--whiteColor);
     height: 80px;
 }
+
+.navbar{
+  height: 80px;
+  widows: 100%;
+}
 .custom-link{
   color: var(--whiteColor);
   text-decoration: none;
