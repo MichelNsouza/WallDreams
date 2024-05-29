@@ -1,6 +1,6 @@
 <template>
   <div class="containerMaior">
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body">
       <form class="container-fluid d-flex justify-content-center">
         <div class="input-group input-group-lg">
           <input type="text" v-model="buscarAtual" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
