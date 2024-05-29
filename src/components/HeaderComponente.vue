@@ -65,6 +65,7 @@ export default {
 .nav{
     background-color: var(--headerColor);
     color:var(--whiteColor);
+    width: 80px;
 }
 .custom-link{
   color: var(--whiteColor);
