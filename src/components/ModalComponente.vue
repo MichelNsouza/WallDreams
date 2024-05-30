@@ -90,7 +90,7 @@
 </div>
 
   <template v-if="exibeModalCadastro">
-    <ModalEmailComponente/>
+    <ModalEmailComponente @fechar-modal-cadastro = "fecharModalCadastro"/>
   </template>
 
 </template>
@@ -135,6 +135,9 @@ export default {
       //this.fecharModal();
       
     },
+    fecharModalCadastro() {
+      this.exibeModalCadastro = false;
+    }
 
     },
   }

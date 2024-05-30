@@ -1,14 +1,27 @@
 <template class="fundo">
 
   <div class="container  text-center d-flex z-3 justify-content-center align-items-center w-100 vh">
-    <div class="container2">
+    <div class="container2 h-50">
+        <div class="d-flex justify-content-end">
+        <ButtonComponente @click = "fecharModalCadastro()"
+          :texto="''"
+          :tamanho="'icone'"
+          :cor="'bgBranco'"
+          :corTexto="''"
+          :src="'/src/assets/icons/icone-x.svg'"
+          :alt="'icone botão de fechar'"
+          class=""
+          
+          />
+        </div>   
+
         <h2>Identifique-se para não perder nenhuma <br>
              novidade do WallDreams</h2>
 
         <p>Não se preoculpe, seus dados estarão protegidos!</p>
         <input type="text" name="nome" id="nome" placeholder="Informe o seu nome"  /> <br>
         <input type="text" name="email" id="email" placeholder="Informe o seu e-mail"/> <br>
-        <button type="button">
+        <button type="button" class="mt-4">
             <img src="/src/assets/icons/icone-download.svg">
             Confirmar Download                
         </button>
@@ -18,14 +31,28 @@
 </template>
 
 <script>
+import ButtonComponente from './ButtonComponente.vue';
+
 export default {
+    data(){
+        return {
+            
+        }
+    }, components: {
+        ButtonComponente
+    },
     props:{
        
     },
     methods: {
+        fecharModalCadastro(){
+      this.$emit('fechar-modal-cadastro')
+    }
+
+    }
   
     }
-}
+
 
 </script>
 

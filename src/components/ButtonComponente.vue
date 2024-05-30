@@ -88,6 +88,9 @@ background-color: #292929;
 .bgCinzaClaro {
 background-color: #E8E8E8;
 }
+.bgBranco {
+  background-color: white ;
+}
 
 
 
