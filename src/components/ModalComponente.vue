@@ -123,8 +123,24 @@ export default {
     fecharModal(){
       this.$emit('fechar-modal')
     }, 
-    compartilhar() {
+    async compartilhar() {
 
+      // window.location.href
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Confira este conteúdo!',
+            text: this.card.description,
+            url: `/buscar/${encodeURIComponent(this.card.description)}`,
+          });
+          console.log('Conteúdo compartilhado com sucesso');
+        } catch (error) {
+          console.error('Erro ao compartilhar o conteúdo:', error);
+        }
+      } else {
+        console.warn('API de Web Share não suportada neste navegador.');
+      }
     },
     getCategoryName(category_id) {
       const category = this.categories.find(cat => cat.category_id === category_id);
