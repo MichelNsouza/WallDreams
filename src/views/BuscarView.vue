@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import BarraPesquisa from '@/components/BarraPesquisa.vue';
+import BarraPesquisa from '@/components/BarraPesquisaComponente.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
