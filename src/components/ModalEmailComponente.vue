@@ -1,6 +1,6 @@
 <template class="fundo">
 
-  <div class="container  text-center z-3">
+  <div class="container  text-center d-flex z-3 justify-content-center align-items-center w-100 vh">
     <div class="container2">
         <h2>Identifique-se para não perder nenhuma <br>
              novidade do WallDreams</h2>
@@ -12,6 +12,7 @@
             <img src="/src/assets/icons/icone-download.svg">
             Confirmar Download                
         </button>
+  
     </div>
     </div>
 </template>
@@ -34,7 +35,6 @@ export default {
         .fundo {
             width: 100vw;
             height: 100vh;
-        background-color: grey;
         }
         .container2 {
             border: 1px solid black;
@@ -67,7 +67,7 @@ export default {
        button {
         width: 250px;
         height: 80px;
-        margin-left: 230px;
+        /* margin-left: 230px; */
         margin-top: 10px;
         padding: 15px;
         border-radius: 10px;
