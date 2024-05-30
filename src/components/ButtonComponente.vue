@@ -49,9 +49,10 @@ img{
 .preto{
   color: black;
 }
-
-
 .icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
 }
@@ -86,6 +87,9 @@ background-color: #292929;
 }
 .bgCinzaClaro {
 background-color: #E8E8E8;
+}
+.bgBranco {
+  background-color: white ;
 }
 
 

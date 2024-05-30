@@ -7,7 +7,7 @@
             </router-link>
               
             <ul class="navbar-url p-3 mb-2">
-                <li v-for="(categoria) in categorias" :key="category_id" class="list" @click="enviarPesquisa(categoria)"> 
+                <li v-for="(categoria) in categorias" class="list"> 
                     <router-link 
                     @click="enviarPesquisa(categoria.name)" 
                     :to="'/buscar/'+categoria.name" 
@@ -25,7 +25,9 @@
   
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
-import axios from 'axios';
+import { 
+  getTodasCategorias
+} from '@/services/api';
 export default {
   setup() {
     const storePesquisa = pesquisaStore() 
@@ -44,15 +46,15 @@ export default {
   methods:{
     async fetchData() {
       try {
-        const responseCategorias = await axios.get('http://localhost:3000/categories');
-        this.categorias = responseCategorias.data;
+        const todasCategorias = await getTodasCategorias();
+        this.categorias = todasCategorias.data;
 
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
     },
     enviarPesquisa(categoria) {
-      this.storePesquisa.setPesquisa(categoria.name);
+      this.storePesquisa.setPesquisa(categoria);
     }
   }
 }
@@ -63,6 +65,12 @@ export default {
 .nav{
     background-color: var(--headerColor);
     color:var(--whiteColor);
+    height: 80px;
+}
+
+.navbar{
+  height: 80px;
+  widows: 100%;
 }
 .custom-link{
   color: var(--whiteColor);

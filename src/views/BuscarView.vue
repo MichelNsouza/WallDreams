@@ -10,7 +10,7 @@
 
             <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
               
-              <template v-for="card in cards" :key="card.id">
+              <template v-for="card in cards">
                 <CardComponente :card="card"/>
               </template>
 
@@ -35,13 +35,15 @@
   </div> 
 </template>
 
-<script>//json-server --watch api.json
-import BarraPesquisa from '@/components/BarraPesquisa.vue';
+<script>
+import BarraPesquisa from '@/components/BarraPesquisaComponente.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
+import {
+  getTodosWallpapers
+} from '@/services/api';
 import { pesquisaStore } from '@/stores/pesquisa';
-import axios from 'axios';
  
 export default {
   components: {
@@ -61,8 +63,8 @@ export default {
     };
   },
   mounted() {
-    this.fetchData()
-  },
+  this.fetchData();
+},
   watch: {
     '$route'() {
       this.quantidadevisivel=9;
@@ -76,62 +78,30 @@ export default {
       this.quantidadevisivel += 9;
       this.fetchData();
     },
-    async fetchData() {//para simular pesquisa
-      try {
-        this.cards = [];
-        const todasCategorias = await axios.get('http://localhost:3000/categories');
-        const categorias = todasCategorias.data;
-      
-        const categoriaEncontrada = categorias.find(categoria => categoria.name.toLowerCase() === this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+     async fetchData() {
+       try {
+         this.cards = [];
+         const todos = await getTodosWallpapers();
+         this.cards = todos.data.wallpapers;
+         this.pesquisaExiste = true;
+         //  const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+         
+        //  if (pesquisa) {
+        //    const cardsEncontrados = pesquisa.data
+        //    this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+        //    this.pesquisaExiste = cardsEncontrados.length > 0;
+        //    this.qtdWallpp = cardsEncontrados.length;
 
-        if (categoriaEncontrada) {
-          const todosCards = await axios.get('http://localhost:3000/todosCards');
-          const cardsEncontrados = todosCards.data.filter(card => card.category_id === categoriaEncontrada.category_id);
-
-          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-          this.pesquisaExiste = cardsEncontrados.length > 0;
-          this.qtdWallpp = cardsEncontrados.length;
-
-        } else if(!categoriaEncontrada) {
-          const todosCards = await axios.get('http://localhost:3000/todosCards');
-          const cardsEncontrados = todosCards.data.filter(card => card.description.toLowerCase().trim().includes(this.pesquisaRetorno.pesquisa.toLowerCase().trim()));
-          
-
-          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-          this.pesquisaExiste = cardsEncontrados.length > 0;
-          this.qtdWallpp = cardsEncontrados.length;
-        }else {
-          this.cards = [];
-          this.pesquisaExiste = false;
-          this.qtdWallpp = 0;
-          this.quantidadevisivel = 0;
-        }
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-      }
-    },// para consumir api
-    // async fetchData() {
-    //   try {
-    //     this.cards = [];
-    //     const pesquisa = await axios.get('http://localhost:3000/search/'+this.pesquisaRetorno.pesquisa.toLowerCase().trim());
-
-    //     if (pesquisa) {
-    //       const cardsEncontrados = pesquisa.data;
-
-    //       this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-    //       this.pesquisaExiste = cardsEncontrados.length > 0;
-    //       this.qtdWallpp = cardsEncontrados.length;
-
-    //     }else {
-    //       this.cards = [];
-    //       this.pesquisaExiste = false;
-    //       this.qtdWallpp = 0;
-    //       this.quantidadevisivel = 0;
-    //     }
-    //   } catch (error) {
-    //     console.error('Erro ao buscar dados:', error);
-    //   }
-    // },
+        //  }else {
+        //      this.qtdWallpp = 0;
+        //      this.cards = [];
+        //      this.pesquisaExiste = false;
+        //      this.quantidadevisivel = 0;
+        //  }
+       } catch (error) {
+         console.error('Erro ao buscar dados:', error);
+       }
+     },
   }
 };
 </script>

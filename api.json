@@ -13,7 +13,7 @@
         "name": "Animais"
       }
     ],
-    "maisBaixadosCards": [
+    "list_most_downloaded_wallpapers": [
       { 
         "wallpaper_id": 4,
         "title": "Ferrari 488 Pista",
@@ -42,7 +42,7 @@
         "like_count": 20
       }
     ],
-    "lancamentosCards": [
+    "list_latest_wallpapers_released": [
     { 
         "wallpaper_id": 4,
         "title": "Ferrari 488 Pista",
@@ -128,7 +128,7 @@
         "name": "Outros"
       }
     ],
-    "todosCards": [
+    "list_all_wallpapers": [
       {
         "wallpaper_id": 1,
         "title": "Porsche 911 GT3",

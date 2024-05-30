@@ -1,18 +1,18 @@
 <template>
 
-<div  class="container d-flex justify-content-center align-items-center vh-100  ">
+<div  class="container d-flex justify-content-center align-items-center vh-100 z-2">
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
-      <img src="/src/assets/image 6.png" class="card-img mt-3 p-3 h-auto w-100" alt="...">
+      <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
-        <p class="h5 p-3 text-lg flex-grow-1">{{ tituloModal }}</p>
+        <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
         
         <ButtonComponente 
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-coracao.png'"
+          :src="'/src/assets/icons/frame-coracao.svg'"
           :alt="'ícone botão de download'"
           class=" p-1 m-2 d-flex justify-content-center align-items-center"
         />
@@ -21,9 +21,10 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-compartilhar.png'"
+          :src="'/src/assets/icons/frame-compartilhar.svg'"
           :alt="'ícone botão de download'"
           class="p-1 m-2 d-flex justify-content-center align-items-center"
+          @click="compartilhar"
         />
        
       </div>
@@ -35,16 +36,16 @@
       <div class="card-body d-flex flex-column"> 
 
         <div class="d-flex justify-content-end">
-          <ButtonComponente @click="fecharModal"
+          <ButtonComponente @click="fecharModal()"
           :texto="''"
           :tamanho="'icone'"
           :cor="'bgCinza'"
           :corTexto="''"
-          :src="'/src/assets/icons/icone-x.png'"
+          :src="'/src/assets/icons/icone-x.svg'"
           :alt="'icone botão de fechar'"
           class=""
           
-        />
+          />
         </div>     
 
         <ButtonComponente 
@@ -52,32 +53,35 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          :src="'/src/assets/icons/icone-download.png'"
+          :src="'./src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
+          @click="abrirModalCadastro()"
         />
         <ButtonComponente 
           :texto="'Baixar em Full HD'" 
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.png'"
+          :src="'./src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
+          @click="abrirModalCadastro()"
         />
         <ButtonComponente 
           :texto="'Baixar em HD'" 
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.png'"
+          :src="'./src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
+          @click="abrirModalCadastro()"
         />
         <p class="h5 mt-3">Categoria</p>
-        <p>{{ nomeCategoria }}</p>
+        <p>{{  getCategoryName(card.category_id) }}</p> 
         <p class="h5"><strong>Donwloads semanais</strong></p>
-        <p>123.789</p>
+        <p>{{card.download_count}}</p>
       </div>
         
     </div>
@@ -85,29 +89,58 @@
 </div>
 </div>
 
+  <template v-if="exibeModalCadastro">
+    <ModalEmailComponente @fechar-modal-cadastro = "fecharModalCadastro"/>
+  </template>
+
 </template>
 
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
-
+import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
 export default {
-  name: 'ModalComponente',
+  data(){
+    return {
+      exibeModalCadastro: false,
+    }
+  },
   components: {
     ButtonComponente,
+    ModalEmailComponente
   },
   props: {
-    tituloModal: String,
-    nomeCategoria: String
+    // tituloModal: String,
+    // nomeCategoria: String,
+    card: {
+        type: Object,
+      },
+      categories: {
+      type: Array,
+      required: true,
+    }
   },
-  
   methods: {
-   
     fecharModal(){
       this.$emit('fechar-modal')
-    }
-  }
+    }, 
+    compartilhar() {
 
-}
+    },
+    getCategoryName(category_id) {
+      const category = this.categories.find(cat => cat.category_id === category_id);
+      return category ? category.name : 'Categoria desconhecida';
+    },
+    abrirModalCadastro() {
+      this.exibeModalCadastro = true;
+      //this.fecharModal();
+      
+    },
+    fecharModalCadastro() {
+      this.exibeModalCadastro = false;
+    }
+
+    },
+  }
 </script>
 
 <style scoped>
@@ -130,6 +163,12 @@ export default {
   margin: auto;
   margin-top: 10vh;
  
+}
+
+.card-img {
+  max-width: 100%;
+  max-height: 450px; /* Define a altura máxima desejada */
+  object-fit: contain;
 }
 
 .btn-success, .btn-primary, .btn-dark {

@@ -20,7 +20,7 @@ export default {
 
  
 
-<style>
+<style scoped>
 
 .input{
     height: 80px;
