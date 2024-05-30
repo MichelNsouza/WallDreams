@@ -1,5 +1,5 @@
 <template>
-  <div class="containerMaior">
+  <div class="containerMaior z-1">
     <nav class="navbar bg-body">
       <form class="container-fluid d-flex justify-content-center">
         <div class="input-group input-group-lg">

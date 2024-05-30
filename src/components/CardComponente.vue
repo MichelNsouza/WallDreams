@@ -1,5 +1,5 @@
 <template>
-  <div class="col" @click="abrirModal">
+  <div class="col" @click="abrirModal()">
       <div class="card h-100">
           <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img-top" alt="...">
           <div class="card-body">
@@ -41,7 +41,7 @@ import axios from 'axios';
       },
     },
     methods: {
-      abrirModal(){
+      abrirModal(card){
         //this.fetchCategoria(card.category_id);
         this.exibeModal = true;
       },

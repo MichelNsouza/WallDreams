@@ -1,6 +1,6 @@
 <template>
 
-<div  class="container d-flex justify-content-center align-items-center vh-100 z-3">
+<div  class="container d-flex justify-content-center align-items-center vh-100 z-2">
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
@@ -56,6 +56,7 @@
           :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
+          @click="abrirModalCadastro()"
         />
         <ButtonComponente 
           :texto="'Baixar em Full HD'" 
@@ -65,6 +66,7 @@
           :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
+          @click="abrirModalCadastro()"
         />
         <ButtonComponente 
           :texto="'Baixar em HD'" 
@@ -74,9 +76,10 @@
           :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
+          @click="abrirModalCadastro()"
         />
         <p class="h5 mt-3">Categoria</p>
-        <p>{{  getCategoryName(card.category_id) }}</p> <!--Fazer requeste para exbir categoria name-->
+        <p>{{  getCategoryName(card.category_id) }}</p> 
         <p class="h5"><strong>Donwloads semanais</strong></p>
         <p>{{card.download_count}}</p>
       </div>
@@ -86,13 +89,24 @@
 </div>
 </div>
 
+  <template v-if="exibeModalCadastro">
+    <ModalEmailComponente/>
+  </template>
+
 </template>
 
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
+import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
 export default {
+  data(){
+    return {
+      exibeModalCadastro: false,
+    }
+  },
   components: {
     ButtonComponente,
+    ModalEmailComponente
   },
   props: {
     // tituloModal: String,
@@ -115,7 +129,13 @@ export default {
     getCategoryName(category_id) {
       const category = this.categories.find(cat => cat.category_id === category_id);
       return category ? category.name : 'Categoria desconhecida';
-    }
+    },
+    abrirModalCadastro() {
+      this.exibeModalCadastro = true;
+      //this.fecharModal();
+      
+    },
+
     },
   }
 </script>

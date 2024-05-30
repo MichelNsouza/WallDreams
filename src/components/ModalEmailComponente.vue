@@ -1,5 +1,7 @@
-<template>
-  <div class="container text-center">
+<template class="fundo">
+
+  <div class="container  text-center z-3">
+    <div class="container2">
         <h2>Identifique-se para não perder nenhuma <br>
              novidade do WallDreams</h2>
 
@@ -10,7 +12,7 @@
             <img src="/src/assets/icons/icone-download.svg">
             Confirmar Download                
         </button>
-
+    </div>
     </div>
 </template>
 
@@ -19,16 +21,22 @@ export default {
     props:{
        
     },
+    methods: {
+  
+    }
 }
+
 </script>
 
- 
+    
 
-<style>
-        body {
+<style scoped>
+        .fundo {
+            width: 100vw;
+            height: 100vh;
         background-color: grey;
         }
-        .container {
+        .container2 {
             border: 1px solid black;
             padding:40px;
             width: 800px;
