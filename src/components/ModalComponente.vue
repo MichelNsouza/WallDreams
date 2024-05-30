@@ -165,6 +165,12 @@ export default {
  
 }
 
+.card-img {
+  max-width: 100%;
+  max-height: 450px; /* Define a altura máxima desejada */
+  object-fit: contain;
+}
+
 .btn-success, .btn-primary, .btn-dark {
   width: 251px;
   height: 76px;

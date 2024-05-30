@@ -1,7 +1,7 @@
 <template class="fundo">
 
-  <div class="container  text-center d-flex z-3 justify-content-center align-items-center w-100 vh">
-    <div class="container2 h-50">
+  <div class="container  text-center d-flex z-3 justify-content-center align-items-center w-100">
+    <div class="container2 mt-0">
         <div class="d-flex justify-content-end">
         <ButtonComponente @click = "fecharModalCadastro()"
           :texto="''"
@@ -21,7 +21,7 @@
         <p>Não se preoculpe, seus dados estarão protegidos!</p>
         <input type="text" name="nome" id="nome" placeholder="Informe o seu nome"  /> <br>
         <input type="text" name="email" id="email" placeholder="Informe o seu e-mail"/> <br>
-        <button type="button" class="mt-4">
+        <button type="button" class="mt-4 mb-0">
             <img src="/src/assets/icons/icone-download.svg">
             Confirmar Download                
         </button>
@@ -67,7 +67,7 @@ export default {
             border: 1px solid black;
             padding:40px;
             width: 800px;
-            height:400px;
+            height:450px;
             margin-top: 230px;
             border-radius: 20px;
             background-color: white;
