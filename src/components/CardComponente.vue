@@ -42,7 +42,7 @@ import axios from 'axios';
     },
     methods: {
       abrirModal(){
-        this.fetchCategoria(card.category_id);
+        //this.fetchCategoria(card.category_id);
         this.exibeModal = true;
       },
       fecharModal(){
