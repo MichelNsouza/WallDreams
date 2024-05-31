@@ -1,8 +1,8 @@
 <template>
-    <div   class="card mx-1 mt-3">
-      <div class="row g-0">
-        <div class="col-12">
-          <div class="img-container">
+  <div class="card mx-2 mt-3">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="img-container">
           <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/' + card.url"
             class="card-img-top rounded img-fluid tamanho" alt="...">
         </div>
@@ -75,8 +75,8 @@ export default {
   background-color: var(--headerColor);
   padding: 0;
   margin: 0;
-  max-width: 340px;
-  max-height: 305px;
+  max-width: 282px;
+  max-height: 320px;
   color: white;
   overflow: hidden;
 }
@@ -105,7 +105,7 @@ export default {
 }
 
 .clickable:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
   opacity: 0.8;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
       <header class="nav">
         <div class="container">
-          <nav class="navbar">            
+          <nav class="navbar navbar-expand-lg ">            
             <router-link to="/" class="custom-link">
                <h1><img src="\src\assets\icons\iconFoto.svg" alt="Icone de fotografia"> WallDreams</h1>
             </router-link>
               
-            <ul class="navbar-url p-3 mb-2">
+            <ul class="navbar-url collapse navbar-collapse justify-content-end p-3 mb-2">
                 <li v-for="(categoria) in categorias" class="list"> 
                     <router-link 
                     @click="enviarPesquisa(categoria.name)" 
