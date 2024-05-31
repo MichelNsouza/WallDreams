@@ -22,7 +22,7 @@
       <section class="mt-5 ">
 
         <h2 class="mt-5 mb-3">Lançamentos</h2>
-          <article class="row row-cols-1 row-cols-md-3 g-4">
+          <article class="row row-cols-1 row-cols-md-3 g-4 mx-1">
             
             <template v-for="card in lancamentosWallpapers">
               <CardComponente :card="card"/>
