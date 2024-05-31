@@ -40,9 +40,11 @@ export default {
 </script>
 
 <style scoped>
+/*
 img{
   margin-right: 8px;
-}
+}ERRO DOS ICONES NÃO ESTAREM CENTRALIZANDO,  agora está centralizado*/
+
 .branco{
   color: white;
 }
@@ -91,7 +93,6 @@ background-color: #E8E8E8;
 .bgBranco {
   background-color: white ;
 }
-
 
 
 </style>

@@ -10,7 +10,7 @@
     
           <BarraPesquisa/> 
 
-          <p>Categorias mais buscadas <span class="destaqueMaisBuscado">{{maisBuscado[0]}},</span> <span class="destaqueMaisBuscado">{{maisBuscado[1]}}</span> e <span class="destaqueMaisBuscado">{{maisBuscado[2]}}</span>.</p><!-- recebe 3 categorias mais baixadas da api -->
+          <p>Categorias mais buscadas <span class="destaqueMaisBuscado"><b>{{maisBuscado[0]}}</b></span>, <span class="destaqueMaisBuscado"><b>{{maisBuscado[1]}}</b></span> e <span class="destaqueMaisBuscado"><b>{{maisBuscado[2]}}</b></span>.</p><!-- recebe 3 categorias mais baixadas da api -->
         
       </div>
 

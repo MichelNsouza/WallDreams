@@ -6,7 +6,7 @@
 
       <section class="mt-5">
         <div v-if="pesquisaExiste == true">
-          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque">{{pesquisaRetorno.pesquisa}}</span></p>
+          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque"><b>{{pesquisaRetorno.pesquisa}}</b></span></p>
 
             <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
               
