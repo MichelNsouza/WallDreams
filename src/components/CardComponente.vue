@@ -1,5 +1,5 @@
 <template>
-    <div   class="card mx-2 mt-3">
+    <div   class="card mx-1 mt-3">
       <div class="row g-0">
         <div class="col-12">
           <div class="img-container">
@@ -81,7 +81,7 @@ export default {
   background-color: var(--headerColor);
   padding: 0;
   margin: 0;
-  max-width: 345px;
+  max-width: 340px;
   max-height: 305px;
   color: white;
   overflow: hidden;

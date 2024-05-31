@@ -1,7 +1,7 @@
 <template>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8">
-
+      <section class="mt-5 mx-3 ">
       <div class="pt-5 text-center">
 
         <h3>Acesse mais de 1.000.000 de Papeis de parede<br>
@@ -18,12 +18,10 @@
         </p>
         
       </div>
-
-      <section class="mt-5 ">
-
+      </section>
+      <section class="mt-5 mb-5 mx-3 col mx-5">
         <h2 class="mt-5 mb-3">Lançamentos</h2>
-          <article class="row row-cols-1 row-cols-md-3 g-4 mx-1">
-            
+          <article class="row m-0 p-0">
             <template v-for="card in lancamentosWallpapers">
               <CardComponente :card="card"/>
             </template>
@@ -42,13 +40,11 @@
           </div>
       </section>
 
-      <section class="mt-5 mb-5">
-
+      <section class="mt-5 mb-5 mx-3 col mx-5">
         <h2>Mais baixados nos últimos 30 dias</h2>
+        <article class="row m-0 p-0">
 
-        <article class="row row-cols-1 row-cols-md-3 g-4">
-          
-          <template v-for="card in maisBaixadosWallpapers">
+          <template  v-for="card in maisBaixadosWallpapers">
               <CardComponente :card="card"/>
           </template>
         
