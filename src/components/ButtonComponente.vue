@@ -2,7 +2,7 @@
   <button
   :class="`btn ${tamanho} ${cor} ${corTexto}`"
   >
-  <img :src="src" :alt="alt">
+  <img :src="src" :alt="alt" :class="iconClass">
   {{texto}}
   </button>
 </template>
@@ -35,6 +35,10 @@ export default {
       type: String,
       default: '' 
     },
+    iconClass: {
+      type: String,
+      default: ''
+    }
   },
 };
 </script>
@@ -93,6 +97,11 @@ background-color: #E8E8E8;
 .bgBranco {
   background-color: white ;
 }
+.bgVermelho {
+  /* background-color: red ; */
+  filter: invert(29%) sepia(92%) saturate(4512%) hue-rotate(353deg) brightness(91%) contrast(112%);
+}
+
 
 
 </style>

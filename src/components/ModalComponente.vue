@@ -15,6 +15,8 @@
           :src="'/src/assets/icons/frame-coracao.svg'"
           :alt="'ícone botão de download'"
           class=" p-1 m-2 d-flex justify-content-center align-items-center"
+          @click="like"
+          :iconClass="curtida ? 'bgVermelho' : ''"
         />
         
         <ButtonComponente 
@@ -102,6 +104,7 @@ export default {
   data(){
     return {
       exibeModalCadastro: false,
+      curtida: false,
     }
   },
   components: {
@@ -153,9 +156,12 @@ export default {
     },
     fecharModalCadastro() {
       this.exibeModalCadastro = false;
-    }
-
     },
+    like(){
+      this.curtida = !this.curtida;
+    }
+   
+    }
   }
 </script>
 
