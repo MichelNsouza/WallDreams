@@ -47,13 +47,23 @@ export default {
     methods: {
         fecharModalCadastro(){
       this.$emit('fechar-modal-cadastro')
-    }
+    },
+    fecharModalESC(event) {
+            if (event.keyCode === 27) {
+                this.fecharModalCadastro();
+            }
 
     }
   
+},
+mounted() {
+        document.addEventListener('keydown', this.fecharModalESC);
+    },
+beforeDestroy() {
+        document.removeEventListener('keydown', this.fecharModalESC);
     }
 
-
+}
 </script>
 
     
