@@ -44,9 +44,11 @@ export default {
 </script>
 
 <style scoped>
+/*
 img{
   margin-right: 8px;
-}
+}ERRO DOS ICONES NÃO ESTAREM CENTRALIZANDO,  agora está centralizado*/
+
 .branco{
   color: white;
 }
@@ -99,7 +101,6 @@ background-color: #E8E8E8;
   /* background-color: red ; */
   filter: invert(29%) sepia(92%) saturate(4512%) hue-rotate(353deg) brightness(91%) contrast(112%);
 }
-
 
 
 
