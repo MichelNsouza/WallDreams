@@ -10,7 +10,12 @@
     
           <BarraPesquisa/> 
 
-          <p>Categorias mais buscadas <span class="destaqueMaisBuscado"><b>{{maisBuscado[0]}}</b></span>, <span class="destaqueMaisBuscado"><b>{{maisBuscado[1]}}</b></span> e <span class="destaqueMaisBuscado"><b>{{maisBuscado[2]}}</b></span>.</p><!-- recebe 3 categorias mais baixadas da api -->
+          <p>
+          Categorias mais buscadas 
+          <a :href="`/categoria/${maisBuscado[0]}`" class="destaqueMaisBuscado"><strong>{{ maisBuscado[0] }}</strong></a>, 
+          <a :href="`/categoria/${maisBuscado[1]}`" class="destaqueMaisBuscado"><strong>{{ maisBuscado[1] }}</strong></a> e 
+          <a :href="`/categoria/${maisBuscado[2]}`" class="destaqueMaisBuscado"><strong>{{ maisBuscado[2] }}</strong></a>.
+        </p>
         
       </div>
 
@@ -133,5 +138,6 @@ export default {
 <style scoped>
 .destaqueMaisBuscado{
   color: var(--headerColor);
+   text-decoration: none;
 }
 </style>
