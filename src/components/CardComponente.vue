@@ -9,24 +9,21 @@
       </div>
       <div class="col-12">
         <div class="card-body p-0 m-0">
-          <div class="d-flex justify-content-between p-1">
+          <div @click.stop="abrirModal()" class=" mx-3 clickable d-flex justify-content-between p-1">
             <div class="d-flex flex-column mx-2">
               <p class="card-text p-1 pb-0 mb-0"><strong>{{ card.title }}</strong></p>
               <p class="p-1 mb-0">4k | Full HD | HD</p>
             </div>
-            <img @click.stop="abrirModal()" class="mx-3" src="/src/assets/icons/icone-download.svg" alt="">
+            <img  src="/src/assets/icons/icone-download.svg" alt="">
           </div>
         </div>
       </div>
-      </div>
     </div>
+  </div>
 
   <template v-if="exibeModal">
-
     <ModalComponente :card="card" :categories="categories" @fechar-modal="fecharModal" />
-
   </template>
-
 </template>
 
 <script>
@@ -48,7 +45,6 @@ export default {
     card: {
       type: Object,
       required: true,
-
     },
   },
   methods: {
@@ -71,9 +67,7 @@ export default {
   mounted() {
     this.fetchCategories();
   }
-
 };
-
 </script>
 
 <style scoped>
@@ -86,7 +80,6 @@ export default {
   color: white;
   overflow: hidden;
 }
-
 
 .img-container {
   display: flex;
@@ -104,5 +97,15 @@ export default {
 
 .card-body {
   color: white;
+}
+
+.clickable {
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.clickable:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 </style>
