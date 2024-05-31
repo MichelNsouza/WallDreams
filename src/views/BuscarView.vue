@@ -82,8 +82,9 @@ export default {
        try {
          this.cards = [];
          const todos = await getTodosWallpapers();
-         this.cards = todos.data.wallpapers;
+         this.cards = todos.data.wallpapers; 
          this.pesquisaExiste = true;
+         
          //  const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
          
         //  if (pesquisa) {
