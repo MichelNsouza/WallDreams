@@ -45,6 +45,7 @@
   }
   .form-control {
     flex: 1;
+    background-color: #E8E8E8;
   }
   .btn img {
     width: 20px;

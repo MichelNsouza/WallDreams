@@ -21,7 +21,7 @@
 
       <section class="mt-5 ">
 
-        <h2 class="mt-5 mb-3">Lançamentos</h2>
+        <h2 class="mt-5 mb-4">Lançamentos</h2>
           <article class="row row-cols-1 row-cols-md-3 g-4">
             
             <template v-for="card in lancamentosWallpapers">
@@ -44,7 +44,7 @@
 
       <section class="mt-5 mb-5">
 
-        <h2>Mais baixados nos últimos 30 dias</h2>
+        <h2 class="mt-5 mb-4">Mais baixados nos últimos 30 dias</h2>
 
         <article class="row row-cols-1 row-cols-md-3 g-4">
           
