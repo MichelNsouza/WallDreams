@@ -126,6 +126,12 @@ export default {
     fecharModal(){
       this.$emit('fechar-modal')
     }, 
+    fecharModalESC(event) {
+            if (event.keyCode === 27 && this.exibeModalCadastro == false) {
+                this.fecharModal(); 
+            }
+
+    },
     async compartilhar() {
 
       // window.location.href
@@ -161,6 +167,12 @@ export default {
       this.curtida = !this.curtida;
     }
    
+    },
+    mounted() {
+        document.addEventListener('keydown', this.fecharModalESC);
+    },
+    beforeDestroy() {
+        document.removeEventListener('keydown', this.fecharModalESC);
     }
   }
 </script>
