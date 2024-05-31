@@ -1,5 +1,5 @@
 <template>
-    <div   class="card mx-auto mt-3">
+    <div   class="card mx-2 mt-3">
       <div class="row g-0">
         <div class="col-12">
           <div class="img-container">
