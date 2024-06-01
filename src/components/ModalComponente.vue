@@ -4,7 +4,7 @@
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
-      <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
+      <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
         <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
         

@@ -3,7 +3,7 @@
     <div class="row g-0">
       <div class="col-12">
         <div class="img-container">
-          <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/' + card.url"
+          <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/' + card.url"
             class="card-img-top rounded img-fluid tamanho" alt="...">
         </div>
       </div>
