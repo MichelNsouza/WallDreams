@@ -8,17 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout
+    - name: Checkout code
       uses: actions/checkout@v2
-      
-    - name: Install dependencies
+
+    - name: Install Node.js dependencies
       run: npm install
-      
-    - name: Build
+
+    - name: Build the Vue.js app
       run: npm run build
-      
+
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
@@ -28,4 +28,6 @@ jobs:
         script: |
           cd /home/ubuntu/frontend/WallDreams
           git pull origin develop
+          npm install
+          npm run build
           sudo systemctl restart nginx
