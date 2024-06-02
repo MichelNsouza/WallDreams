@@ -58,7 +58,7 @@
           :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
-          @click="abrirModalCadastro()"
+          @click="abrirModalCadastro(), resolucao = '4K'"
         />
         <ButtonComponente 
           :texto="'Baixar em Full HD'" 
@@ -68,7 +68,7 @@
           :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
-          @click="abrirModalCadastro()"
+          @click="abrirModalCadastro(), resolucao = 'FullHD'"
         />
         <ButtonComponente 
           :texto="'Baixar em HD'" 
@@ -78,7 +78,7 @@
           :src="'/src/assets/icons/icone-download.svg'"
           :alt="'ícone botão de download'"
           class="mb-2"
-          @click="abrirModalCadastro()"
+          @click="abrirModalCadastro(), resolucao = 'HD'"
         />
         <p class="h5 mt-3">Categoria</p>
         <p>{{  getCategoryName(card.category_id) }}</p> 
@@ -92,7 +92,7 @@
 </div>
 
   <template v-if="exibeModalCadastro">
-    <ModalEmailComponente @fechar-modal-cadastro = "fecharModalCadastro"/>
+    <ModalEmailComponente @fechar-modal-cadastro = "fecharModalCadastro" :dadoResolucao="resolucao" :idWallpaper="card.wallpaper_id"/>
   </template>
 
 </template>
@@ -105,6 +105,7 @@ export default {
     return {
       exibeModalCadastro: false,
       curtida: false,
+      resolucao:'',
     }
   },
   components: {
@@ -156,6 +157,7 @@ export default {
       return category ? category.name : 'Categoria desconhecida';
     },
     abrirModalCadastro() {
+      
       this.exibeModalCadastro = true;
       //this.fecharModal();
       

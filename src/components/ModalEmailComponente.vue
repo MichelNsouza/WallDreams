@@ -19,9 +19,9 @@
              novidade do WallDreams</h2>
 
         <p>Não se preoculpe, seus dados estarão protegidos!</p>
-        <input type="text" name="nome" id="nome" placeholder="Informe o seu nome"  /> <br>
-        <input type="text" name="email" id="email" placeholder="Informe o seu e-mail"/> <br>
-        <button type="button" class="mt-4 mb-0">
+        <input type="text" name="nome" id="nome" placeholder="Informe o seu nome" v-model="dadoNome" /> <br>
+        <input type="text" name="email" id="email" placeholder="Informe o seu e-mail" v-model="dadoEmail"/> <br>
+        <button type="button" class="mt-4 mb-0" @click="btnDownloadWallpaper">
             <img src="/src/assets/icons/icone-download.svg">
             Confirmar Download                
         </button>
@@ -32,16 +32,33 @@
 
 <script>
 import ButtonComponente from './ButtonComponente.vue';
+import {
+    getDownloadWallpaper
+} from '@/services/api';
 
 export default {
     data(){
         return {
+
+
+            dadoNome:'',
+            dadoEmail:'',
+            
+
+
             
         }
     }, components: {
         ButtonComponente
     },
     props:{
+
+        dadoResolucao:{
+            type: String
+        },
+        idWallpaper:{
+            type: String
+        },
        
     },
     methods: {
@@ -53,8 +70,37 @@ export default {
                 this.fecharModalCadastro();
             }
 
+    },
+
+    async btnDownloadWallpaper() {
+       try {
+         
+         const download = await getDownloadWallpaper(this.idWallpaper, this.dadoResolucao, this.dadoNome, this.dadoEmail);
+         this.salvarImagem(download.request.responseURL)
+         
+       } catch (error) {
+         console.error('Erro ao baixar o Wallpaper:', error);
+       }
+     },
+
+     salvarImagem(imageData) {
+      const fileName = 'imagem-baixada.jpg'; // Nome do arquivo
+
+      // Criar um objeto Blob a partir do conteúdo da imagem
+      const blob = new Blob([imageData], { type: 'image/jpeg' });
+
+      // Criar um objeto URL a partir do Blob
+      const url = URL.createObjectURL(blob);
+
+      // Criar um link para baixar a imagem
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      link.click();
+
+      // Revogar a URL do objeto Blob para evitar vazamentos de memória
+      URL.revokeObjectURL(url);
     }
-  
 },
 mounted() {
         document.addEventListener('keydown', this.fecharModalESC);
@@ -64,6 +110,7 @@ beforeDestroy() {
     }
 
 }
+
 </script>
 
     
