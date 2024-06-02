@@ -5,7 +5,7 @@
         <div class="input-group input-group-lg">
           <input type="text" v-model="buscarAtual" class="form-control" placeholder="O que você procura?" aria-label="Buscar" aria-describedby="basic-addon1">
           <button class="btn btn-success" @click.prevent="enviar">
-            <img src="/src/assets/icons/lupaPesquisa.svg">
+            <img src="/src/assets/icons/lupaPesquisa.svg" alt="icone lupa">
           </button>
         </div>
       </form>

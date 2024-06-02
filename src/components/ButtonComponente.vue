@@ -1,9 +1,9 @@
 <template>
   <button
-  :class="`btn ${tamanho} ${cor} ${corTexto}`"
+    :class="`btn ${tamanho} ${cor} ${corTexto}`"
   >
-  <img :src="src" :alt="alt" :class="iconClass">
-  {{texto}}
+    <img v-if="src" :src="src" :alt="alt" :class="iconClass">
+    {{texto}}
   </button>
 </template>
 
@@ -44,11 +44,6 @@ export default {
 </script>
 
 <style scoped>
-/*
-img{
-  margin-right: 8px;
-}ERRO DOS ICONES NÃO ESTAREM CENTRALIZANDO,  agora está centralizado*/
-
 .branco{
   color: white;
 }

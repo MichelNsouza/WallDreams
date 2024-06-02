@@ -1,6 +1,6 @@
 <template>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-9">
       <section class="mt-5 mx-3 ">
       <div class="pt-5 text-center">
 
@@ -20,8 +20,9 @@
       </div>
       </section>
       <section class="mt-5 mb-5 mx-3 col mx-5">
-        <h2 class="mt-5 mb-3">Lançamentos</h2>
-          <article class="row m-0 p-0">
+        <h2 class="mt-5 mb-3 mx-5">Lançamentos</h2>
+          <article class="row m-0 p-0 justify-content-center align-items-center">
+
             <template v-for="card in lancamentosWallpapers">
               <CardComponente :card="card"/>
             </template>
@@ -41,8 +42,8 @@
       </section>
 
       <section class="mt-5 mb-5 mx-3 col mx-5">
-        <h2>Mais baixados nos últimos 30 dias</h2>
-        <article class="row m-0 p-0">
+        <h2 class="mx-5">Mais baixados nos últimos 30 dias</h2>
+        <article class="row m-0 p-0 justify-content-center align-items-center">
 
           <template  v-for="card in maisBaixadosWallpapers">
               <CardComponente :card="card"/>
