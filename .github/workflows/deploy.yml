@@ -33,7 +33,7 @@ jobs:
             echo "Stashing local changes..."
             git stash -u
             echo "Pulling latest changes from develop branch..."
-            git sudo pull origin develop
+            git pull origin develop
             echo "Latest changes pulled."
             
             echo "Applying stashed changes..."
@@ -41,7 +41,7 @@ jobs:
 
             
             echo "Building the project..."
-            if sudo npm run build; then
+            if npm run build; then
               echo "Build successful."
             else
               echo "Build failed."
