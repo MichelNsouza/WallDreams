@@ -55,7 +55,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          src="/../../src/assets/icons/icone-download.svg"
+          :src="iconeDownload"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
           @click="abrirModalCadastro()"
@@ -65,7 +65,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          src="../src/assets/icons/icone-download.svg"
+          :src="iconeDownload"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
@@ -75,7 +75,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          src="/../src/assets/icons/icone-download.svg"
+          :src="iconeDownload"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
@@ -100,6 +100,7 @@
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
+import iconeDownload from '@/assets/icons/icone-download.svg';
 export default {
   data(){
     return {
