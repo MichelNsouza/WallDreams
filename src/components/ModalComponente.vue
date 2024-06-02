@@ -10,12 +10,10 @@
           <div class="div d-flex justify-content-beetween">
             <p class="h5 p-3 text-lg flex-grow-1">{{ card.description }}</p>
 
-            <ButtonComponente :texto="''" :tamanho="'icone'" :cor="'bgCinzaClaro'" :src="'iconeCoracao'"
-              :alt="'ícone botão de download'" class=" p-1 m-2 d-flex justify-content-center align-items-center"
+            <ButtonComponente :texto="''" :tamanho="'icone'" :cor="'bgCinzaClaro'"class=" p-1 m-2 d-flex justify-content-center align-items-center"
               @click="like" :iconClass="curtida ? 'bgVermelho' : ''" />
 
-            <ButtonComponente :texto="''" :tamanho="'icone'" :cor="'bgCinzaClaro'" :src="'iconeCompatilhar'"
-              :alt="'ícone botão de download'" class="p-1 m-2 d-flex justify-content-center align-items-center"
+            <ButtonComponente :texto="''" :tamanho="'icone'" :cor="'bgCinzaClaro'" class="p-1 m-2 d-flex justify-content-center align-items-center"
               @click="compartilhar" />
 
           </div>
@@ -28,17 +26,17 @@
 
             <div class="d-flex justify-content-end">
               <ButtonComponente @click="fecharModal()" :texto="''" :tamanho="'icone'" :cor="'bgCinza'" :corTexto="''"
-                :src="'iconeX'" :alt="'icone botão de fechar'" class="" />
+               />
             </div>
 
             <ButtonComponente :texto="'Baixar em 4K'" :tamanho="'pequeno'" :cor="'bgVerde'" :corTexto="'branco'"
-              :src="require('../assets/icons/icone-download.svg')" :alt="'ícone botão de download'" class="mt-4 mb-2"
+               class="mt-4 mb-2"
               @click="abrirModalCadastro(), resolucao = '4K'" />
             <ButtonComponente :texto="'Baixar em Full HD'" :tamanho="'pequeno'" :cor="'bgAzul'" :corTexto="'branco'"
-              :src="require('../assets/icons/icone-download.svg')" :alt="'ícone botão de download'" class="mb-2"
+               class="mb-2"
               @click="abrirModalCadastro(), resolucao = 'FullHD'" />
             <ButtonComponente :texto="'Baixar em HD'" :tamanho="'pequeno'" :cor="'bgCinzaEscuro'" :corTexto="'branco'"
-              :src="require('../assets/icons/icone-download.svg')" :alt="'ícone botão de download'" class="mb-2"
+              class="mb-2"
               @click="abrirModalCadastro(), resolucao = 'HD'" />
             <p class="h5 mt-3">Categoria</p>
             <p>{{ getCategoryName(card.category_id) }}</p>
