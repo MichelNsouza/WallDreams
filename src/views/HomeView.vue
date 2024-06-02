@@ -11,7 +11,7 @@
           <BarraPesquisa/> 
 
           <p>
-          Categorias mais buscadas 
+          Categorias Mais Buscadas 
           <router-link @click="enviarPesquisa(maisBuscado[0].name )"  :to="'/buscar/'+maisBuscado[0].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>, 
           <router-link @click="enviarPesquisa(maisBuscado[1].name )"  :to="'/buscar/'+maisBuscado[1].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name  }}</strong></router-link>e 
           <router-link @click="enviarPesquisa(maisBuscado[0].name )"  :to="'/buscar/'+maisBuscado[0].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name  }}</strong></router-link>.
