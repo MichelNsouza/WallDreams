@@ -1,5 +1,4 @@
-name: Deploy to EC2
-
+name: Deploy to Server
 on:
   push:
     branches:
@@ -8,26 +7,26 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install Node.js dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build the Vue.js app
-      run: npm run build
+      - name: Build project
+        run: npm run build
 
-    - name: Deploy to EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd /home/ubuntu/frontend/WallDreams
-          git pull origin develop
-          npm install
-          npm run build
-          sudo systemctl restart nginx
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ec2-54-207-67-252.sa-east-1.compute.amazonaws.com
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/ubuntu/frontend/WallDreams
+            git pull origin develop
+            npm install
+            npm run build
+            sudo systemctl restart nginx
