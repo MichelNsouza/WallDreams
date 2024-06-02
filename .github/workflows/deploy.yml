@@ -21,6 +21,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            pwd
+            ls -l
+            which node
+            which npm
+            npm --version
             cd /home/ubuntu/frontend/WallDreams
             git pull origin develop
             npm run build
