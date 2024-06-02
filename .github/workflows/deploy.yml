@@ -22,6 +22,6 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/frontend/WallDreams
-            git pull origin develop
+            git pull
             npm run build
             sudo systemctl restart nginx
