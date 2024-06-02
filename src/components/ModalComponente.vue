@@ -136,7 +136,7 @@ export default {
 
       // window.location.href
 
-      if (navigator.share) {
+      if (navigator.share) {// web sh não funciona em http, somente local e https, procurar alternativa
         try {
           await navigator.share({
             title: 'Confira este conteúdo!',

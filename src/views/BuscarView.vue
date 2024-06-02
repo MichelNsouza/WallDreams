@@ -69,6 +69,7 @@ export default {
 beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.termoDePesquisa) {
+        console.log(decodeURIComponent(to.params.termoDePesquisa));
         vm.pesquisaRetorno.pesquisa = decodeURIComponent(to.params.termoDePesquisa);
         vm.fetchData();
       }
@@ -91,7 +92,6 @@ beforeRouteEnter(to, from, next) {
        try {
          this.cards = [];
            const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa);// aplicar tratamento no back toLowerCase().trim()
-         
           if (pesquisa) {
             const cardsEncontrados = pesquisa.data.result;
             this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);

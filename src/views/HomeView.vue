@@ -6,14 +6,14 @@
 
         <h3>Acesse mais de 1.000.000 de Papeis de parede<br>
   e deixe seu computador com a sua cara!</h3>
-          <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!</p>   
+          <p>Faça download em 4K, Full-HD ou HD, não importa sua resolução!!!</p>   
     
           <BarraPesquisa/> 
 
           <p>
           Categorias Mais Buscadas 
           <router-link @click="enviarPesquisa(maisBuscado[0].name )"  :to="'/buscar/'+maisBuscado[0].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>, 
-          <router-link @click="enviarPesquisa(maisBuscado[1].name )"  :to="'/buscar/'+maisBuscado[1].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name  }}</strong></router-link>e 
+          <router-link @click="enviarPesquisa(maisBuscado[1].name )"  :to="'/buscar/'+maisBuscado[1].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name  }}</strong></router-link> e 
           <router-link @click="enviarPesquisa(maisBuscado[0].name )"  :to="'/buscar/'+maisBuscado[0].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name  }}</strong></router-link>.
         </p>
         
