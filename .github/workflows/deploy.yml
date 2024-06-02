@@ -23,20 +23,16 @@ jobs:
           script: |
             
             
-            
-            
             /home/ubuntu/.nvm/versions/node/v20.13.1/bin/node --version
-            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm --version
             
+            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm --version
             
             cd /home/ubuntu/frontend/WallDreams
             pwd
             ls -l
 
-            
-            
             # Build the project
-            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm run build
+            npm run build
             
             # Restart nginx service
             sudo systemctl restart nginx
