@@ -5,7 +5,7 @@
         <div class="input-group input-group-lg">
           <input type="text" v-model="buscarAtual" class="form-control" placeholder="O que você procura?" aria-label="Buscar" aria-describedby="basic-addon1">
           <button class="btn btn-success" @click.prevent="enviar">
-            <img src="/src/assets/icons/lupaPesquisa.svg">
+            <img src="/src/assets/icons/lupaPesquisa.svg" alt="icone lupa">
           </button>
         </div>
       </form>
@@ -17,8 +17,6 @@
   <script>
   import { pesquisaStore } from '@/stores/pesquisa';
   export default {
-    name: 'BarraPesquisa',
-    
     data(){
       return{
         buscarAtual:'',
@@ -27,8 +25,8 @@
     methods: {
       enviar(){
       const storePesquisa = pesquisaStore();
-      storePesquisa.setPesquisa(this.buscarAtual.toLowerCase().trim());
-      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual.toLowerCase().trim()}});
+      storePesquisa.setPesquisa(this.buscarAtual);// aplicar tratamento no back toLowerCase().trim()
+      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual}});// aplicar tratamento no back toLowerCase().trim()
     },
   }
 

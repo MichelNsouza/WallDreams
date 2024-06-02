@@ -4,7 +4,7 @@
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
-      <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
+      <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/'+card.wallpaper_id+'/?resolution=HD'" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
         <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
         
@@ -12,7 +12,7 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-coracao.svg'"
+          :src="'iconeCoracao'"
           :alt="'ícone botão de download'"
           class=" p-1 m-2 d-flex justify-content-center align-items-center"
           @click="like"
@@ -23,7 +23,7 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-compartilhar.svg'"
+          :src="'iconeCompatilhar'"
           :alt="'ícone botão de download'"
           class="p-1 m-2 d-flex justify-content-center align-items-center"
           @click="compartilhar"
@@ -43,7 +43,7 @@
           :tamanho="'icone'"
           :cor="'bgCinza'"
           :corTexto="''"
-          :src="'/src/assets/icons/icone-x.svg'"
+          :src="'iconeX'"
           :alt="'icone botão de fechar'"
           class=""
           
@@ -55,7 +55,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          :src="'/src/assets/icons/icone-download.svg'"
+          :src= "require('../assets/icons/icone-download.svg')"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
           @click="abrirModalCadastro(), resolucao = '4K'"
@@ -65,7 +65,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          :src="'/src/assets/icons/icone-download.svg'"
+          :src= "require('../assets/icons/icone-download.svg')"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro(), resolucao = 'FullHD'"
@@ -75,7 +75,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          :src="'/src/assets/icons/icone-download.svg'"
+          :src= "require('../assets/icons/icone-download.svg')"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro(), resolucao = 'HD'"
@@ -100,6 +100,7 @@
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
+import iconeDownload from '@/assets/icons/icone-download.svg';
 export default {
   data(){
     return {
@@ -137,7 +138,7 @@ export default {
 
       // window.location.href
 
-      if (navigator.share) {
+      if (navigator.share) {// web sh não funciona em http, somente local e https, procurar alternativa
         try {
           await navigator.share({
             title: 'Confira este conteúdo!',
@@ -150,6 +151,9 @@ export default {
         }
       } else {
         console.warn('API de Web Share não suportada neste navegador.');
+        alert('API de Web Share não suportada neste navegador.');
+        alert(`copie o link: http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com//buscar/${encodeURIComponent(this.card.description)}`);
+
       }
     },
     getCategoryName(category_id) {

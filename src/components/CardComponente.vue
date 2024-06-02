@@ -1,9 +1,10 @@
 <template>
+  <div class="col-md-4 d-flex justify-content-center align-items-center">
   <div class="card mx-2 mt-3">
     <div class="row g-0">
       <div class="col-12">
         <div class="img-container">
-          <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/' + card.url"
+          <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/'+card.wallpaper_id+'/?resolution=HD'"
             class="card-img-top rounded img-fluid tamanho" alt="...">
         </div>
       </div>
@@ -11,15 +12,16 @@
         <div class="card-body p-0 m-0">
           <div @click.stop="abrirModal()" class=" mx-3 clickable d-flex justify-content-between p-1">
             <div class="d-flex flex-column mx-2">
-              <p class="card-text p-1 pb-0 mb-0"><strong>{{ card.title }}</strong></p>
-              <p class="p-1 mb-0">4k | Full HD | HD</p>
+              <p class="card-text  p-1 pb- mb-0"><strong class="text-justify">{{ card.title }}</strong></p>
+              <p class="p-1 mb-1 mb-0">4k | Full HD | HD</p>
             </div>
-            <img  src="/src/assets/icons/icone-download.svg" alt="">
+            <img  src="/src/assets/icons/icone-download.svg" alt="icone download">
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <template v-if="exibeModal">
     <ModalComponente :card="card" :categories="categories" @fechar-modal="fecharModal" />
@@ -28,10 +30,12 @@
 
 <script>
 import ModalComponente from '@/components/ModalComponente.vue';
-import axios from 'axios';
+import {
+  getTodasCategorias,
+  getWallpaperImg,
+} from '@/services/api';
 
 export default {
-  name: 'CardComponente',
   components: {
     ModalComponente
   },
@@ -39,6 +43,7 @@ export default {
     return {
       exibeModal: false,
       categories: [],
+      url:''
     }
   },
   props: {
@@ -57,15 +62,24 @@ export default {
     },
     async fetchCategories() {
       try {
-        const response = await axios.get('http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/walldreams/category/');
+        const response = await getTodasCategorias();
         this.categories = response.data;
       } catch (error) {
         console.error('Erro ao buscar categorias:', error);
       }
+    },
+    async fetchUrlImg() {
+    try {
+        const response = await getWallpaperImg(this.card.wallpaper_id, 'HD');
+        this.url = response.data;
+    } catch (error) {
+      console.error('Erro ao buscar imagem:', error);
     }
+  }
   },
   mounted() {
     this.fetchCategories();
+    this.fetchUrlImg();
   }
 };
 </script>
@@ -75,8 +89,8 @@ export default {
   background-color: var(--headerColor);
   padding: 0;
   margin: 0;
-  max-width: 282px;
-  max-height: 320px;
+  max-width: 340px;
+  max-height: 305px;
   color: white;
   overflow: hidden;
 }
