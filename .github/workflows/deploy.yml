@@ -1,4 +1,3 @@
-
 name: Deploy to Server
 
 on:
@@ -22,12 +21,25 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            # Print working directory and list files
             pwd
             ls -l
-            /path/to/node --version
-            /path/to/npm --version
-            npm --version
+            
+            # Verify node and npm versions
+            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/node --version
+            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm --version
+            
+            # Navigate to the project directory
             cd /home/ubuntu/frontend/WallDreams
+            
+            # Pull the latest code from the develop branch
             git pull origin develop
-            /path/to/npm run build
+            
+            # Install dependencies
+            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm install
+            
+            # Build the project
+            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm run build
+            
+            # Restart nginx service
             sudo systemctl restart nginx
