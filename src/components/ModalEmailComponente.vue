@@ -8,7 +8,7 @@
           :tamanho="'icone'"
           :cor="'bgBranco'"
           :corTexto="''"
-          :src="'/src/assets/icons/icone-x.svg'"
+          src="@/src/assets/icons/icone-x.svg"
           :alt="'icone botão de fechar'"
           class=""
           
