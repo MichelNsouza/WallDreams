@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Deploy to Server
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.5
         with:
           host: ec2-54-207-67-252.sa-east-1.compute.amazonaws.com
           username: ubuntu
@@ -25,26 +25,19 @@ jobs:
             echo "Verificando diretório atual"
             pwd
             ls -l
-
             echo "Verificando versões de Node e NPM"
             which node
             which npm
             node --version
             npm --version
-
             echo "Entrando no diretório do projeto"
             cd /home/ubuntu/frontend/WallDreams
-
             echo "Atualizando código do repositório"
             git pull origin develop
-
             echo "Instalando dependências"
             npm install
-
             echo "Rodando build"
             npm run build
-
             echo "Reiniciando serviço Nginx"
             sudo systemctl restart nginx
-
             echo "Deploy concluído com sucesso!"
