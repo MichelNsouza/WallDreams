@@ -17,8 +17,6 @@
   <script>
   import { pesquisaStore } from '@/stores/pesquisa';
   export default {
-    name: 'BarraPesquisa',
-    
     data(){
       return{
         buscarAtual:'',
@@ -27,8 +25,8 @@
     methods: {
       enviar(){
       const storePesquisa = pesquisaStore();
-      storePesquisa.setPesquisa(this.buscarAtual.toLowerCase().trim());
-      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual.toLowerCase().trim()}});
+      storePesquisa.setPesquisa(this.buscarAtual);// aplicar tratamento no back toLowerCase().trim()
+      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual}});// aplicar tratamento no back toLowerCase().trim()
     },
   }
 

@@ -38,7 +38,8 @@ export default {
         return {
             
         }
-    }, components: {
+    },
+    components: {
         ButtonComponente
     },
     props:{

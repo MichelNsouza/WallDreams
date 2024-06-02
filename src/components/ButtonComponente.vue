@@ -1,15 +1,14 @@
 <template>
   <button
-    :class="`btn ${tamanho} ${cor} ${corTexto}`"
+  :class="`btn ${tamanho} ${cor} ${corTexto}`"
   >
-    <img v-if="src" :src="src" :alt="alt" :class="iconClass">
-    {{texto}}
+  <img :src="src" :alt="alt" :class="iconClass">
+  {{texto}}
   </button>
 </template>
 
 <script>
 export default {
-  name: 'ComponenteBotao',
   props: {
     texto: {
       type: String,

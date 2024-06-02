@@ -41,7 +41,8 @@ import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
 import {
-  getTodosWallpapers
+  getTodosWallpapers,
+  getWallpaperPesquisa
 } from '@/services/api';
 import { pesquisaStore } from '@/stores/pesquisa';
  
@@ -81,7 +82,7 @@ export default {
      async fetchData() {
        try {
          this.cards = [];
-           const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+           const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa);// aplicar tratamento no back toLowerCase().trim()
          
           if (pesquisa) {
             const cardsEncontrados = pesquisa.data.result;

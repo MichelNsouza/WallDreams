@@ -12,9 +12,9 @@
 
           <p>
           Categorias mais buscadas 
-          <router-link @click="enviarPesquisa(maisBuscado[0])"  :to="'/buscar/'+maisBuscado[0].name" class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>, 
-          <router-link @click="enviarPesquisa(maisBuscado[1])"  :to="'/buscar/'+maisBuscado[1].name" class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name }}</strong></router-link>e 
-          <router-link @click="enviarPesquisa(maisBuscado[2])"  :to="'/buscar/'+maisBuscado[2].name" class="destaqueMaisBuscado"><strong>{{ maisBuscado[2].name }}</strong></router-link>.
+          <router-link @click="enviarPesquisa(maisBuscado[0].name )"  :to="'/buscar/'+maisBuscado[0].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>, 
+          <router-link @click="enviarPesquisa(maisBuscado[1].name )"  :to="'/buscar/'+maisBuscado[1].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name  }}</strong></router-link>e 
+          <router-link @click="enviarPesquisa(maisBuscado[0].name )"  :to="'/buscar/'+maisBuscado[0].name " class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name  }}</strong></router-link>.
         </p>
         
       </div>
@@ -24,7 +24,7 @@
           <article class="row m-0 p-0 justify-content-center align-items-center">
 
             <template v-for="card in lancamentosWallpapers">
-              <CardComponente :card="card"/>
+              <CardComponente :card="card" />
             </template>
           
           </article>
@@ -64,7 +64,7 @@ import CardComponente from '@/components/CardComponente.vue';
 import {
   getLancamentosWallpapers,
   getMaisBaixadosWallpapers,
-  getWallpaperPesquisa,
+  getMaisProcuradasCategorias,
 } from '@/services/api';
 import { pesquisaStore } from '@/stores/pesquisa';
 export default {
@@ -88,6 +88,7 @@ export default {
       maisBuscado: [],
       lancamentosWallpapers: [],
       maisBaixadosWallpapers: [],
+
     }
   },
   created() {
@@ -111,11 +112,18 @@ export default {
       try {
         const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
         const responseLancamentosWallpapers = await getLancamentosWallpapers();
-        const responseMaisBuscadosCategorias = await getCategoriasMaisBuscadas();
+        const responseMaisBuscadosCategorias = await getMaisProcuradasCategorias();
+
         this.lancamentosWallpapers = responseLancamentosWallpapers.data;
         this.qtdLancamentos = this.lancamentosWallpapers.length;
+
         this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
+        
         this.maisBuscado = responseMaisBuscadosCategorias.data;
+
+
+
+
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }

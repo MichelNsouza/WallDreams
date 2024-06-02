@@ -4,7 +4,7 @@
     <div class="row g-0">
       <div class="col-12">
         <div class="img-container">
-          <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/' + card.url"
+          <img :src="'{{url}}'"
             class="card-img-top rounded img-fluid tamanho" alt="...">
         </div>
       </div>
@@ -31,11 +31,11 @@
 <script>
 import ModalComponente from '@/components/ModalComponente.vue';
 import {
-  getTodasCategorias
+  getTodasCategorias,
+  getWallpaperImg,
 } from '@/services/api';
 
 export default {
-  name: 'CardComponente',
   components: {
     ModalComponente
   },
@@ -43,6 +43,7 @@ export default {
     return {
       exibeModal: false,
       categories: [],
+      url:''
     }
   },
   props: {
@@ -66,10 +67,21 @@ export default {
       } catch (error) {
         console.error('Erro ao buscar categorias:', error);
       }
+    },
+    async fetchUrlImg() {
+    try {
+        console.log(this.card.id); // Aqui estamos acessando card.id
+        console.log(this.card.wallpaper_id); // Exemplo adicional de acesso a outra propriedade de card
+        const response = await getWallpaperImg(this.card.wallpaper_id, 'HD');
+        this.url = response.data;
+    } catch (error) {
+      console.error('Erro ao buscar imagem:', error);
     }
-  },
+}
+  }
   mounted() {
     this.fetchCategories();
+    this.fetchUrlImg();
   }
 };
 </script>
