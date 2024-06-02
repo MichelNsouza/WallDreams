@@ -12,8 +12,6 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'iconeCoracao'"
-          :alt="'ícone botão de download'"
           class=" p-1 m-2 d-flex justify-content-center align-items-center"
           @click="like"
           :iconClass="curtida ? 'bgVermelho' : ''"
@@ -23,8 +21,6 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'iconeCompatilhar'"
-          :alt="'ícone botão de download'"
           class="p-1 m-2 d-flex justify-content-center align-items-center"
           @click="compartilhar"
         />
@@ -43,8 +39,6 @@
           :tamanho="'icone'"
           :cor="'bgCinza'"
           :corTexto="''"
-          :src="'iconeX'"
-          :alt="'icone botão de fechar'"
           class=""
           
           />
@@ -55,8 +49,6 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          :src= "require('../assets/icons/icone-download.svg')"
-          :alt="'ícone botão de download'"
           class="mt-4 mb-2"
           @click="abrirModalCadastro(), resolucao = '4K'"
         />
@@ -65,8 +57,6 @@
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          :src= "require('../assets/icons/icone-download.svg')"
-          :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro(), resolucao = 'FullHD'"
         />
@@ -75,8 +65,6 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          :src= "require('../assets/icons/icone-download.svg')"
-          :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro(), resolucao = 'HD'"
         />
