@@ -22,7 +22,7 @@ jobs:
         with:
           host: ec2-54-207-67-252.sa-east-1.compute.amazonaws.com
           username: ubuntu
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             cd /home/ubuntu/frontend/WallDreams
