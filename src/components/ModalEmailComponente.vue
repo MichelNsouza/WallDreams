@@ -3,8 +3,9 @@
     <div class="container  text-center d-flex z-3 justify-content-center align-items-center w-100">
         <div class="container2 mt-0">
             <div class="d-flex justify-content-end">
-                <ButtonComponente @click="fecharModalCadastro()" :texto="''" :tamanho="'icone'" :cor="'bgBranco'"
-                    :corTexto="''" src="@/src/assets/icons/icone-x.svg" :alt="'icone botão de fechar'" class="" />
+                <button class="btn icone" @click="fecharModalCadastro()">
+                    <img src="/src/assets/icons/icone-x.svg" alt="icone X">
+                 </button>
             </div>
 
             <h2>Identifique-se para não perder nenhuma <br>
@@ -25,10 +26,10 @@
 </template>
 
 <script>
-import ButtonComponente from './ButtonComponente.vue';
 import {
     getDownloadWallpaper
 } from '@/services/api';
+import ButtonComponente from './ButtonComponente.vue';
 
 export default {
     data() {
@@ -154,5 +155,13 @@ button {
     background-color: #78CB99;
     color: white;
     font-weight: 700;
+}
+.icone {
+  background-color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 </style>

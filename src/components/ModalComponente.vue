@@ -7,23 +7,14 @@
       <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/'+card.wallpaper_id+'/?resolution=HD'" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
         <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
-        
-        <ButtonComponente 
-          :texto="''" 
-          :tamanho="'icone'" 
-          :cor="'bgCinzaClaro'"
-          class=" p-1 m-2 d-flex justify-content-center align-items-center"
-          @click="like"
-          :iconClass="curtida ? 'bgVermelho' : ''"
-        />
-        
-        <ButtonComponente 
-          :texto="''" 
-          :tamanho="'icone'" 
-          :cor="'bgCinzaClaro'"
-          class="p-1 m-2 d-flex justify-content-center align-items-center"
-          @click="compartilhar"
-        />
+    
+        <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="like" :iconClass="curtida ? 'bgVermelho' : ''">
+            <img src="/src/assets/icons/frame-coracao.svg" alt="icone coração">
+          </button>
+        <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="compartilhar">
+            <img src="/src/assets/icons/frame-compartilhar.svg" alt="icone compartilhar">
+          </button>
+          
        
       </div>
     
@@ -34,40 +25,15 @@
       <div class="card-body d-flex flex-column"> 
 
         <div class="d-flex justify-content-end">
-          <ButtonComponente @click="fecharModal()"
-          :texto="''"
-          :tamanho="'icone'"
-          :cor="'bgCinza'"
-          :corTexto="''"
-          class=""
-          
-          />
-        </div>     
+          <button class="btn icone" @click="fecharModal()">
+            <img src="/src/assets/icons/icone-x.svg" alt="icone X">
+          </button>
+        </div>    
 
-        <ButtonComponente 
-          :texto="'Baixar em 4K'" 
-          :tamanho="'pequeno'" 
-          :cor="'bgVerde'"
-          :corTexto="'branco'"
-          class="mt-4 mb-2"
-          @click="abrirModalCadastro(), resolucao = '4K'"
-        />
-        <ButtonComponente 
-          :texto="'Baixar em Full HD'" 
-          :tamanho="'pequeno'" 
-          :cor="'bgAzul'"
-          :corTexto="'branco'"
-          class="mb-2"
-          @click="abrirModalCadastro(), resolucao = 'FullHD'"
-        />
-        <ButtonComponente 
-          :texto="'Baixar em HD'" 
-          :tamanho="'pequeno'" 
-          :cor="'bgCinzaEscuro'"
-          :corTexto="'branco'"
-          class="mb-2"
-          @click="abrirModalCadastro(), resolucao = 'HD'"
-        />
+        <button  type="button" class="btn btn-success btn-lg mt-4 mb-2"@click="abrirModalCadastro(), resolucao = '4K'"><img src="/src/assets/icons/icone-download.svg" alt="icone download"> Baixar em 4K</button>
+        <button type="button" class="btn btn-primary btn-lg mb-2"@click="abrirModalCadastro(), resolucao = 'FullHD'"><img src="/src/assets/icons/icone-download.svg" alt="icone download"> Baixar em Full HD</button>
+        <button type="button" class="btn btn-dark btn-lg mb-2"@click="abrirModalCadastro(), resolucao = 'HD'"><img src="/src/assets/icons/icone-download.svg" alt="icone download"> Baixar em HD</button>
+
         <p class="h5 mt-3">Categoria</p>
         <p>{{  getCategoryName(card.category_id) }}</p> 
         <p class="h5"><strong>Donwloads semanais</strong></p>
@@ -88,7 +54,6 @@
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
-import iconeDownload from '@/assets/icons/icone-download.svg';
 export default {
   data(){
     return {
@@ -172,6 +137,14 @@ export default {
 </script>
 
 <style scoped>
+
+.icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
 
 .container{
   position: fixed;
