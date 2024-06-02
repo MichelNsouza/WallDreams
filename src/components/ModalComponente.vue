@@ -55,7 +55,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          :src="'iconeDownload'"
+          :src= "require('../assets/icons/icone-download.svg')"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
           @click="abrirModalCadastro()"
@@ -65,7 +65,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          :src="'iconeDownload'"
+          :src= "require('../assets/icons/icone-download.svg')"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
@@ -75,7 +75,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          :src="'iconeDownload'"
+          :src= "require('../assets/icons/icone-download.svg')"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
@@ -150,6 +150,9 @@ export default {
         }
       } else {
         console.warn('API de Web Share não suportada neste navegador.');
+        alert('API de Web Share não suportada neste navegador.');
+        alert(`copie o link: http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com//buscar/${encodeURIComponent(this.card.description)}`);
+
       }
     },
     getCategoryName(category_id) {

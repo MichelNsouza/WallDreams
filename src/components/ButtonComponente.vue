@@ -8,23 +8,6 @@
 </template>
 
 <script>
-import iconeDownload from '@/assets/icons/icone-download.svg';
-import iconeCompatilhar from '@/assets/icons/frame-compartilhar.svg';
-import iconeCoracao from '@/assets/icons/frame-coracao.svg';
-import iconeX from '@/assets/icons/icone-x.svg';
-import iconeFoto from '@/assets/icons/iconFoto.svg';
-import iconeLupa from '@/assets/icons/lupaPesquisa.svg';
-
-
-const iconMap = {
-  iconeDownload,
-  iconeX,
-  iconeLupa,
-  iconeFoto,
-  iconeCoracao,
-  iconeCompatilhar,
-};
-
 export default {
   props: {
     texto: {
@@ -56,11 +39,6 @@ export default {
       default: ''
     }
   },
-  computed: {
-    resolvedSrc() {
-      return iconMap[this.src] || this.src;
-    }
-  }
 };
 </script>
 
