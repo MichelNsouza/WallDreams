@@ -1,12 +1,12 @@
 <template>
   <div class="row d-flex justify-content-center align-items-center">
-    <div class="col-md-8">
+    <div class="col-md-9">
 
       <BarraPesquisa  class="mt-5"/>  
 
       <section class="mt-5">
         <div v-if="pesquisaExiste == true">
-          <p class="mt-5 mb-3">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque">{{pesquisaRetorno.pesquisa}}</span></p>
+          <p class="d-flex mt-5 mb- mx-5">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque"> <b> {{pesquisaRetorno.pesquisa}} </b> </span></p>
 
             <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
               
@@ -81,23 +81,20 @@ export default {
      async fetchData() {
        try {
          this.cards = [];
-         const todos = await getTodosWallpapers();
-         this.cards = todos.data.wallpapers;
-         this.pesquisaExiste = true;
-         //  const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
+           const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
          
-        //  if (pesquisa) {
-        //    const cardsEncontrados = pesquisa.data
-        //    this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-        //    this.pesquisaExiste = cardsEncontrados.length > 0;
-        //    this.qtdWallpp = cardsEncontrados.length;
+          if (pesquisa) {
+            const cardsEncontrados = pesquisa.data.result;
+            this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+            this.pesquisaExiste = cardsEncontrados.length > 0;
+            this.qtdWallpp = cardsEncontrados.length;
 
-        //  }else {
-        //      this.qtdWallpp = 0;
-        //      this.cards = [];
-        //      this.pesquisaExiste = false;
-        //      this.quantidadevisivel = 0;
-        //  }
+          }else {
+              this.qtdWallpp = 0;
+              this.cards = [];
+              this.pesquisaExiste = false;
+              this.quantidadevisivel = 0;
+          }
        } catch (error) {
          console.error('Erro ao buscar dados:', error);
        }

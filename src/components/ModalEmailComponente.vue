@@ -8,7 +8,7 @@
           :tamanho="'icone'"
           :cor="'bgBranco'"
           :corTexto="''"
-          :src="'/src/assets/icons/icone-x.svg'"
+          src="@/src/assets/icons/icone-x.svg"
           :alt="'icone botão de fechar'"
           class=""
           
@@ -32,7 +32,7 @@
 
 <script>
 import ButtonComponente from './ButtonComponente.vue';
-
+// download_wallpaper/5(id do wpp)/?resolution=4K(paremetro)&name=fulanodetal(paremetro)&email=fulano@gmail.com(paremetro)
 export default {
     data(){
         return {
@@ -47,13 +47,23 @@ export default {
     methods: {
         fecharModalCadastro(){
       this.$emit('fechar-modal-cadastro')
-    }
+    },
+    fecharModalESC(event) {
+            if (event.keyCode === 27) {
+                this.fecharModalCadastro();
+            }
 
     }
   
+},
+mounted() {
+        document.addEventListener('keydown', this.fecharModalESC);
+    },
+beforeDestroy() {
+        document.removeEventListener('keydown', this.fecharModalESC);
     }
 
-
+}
 </script>
 
     

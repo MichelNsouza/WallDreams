@@ -1,9 +1,9 @@
 <template>
   <button
-  :class="`btn ${tamanho} ${cor} ${corTexto}`"
+    :class="`btn ${tamanho} ${cor} ${corTexto}`"
   >
-  <img :src="src" :alt="alt">
-  {{texto}}
+    <img v-if="src" :src="src" :alt="alt" :class="iconClass">
+    {{texto}}
   </button>
 </template>
 
@@ -35,14 +35,15 @@ export default {
       type: String,
       default: '' 
     },
+    iconClass: {
+      type: String,
+      default: ''
+    }
   },
 };
 </script>
 
 <style scoped>
-img{
-  margin-right: 8px;
-}
 .branco{
   color: white;
 }
@@ -90,6 +91,10 @@ background-color: #E8E8E8;
 }
 .bgBranco {
   background-color: white ;
+}
+.bgVermelho {
+  /* background-color: red ; */
+  filter: invert(29%) sepia(92%) saturate(4512%) hue-rotate(353deg) brightness(91%) contrast(112%);
 }
 
 

@@ -26,6 +26,11 @@ export default {
 
 <style>
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 .content {
   min-height: calc(100vh - 100px);
 }

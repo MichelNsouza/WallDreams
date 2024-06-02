@@ -12,6 +12,7 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "json-server": "^1.0.0-alpha.23",
+    "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"

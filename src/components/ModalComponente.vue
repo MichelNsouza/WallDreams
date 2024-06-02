@@ -4,7 +4,7 @@
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
-      <img :src="'http://ec2-18-229-159-118.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
+      <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
         <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
         
@@ -12,16 +12,18 @@
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-coracao.svg'"
+          src="@/src/assets/icons/frame-coracao.svg"
           :alt="'ícone botão de download'"
           class=" p-1 m-2 d-flex justify-content-center align-items-center"
+          @click="like"
+          :iconClass="curtida ? 'bgVermelho' : ''"
         />
         
         <ButtonComponente 
           :texto="''" 
           :tamanho="'icone'" 
           :cor="'bgCinzaClaro'"
-          :src="'/src/assets/icons/frame-compartilhar.svg'"
+          src="@/src/assets/icons/frame-compartilhar.svg"
           :alt="'ícone botão de download'"
           class="p-1 m-2 d-flex justify-content-center align-items-center"
           @click="compartilhar"
@@ -41,7 +43,7 @@
           :tamanho="'icone'"
           :cor="'bgCinza'"
           :corTexto="''"
-          :src="'/src/assets/icons/icone-x.svg'"
+          src="@/src/assets/icons/icone-x.svg"
           :alt="'icone botão de fechar'"
           class=""
           
@@ -53,7 +55,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgVerde'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.svg'"
+          src="@/src/assets/icons/icone-download.svg"
           :alt="'ícone botão de download'"
           class="mt-4 mb-2"
           @click="abrirModalCadastro()"
@@ -63,7 +65,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgAzul'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.svg'"
+          src="@/src/assets/icons/icone-download.svg"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
@@ -73,7 +75,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          :src="'./src/assets/icons/icone-download.svg'"
+          src="@/src/assets/icons/icone-download.svg"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
@@ -102,6 +104,7 @@ export default {
   data(){
     return {
       exibeModalCadastro: false,
+      curtida: false,
     }
   },
   components: {
@@ -123,8 +126,30 @@ export default {
     fecharModal(){
       this.$emit('fechar-modal')
     }, 
-    compartilhar() {
+    fecharModalESC(event) {
+            if (event.keyCode === 27 && this.exibeModalCadastro == false) {
+                this.fecharModal(); 
+            }
 
+    },
+    async compartilhar() {
+
+      // window.location.href
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Confira este conteúdo!',
+            text: this.card.description,
+            url: `/buscar/${encodeURIComponent(this.card.description)}`,
+          });
+          console.log('Conteúdo compartilhado com sucesso');
+        } catch (error) {
+          console.error('Erro ao compartilhar o conteúdo:', error);
+        }
+      } else {
+        console.warn('API de Web Share não suportada neste navegador.');
+      }
     },
     getCategoryName(category_id) {
       const category = this.categories.find(cat => cat.category_id === category_id);
@@ -137,9 +162,18 @@ export default {
     },
     fecharModalCadastro() {
       this.exibeModalCadastro = false;
-    }
-
     },
+    like(){
+      this.curtida = !this.curtida;
+    }
+   
+    },
+    mounted() {
+        document.addEventListener('keydown', this.fecharModalESC);
+    },
+    beforeDestroy() {
+        document.removeEventListener('keydown', this.fecharModalESC);
+    }
   }
 </script>
 
@@ -187,9 +221,6 @@ export default {
   height: 41px;
   background: #E8E8E8;
   border: none;
-
-
 }
-
 
 </style>
