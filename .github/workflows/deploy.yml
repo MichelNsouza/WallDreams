@@ -24,12 +24,14 @@ jobs:
             
             
             /home/ubuntu/.nvm/versions/node/v20.13.1/bin/node --version
-            
+
             /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm --version
             
             cd /home/ubuntu/frontend/WallDreams
             pwd
             ls -l
+
+            git pull origin develop
 
             # Build the project
             npm run build
