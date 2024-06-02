@@ -1,49 +1,45 @@
 <template>
-      <header class="nav">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg ">            
-            <router-link to="/" class="custom-link">
-               <h1 class="h4" ><img src="\src\assets\icons\iconFoto.svg" alt="Icone de fotografia"> WallDreams</h1>
+  <header class="nav">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg ">
+        <router-link to="/" class="custom-link">
+          <h1 class="h4"><img src="\src\assets\icons\iconFoto.svg" alt="Icone de fotografia"> WallDreams</h1>
+        </router-link>
+
+        <ul class="navbar-url collapse navbar-collapse justify-content-end p-3 mb-2">
+          <li v-for="(categoria) in categorias" class="list">
+            <router-link @click="enviarPesquisa(categoria.name)" :to="'/buscar/' + categoria.name" class="nav-info">
+              <span>{{ categoria.name }}</span>
             </router-link>
-              
-            <ul class="navbar-url collapse navbar-collapse justify-content-end p-3 mb-2">
-                <li v-for="(categoria) in categorias" class="list"> 
-                    <router-link 
-                    @click="enviarPesquisa(categoria.name)" 
-                    :to="'/buscar/'+categoria.name" 
-                    class="nav-info"
-                    >
-                    <span>{{ categoria.name }}</span>
-                    </router-link>
-                </li>
-            </ul> 
-          </nav>
-        </div>
-     </header>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 </template>
 
-  
+
 <script>
 import { pesquisaStore } from '@/stores/pesquisa';
-import { 
+import {
   getTodasCategorias
 } from '@/services/api';
 export default {
   setup() {
-    const storePesquisa = pesquisaStore() 
+    const storePesquisa = pesquisaStore()
     return {
       storePesquisa
     }
   },
   data() {
     return {
-      categorias:[]
+      categorias: []
     };
   },
   created() {
     this.fetchData();
   },
-  methods:{
+  methods: {
     async fetchData() {
       try {
         const todasCategorias = await getTodasCategorias();
@@ -62,31 +58,33 @@ export default {
 
 <style>
 /*navbar css*/
-.nav{
-    background-color: var(--headerColor);
-    color:var(--whiteColor);
-    height: 80px;
+.nav {
+  background-color: var(--headerColor);
+  color: var(--whiteColor);
+  height: 80px;
 }
 
-.navbar{
+.navbar {
   height: 80px;
   widows: 100%;
 }
-.custom-link{
+
+.custom-link {
   color: var(--whiteColor);
   text-decoration: none;
-} 
-.svg-nav{
+}
+
+.svg-nav {
   margin: 0 15px 7px 0;
   align-items: center;
 }
 
-.nav-info{
+.nav-info {
   text-decoration: none;
   color: var(--whiteColor);
 }
 
-.navbar-url li{
+.navbar-url li {
   display: inline-block;
   text-decoration: none;
   padding-left: 20px;

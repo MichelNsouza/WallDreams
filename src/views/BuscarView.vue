@@ -2,37 +2,34 @@
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-9">
 
-      <BarraPesquisa  class="mt-5"/>  
+      <BarraPesquisa class="mt-5" />
 
       <section class="mt-5">
         <div v-if="pesquisaExiste == true">
-          <p class="d-flex mt-5 mb- mx-5">{{qtdWallpp}} Wallpapers foram encontrados com o termo: <span class="destaque"> <b> {{pesquisaRetorno.pesquisa}} </b> </span></p>
+          <p class="d-flex mt-5 mb- mx-5">{{ qtdWallpp }} Wallpapers foram encontrados com o termo: <span
+              class="destaque"> <b> {{ pesquisaRetorno.pesquisa }} </b> </span></p>
 
-            <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
-              
-              <template v-for="card in cards">
-                <CardComponente :card="card"/>
-              </template>
+          <article class="mb-5 d-flex justify-content-center align-items-center row row-cols-1 row-cols-md-3 g-4 al">
 
-              <div class="w-100"></div>
+            <template v-for="card in cards">
+              <CardComponente :card="card" />
+            </template>
 
-              <template v-if="qtdWallpp > 9 && quantidadevisivel<=qtdWallpp" class="mt-3 d-flex justify-content-center">
-                <ButtonComponente 
-                  :texto="'Ver mais Wallpapers'" 
-                  :tamanho="'grande'" 
-                  :cor="'bgCinzaClaro'"
-                  @click.prevent="incrementaCards()"
-                />
-              </template>
-            
-            </article>
+            <div class="w-100"></div>
+
+            <template v-if="qtdWallpp > 9 && quantidadevisivel <= qtdWallpp" class="mt-3 d-flex justify-content-center">
+              <ButtonComponente :texto="'Ver mais Wallpapers'" :tamanho="'grande'" :cor="'bgCinzaClaro'"
+                @click.prevent="incrementaCards()" />
+            </template>
+
+          </article>
         </div>
         <div v-if="pesquisaExiste == false">
-          <NotfoundComponente :titulo="pesquisaRetorno.pesquisa"/>
+          <NotfoundComponente :titulo="pesquisaRetorno.pesquisa" />
         </div>
       </section>
     </div>
-  </div> 
+  </div>
 </template>
 
 <script>
@@ -45,7 +42,7 @@ import {
   getWallpaperPesquisa
 } from '@/services/api';
 import { pesquisaStore } from '@/stores/pesquisa';
- 
+
 export default {
   components: {
     NotfoundComponente,
@@ -58,15 +55,15 @@ export default {
     return {
       pesquisaExiste: false,
       qtdWallpp: 0,
-      quantidadevisivel:9,
+      quantidadevisivel: 9,
       pesquisaRetorno: storePesquisa,
       cards: [],
     };
   },
   mounted() {
-  this.fetchData();
-},
-beforeRouteEnter(to, from, next) {
+    this.fetchData();
+  },
+  beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.termoDePesquisa) {
         console.log(decodeURIComponent(to.params.termoDePesquisa));
@@ -77,9 +74,9 @@ beforeRouteEnter(to, from, next) {
   },
   watch: {
     '$route'() {
-      this.quantidadevisivel=9;
+      this.quantidadevisivel = 9;
       this.fetchData();
-  
+
     },
 
   },
@@ -88,33 +85,33 @@ beforeRouteEnter(to, from, next) {
       this.quantidadevisivel += 9;
       this.fetchData();
     },
-     async fetchData() {
-       try {
-         this.cards = [];
-           const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa);// aplicar tratamento no back toLowerCase().trim()
-          if (pesquisa) {
-            const cardsEncontrados = pesquisa.data.result;
-            this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-            this.pesquisaExiste = cardsEncontrados.length > 0;
-            this.qtdWallpp = cardsEncontrados.length;
+    async fetchData() {
+      try {
+        this.cards = [];
+        const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa);// aplicar tratamento no back toLowerCase().trim()
+        if (pesquisa) {
+          const cardsEncontrados = pesquisa.data.result;
+          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+          this.pesquisaExiste = cardsEncontrados.length > 0;
+          this.qtdWallpp = cardsEncontrados.length;
 
-          }else {
-              this.qtdWallpp = 0;
-              this.cards = [];
-              this.pesquisaExiste = false;
-              this.quantidadevisivel = 0;
-          }
-       } catch (error) {
-         console.error('Erro ao buscar dados:', error);
-       }
-     },
+        } else {
+          this.qtdWallpp = 0;
+          this.cards = [];
+          this.pesquisaExiste = false;
+          this.quantidadevisivel = 0;
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    },
   }
 };
 </script>
 
 
 <style scoped>
-.destaque{
+.destaque {
   color: var(--headerColor);
   font-weight: bold;
 }
