@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # Print working directory and list files
+            
             pwd
             ls -l
             
@@ -32,11 +32,6 @@ jobs:
             # Navigate to the project directory
             cd /home/ubuntu/frontend/WallDreams
             
-            # Pull the latest code from the develop branch
-            git pull origin develop
-            
-            # Install dependencies
-            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm install
             
             # Build the project
             /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm run build
