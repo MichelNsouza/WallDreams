@@ -1,20 +1,17 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - develop
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.13.1'  # Especifique a versão do Node.js que você deseja usar
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
@@ -25,6 +22,26 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/frontend/WallDreams
+            echo "Stashing local changes..."
+            git stash -u
+            echo "Pulling latest changes from develop branch..."
             git pull origin develop
-            npm run build
+            echo "Latest changes pulled."
+            
+            echo "Applying stashed changes..."
+            git stash pop || true  # Ignorar erro se não houver stashes
+
+            
+            echo "Building the project..."
+            if npm run build; then
+              echo "Build successful."
+            else
+              echo "Build failed."
+              exit 1
+            fi
+
+            echo "Restarting Nginx..."
             sudo systemctl restart nginx
+            echo "Nginx restarted."
+
+            echo "Deployment completed successfully."
