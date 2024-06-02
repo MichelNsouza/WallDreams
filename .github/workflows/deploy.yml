@@ -19,7 +19,68 @@ jobs:
           node-version: '20'  # Especifique a versão do Node.js que você deseja usar
 
       - name: Install dependencies
+        run: npm installaname: Deploy to Server
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
         run: npm install
+
+      - name: Install Node.js on remote server
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nodejs npm
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ec2-54-207-67-252.sa-east-1.compute.amazonaws.com
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            set -e # Sair imediatamente se algum comando falhar
+            cd /home/ubuntu/frontend/WallDreams
+            echo "Stashing local changes..."
+            git stash -u
+            echo "Pulling latest changes from develop branch..."
+            git pull origin develop
+            echo "Latest changes pulled."
+            
+            echo "Applying stashed changes..."
+            git stash pop || true  # Ignorar erro se não houver stashes
+
+            echo "Building the project..."
+            npm run build
+            if [ $? -ne 0 ]; then
+              echo "Build failed."
+              exit 1
+            fi
+            echo "Build successful."
+
+            echo "Restarting Nginx..."
+            sudo systemctl restart nginx
+            echo "Nginx restarted."
+
+            echo "Deployment completed successfully."
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
