@@ -11,12 +11,14 @@
                 novidade do WallDreams</h2>
 
             <p>Não se preoculpe, seus dados estarão protegidos!</p>
-            <input type="text" name="nome" id="nome" placeholder="Informe o seu nome" v-model="dadoNome" /> <br>
-            <input type="text" name="email" id="email" placeholder="Informe o seu e-mail" v-model="dadoEmail" /> <br>
-            <button type="button" class="mt-4 mb-0" @click="btnDownloadWallpaper">
+         <form @submit.prevent="btnDownloadWallpaper">
+            <input required type="text" name="nome" id="nome" placeholder="Informe o seu nome" v-model="dadoNome" /> <br>
+            <input required type="email" name="email" id="email" placeholder="Informe o seu e-mail" v-model="dadoEmail" /> <br>
+            <button type="submit" class="mt-4 mb-0">
                 <img src="/src/assets/icons/icone-download.svg">
                 Confirmar Download
             </button>
+        </form>
 
         </div>
     </div>
