@@ -63,35 +63,34 @@ export default {
         },
 
         async btnDownloadWallpaper() {
-            try {
-
-                const download = await getDownloadWallpaper(this.idWallpaper, this.dadoResolucao, this.dadoNome, this.dadoEmail);
-                this.salvarImagem(download.request.responseURL)
-
-            } catch (error) {
-                console.error('Erro ao baixar o Wallpaper:', error);
-            }
-        },
-
-        salvarImagem(imageData) {
-            const fileName = 'imagem-baixada.jpg'; // Nome do arquivo
-
-            // Criar um objeto Blob a partir do conteúdo da imagem
-            const blob = new Blob([imageData], { type: 'image/jpeg' });
-
-            // Criar um objeto URL a partir do Blob
-            const url = URL.createObjectURL(blob);
-
-            // Criar um link para baixar a imagem
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = fileName;
-            link.click();
-
-            // Revogar a URL do objeto Blob para evitar vazamentos de memória
-            URL.revokeObjectURL(url);
-        }
+      try {
+        const response = await getDownloadWallpaper(this.idWallpaper, this.dadoResolucao, this.dadoNome, this.dadoEmail);
+        const imageUrl = response.request.responseURL;
+        this.downloadImage(imageUrl);
+      } catch (error) {
+        console.error('Erro ao baixar o Wallpaper:', error);
+      }
     },
+
+    async downloadImage(imageUrl) {
+      try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'imagem-baixada.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error('Erro ao baixar a imagem:', error);
+      }
+    }
+  },
     mounted() {
         document.addEventListener('keydown', this.fecharModalESC);
     },
