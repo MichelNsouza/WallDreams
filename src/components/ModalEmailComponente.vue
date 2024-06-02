@@ -32,7 +32,7 @@
 
 <script>
 import ButtonComponente from './ButtonComponente.vue';
-
+// download_wallpaper/5(id do wpp)/?resolution=4K(paremetro)&name=fulanodetal(paremetro)&email=fulano@gmail.com(paremetro)
 export default {
     data(){
         return {

@@ -81,24 +81,20 @@ export default {
      async fetchData() {
        try {
          this.cards = [];
-         const todos = await getTodosWallpapers();
-         this.cards = todos.data.wallpapers; 
-         this.pesquisaExiste = true;
+           const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
          
-         //  const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa.toLowerCase().trim());
-         
-        //  if (pesquisa) {
-        //    const cardsEncontrados = pesquisa.data
-        //    this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-        //    this.pesquisaExiste = cardsEncontrados.length > 0;
-        //    this.qtdWallpp = cardsEncontrados.length;
+          if (pesquisa) {
+            const cardsEncontrados = pesquisa.data.result;
+            this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
+            this.pesquisaExiste = cardsEncontrados.length > 0;
+            this.qtdWallpp = cardsEncontrados.length;
 
-        //  }else {
-        //      this.qtdWallpp = 0;
-        //      this.cards = [];
-        //      this.pesquisaExiste = false;
-        //      this.quantidadevisivel = 0;
-        //  }
+          }else {
+              this.qtdWallpp = 0;
+              this.cards = [];
+              this.pesquisaExiste = false;
+              this.quantidadevisivel = 0;
+          }
        } catch (error) {
          console.error('Erro ao buscar dados:', error);
        }

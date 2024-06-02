@@ -12,9 +12,9 @@
 
           <p>
           Categorias mais buscadas 
-          <a :href="`/categoria/${maisBuscado[0]}`" class="destaqueMaisBuscado"><strong>{{ maisBuscado[0] }}</strong></a>, 
-          <a :href="`/categoria/${maisBuscado[1]}`" class="destaqueMaisBuscado"><strong>{{ maisBuscado[1] }}</strong></a> e 
-          <a :href="`/categoria/${maisBuscado[2]}`" class="destaqueMaisBuscado"><strong>{{ maisBuscado[2] }}</strong></a>.
+          <router-link @click="enviarPesquisa(maisBuscado[0])"  :to="'/buscar/'+maisBuscado[0].name" class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>, 
+          <router-link @click="enviarPesquisa(maisBuscado[1])"  :to="'/buscar/'+maisBuscado[1].name" class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name }}</strong></router-link>e 
+          <router-link @click="enviarPesquisa(maisBuscado[2])"  :to="'/buscar/'+maisBuscado[2].name" class="destaqueMaisBuscado"><strong>{{ maisBuscado[2].name }}</strong></router-link>.
         </p>
         
       </div>
@@ -64,14 +64,21 @@ import CardComponente from '@/components/CardComponente.vue';
 import {
   getLancamentosWallpapers,
   getMaisBaixadosWallpapers,
+  getWallpaperPesquisa,
 } from '@/services/api';
-
+import { pesquisaStore } from '@/stores/pesquisa';
 export default {
   name: 'HomeView',
   components: {
     BarraPesquisa,
     CardComponente,
     ButtonComponente,
+  },
+  setup() {
+    const storePesquisa = pesquisaStore() 
+    return {
+      storePesquisa
+    }
   },
   data() {
     return {
@@ -81,19 +88,6 @@ export default {
       maisBuscado: [],
       lancamentosWallpapers: [],
       maisBaixadosWallpapers: [],
-      maisBuscadoArray: [
-      {
-        "category_id": 1,
-        "name": "Veículos"
-      },
-      {
-        "category_id": 2,
-        "name": "Paisagem"
-      },
-      {
-        "category_id": 3,
-        "name": "Animais"
-        }]
     }
   },
   created() {
@@ -106,6 +100,9 @@ export default {
     },
   },
   methods: {
+    enviarPesquisa(categoria) {
+      this.storePesquisa.setPesquisa(categoria);
+    },
     incrementaCards() {
         this.quantidadevisivel += 3;
         this.fetchData();
@@ -114,16 +111,11 @@ export default {
       try {
         const responseMaisBaixadosWallpapers = await getMaisBaixadosWallpapers();
         const responseLancamentosWallpapers = await getLancamentosWallpapers();
-        //const responseMaisBuscadosCategorias = await getCategoriasMaisBuscadas();
+        const responseMaisBuscadosCategorias = await getCategoriasMaisBuscadas();
         this.lancamentosWallpapers = responseLancamentosWallpapers.data;
         this.qtdLancamentos = this.lancamentosWallpapers.length;
         this.maisBaixadosWallpapers = responseMaisBaixadosWallpapers.data;
-        //this.maisBuscado = responseMaisBuscadosCategorias.data;
-        
-        this.maisBuscadoArray.forEach(categoria => {
-          this.maisBuscado.push(categoria.name);
-        });
-
+        this.maisBuscado = responseMaisBuscadosCategorias.data;
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
