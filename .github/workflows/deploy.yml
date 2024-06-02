@@ -21,12 +21,30 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            set -e  # Para parar a execução em caso de erro
+            echo "Verificando diretório atual"
             pwd
             ls -l
+
+            echo "Verificando versões de Node e NPM"
             which node
             which npm
+            node --version
             npm --version
+
+            echo "Entrando no diretório do projeto"
             cd /home/ubuntu/frontend/WallDreams
+
+            echo "Atualizando código do repositório"
             git pull origin develop
+
+            echo "Instalando dependências"
+            npm install
+
+            echo "Rodando build"
             npm run build
+
+            echo "Reiniciando serviço Nginx"
             sudo systemctl restart nginx
+
+            echo "Deploy concluído com sucesso!"
