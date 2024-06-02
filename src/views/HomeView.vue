@@ -12,14 +12,14 @@
 
           <p>
             Categorias Mais Buscadas
-            <router-link @click="enviarPesquisa(maisBuscado[0].name)" :to="'/buscar/' + maisBuscado[0].name"
+            <router-link @click="enviarPesquisa(maisBuscado[0].name)" :to="{ name: 'buscar', query: { q: maisBuscado[0].name } }"
               class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>,
-            <router-link @click="enviarPesquisa(maisBuscado[1].name)" :to="'/buscar/' + maisBuscado[1].name"
+            <router-link @click="enviarPesquisa(maisBuscado[1].name)" :to="{ name: 'buscar', query: { q: maisBuscado[1].name } }"
               class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name }}</strong></router-link> e
-            <router-link @click="enviarPesquisa(maisBuscado[0].name)" :to="'/buscar/' + maisBuscado[0].name"
+            <router-link @click="enviarPesquisa(maisBuscado[0].name)" :to="{ name: 'buscar', query: { q: maisBuscado[1].name } }"
               class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>.
           </p>
-
+                    
         </div>
       </section>
       <section class="mt-5 mb-5 mx-3 col mx-5">

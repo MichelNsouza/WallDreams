@@ -37,7 +37,7 @@ import BarraPesquisa from '@/components/BarraPesquisaComponente.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
-import { getWallpaperPesquisa } from '@/services/api';
+import { getTodosWallpapers, getWallpaperPesquisa } from '@/services/api';
 import { pesquisaStore } from '@/stores/pesquisa';
 
 export default {
@@ -55,6 +55,7 @@ export default {
       quantidadevisivel: 9,
       pesquisaRetorno: storePesquisa,
       cards: [],
+      cardsEncontrados:[]
     };
   },
   mounted() {
@@ -76,12 +77,20 @@ export default {
     async fetchData() {
       try {
         this.cards = [];
-        const pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa);// aplicar tratamento no back toLowerCase().trim()
+
+        let pesquisa;
+    
+        if (this.pesquisaRetorno.pesquisa.toLowerCase().trim() === 'todos') {
+          pesquisa = await getTodosWallpapers();
+          this.cardsEncontrados = pesquisa.data.wallpapers;
+        } else {
+          pesquisa = await getWallpaperPesquisa(this.pesquisaRetorno.pesquisa);// no back tratativa de string toLowerCase().trim()
+          this.cardsEncontrados = pesquisa.data.result;
+        }
         if (pesquisa) {
-          const cardsEncontrados = pesquisa.data.result;
-          this.cards = cardsEncontrados.slice(0, this.quantidadevisivel);
-          this.pesquisaExiste = cardsEncontrados.length > 0;
-          this.qtdWallpp = cardsEncontrados.length;
+          this.cards = this.cardsEncontrados.slice(0, this.quantidadevisivel);
+          this.pesquisaExiste = this.cardsEncontrados.length > 0;
+          this.qtdWallpp = this.cardsEncontrados.length;
 
         } else {
           this.qtdWallpp = 0;

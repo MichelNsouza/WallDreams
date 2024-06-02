@@ -7,6 +7,11 @@
         </router-link>
 
         <ul class="navbar-url collapse navbar-collapse justify-content-end p-3 mb-2">
+        <li class="list">
+        <router-link @click="enviarPesquisa('todos')" :to="{ name: 'buscar', query: { q: 'todos' } }"  class="nav-info">
+          Todos
+        </router-link>
+        </li>
           <li v-for="(categoria) in categorias" class="list">
             <router-link @click="enviarPesquisa(categoria.name)" :to="{ name: 'buscar', query: { q: categoria.name } }"  class="nav-info">
               <span>{{ categoria.name }}</span>
