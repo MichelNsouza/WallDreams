@@ -75,7 +75,7 @@
           :tamanho="'pequeno'" 
           :cor="'bgCinzaEscuro'"
           :corTexto="'branco'"
-          src="/src/assets/icons/icone-download.svg"
+          src="/assets/icons/icone-download.svg"
           :alt="'ícone botão de download'"
           class="mb-2"
           @click="abrirModalCadastro()"
