@@ -4,7 +4,7 @@
     <div class="row g-0">
       <div class="col-12">
         <div class="img-container">
-          <img :src="'{{url}}'"
+          <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/'+card.wallpaper_id+'/?resolution=HD'"
             class="card-img-top rounded img-fluid tamanho" alt="...">
         </div>
       </div>
@@ -70,15 +70,13 @@ export default {
     },
     async fetchUrlImg() {
     try {
-        console.log(this.card.id); // Aqui estamos acessando card.id
-        console.log(this.card.wallpaper_id); // Exemplo adicional de acesso a outra propriedade de card
         const response = await getWallpaperImg(this.card.wallpaper_id, 'HD');
         this.url = response.data;
     } catch (error) {
       console.error('Erro ao buscar imagem:', error);
     }
-}
   }
+  },
   mounted() {
     this.fetchCategories();
     this.fetchUrlImg();

@@ -66,6 +66,14 @@ export default {
   mounted() {
   this.fetchData();
 },
+beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (to.params.termoDePesquisa) {
+        vm.pesquisaRetorno.pesquisa = decodeURIComponent(to.params.termoDePesquisa);
+        vm.fetchData();
+      }
+    });
+  },
   watch: {
     '$route'() {
       this.quantidadevisivel=9;
