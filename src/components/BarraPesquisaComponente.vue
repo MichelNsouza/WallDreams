@@ -27,10 +27,9 @@ export default {
     enviar() {
       const storePesquisa = pesquisaStore();
       storePesquisa.setPesquisa(this.buscarAtual);// aplicar tratamento no back toLowerCase().trim()
-      this.$router.push({ name: 'buscar', params: { query: this.buscarAtual } });// aplicar tratamento no back toLowerCase().trim()
+      this.$router.push({ name: 'buscar', query: { q: this.buscarAtual } });// aplicar tratamento no back toLowerCase().trim()
     },
   }
-
 }
 </script>
 

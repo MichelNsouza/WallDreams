@@ -37,10 +37,7 @@ import BarraPesquisa from '@/components/BarraPesquisaComponente.vue';
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import CardComponente from '@/components/CardComponente.vue';
 import NotfoundComponente from '@/components/NotfoundComponente.vue';
-import {
-  getTodosWallpapers,
-  getWallpaperPesquisa
-} from '@/services/api';
+import { getWallpaperPesquisa } from '@/services/api';
 import { pesquisaStore } from '@/stores/pesquisa';
 
 export default {
@@ -62,15 +59,6 @@ export default {
   },
   mounted() {
     this.fetchData();
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      if (to.params.termoDePesquisa) {
-        console.log(decodeURIComponent(to.params.termoDePesquisa));
-        vm.pesquisaRetorno.pesquisa = decodeURIComponent(to.params.termoDePesquisa);
-        vm.fetchData();
-      }
-    });
   },
   watch: {
     '$route'() {

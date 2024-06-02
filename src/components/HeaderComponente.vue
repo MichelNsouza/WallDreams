@@ -8,7 +8,7 @@
 
         <ul class="navbar-url collapse navbar-collapse justify-content-end p-3 mb-2">
           <li v-for="(categoria) in categorias" class="list">
-            <router-link @click="enviarPesquisa(categoria.name)" :to="'/buscar/' + categoria.name" class="nav-info">
+            <router-link @click="enviarPesquisa(categoria.name)" :to="{ name: 'buscar', query: { q: categoria.name } }"  class="nav-info">
               <span>{{ categoria.name }}</span>
             </router-link>
           </li>

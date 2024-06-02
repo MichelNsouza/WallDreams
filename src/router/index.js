@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import NotfoundView from '@/views/NotfoundView.vue';
 import BuscarView from '@/views/BuscarView.vue';
 import HomeView from '@/views/HomeView.vue';
+import NotfoundView from '@/views/NotfoundView.vue';
 
 
 const router = createRouter({   
@@ -14,8 +14,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-
-      path: '/buscar/:query',
+      path: '/buscar',
       name: 'buscar',
       component: BuscarView
     },
