@@ -11,9 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Build project
         run: npm run build
 
@@ -27,6 +24,5 @@ jobs:
           script: |
             cd /home/ubuntu/frontend/WallDreams
             git pull origin develop
-            npm install
             npm run build
             sudo systemctl restart nginx
