@@ -1,3 +1,4 @@
+
 name: Deploy to Server
 
 on:
@@ -11,33 +12,22 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Deploy to Server
-        uses: appleboy/ssh-action@v0.1.5
+        uses: appleboy/ssh-action@master
         with:
           host: ec2-54-207-67-252.sa-east-1.compute.amazonaws.com
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            set -e  # Para parar a execução em caso de erro
-            echo "Verificando diretório atual"
             pwd
             ls -l
-            echo "Verificando versões de Node e NPM"
-            which node
-            which npm
-            node --version
+            /path/to/node --version
+            /path/to/npm --version
             npm --version
-            echo "Entrando no diretório do projeto"
             cd /home/ubuntu/frontend/WallDreams
-            echo "Atualizando código do repositório"
             git pull origin develop
-            echo "Instalando dependências"
-            npm install
-            echo "Rodando build"
-            npm run build
-            echo "Reiniciando serviço Nginx"
+            /path/to/npm run build
             sudo systemctl restart nginx
-            echo "Deploy concluído com sucesso!"
