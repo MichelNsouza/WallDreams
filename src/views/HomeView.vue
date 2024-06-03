@@ -16,8 +16,8 @@
               class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>,
             <router-link @click="enviarPesquisa(maisBuscado[1].name)" :to="{ name: 'buscar', query: { q: maisBuscado[1].name } }"
               class="destaqueMaisBuscado"><strong>{{ maisBuscado[1].name }}</strong></router-link> e
-            <router-link @click="enviarPesquisa(maisBuscado[0].name)" :to="{ name: 'buscar', query: { q: maisBuscado[2].name } }"
-              class="destaqueMaisBuscado"><strong>{{ maisBuscado[0].name }}</strong></router-link>.
+            <router-link @click="enviarPesquisa(maisBuscado[2].name)" :to="{ name: 'buscar', query: { q: maisBuscado[2].name } }"
+              class="destaqueMaisBuscado"><strong>{{ maisBuscado[2].name }}</strong></router-link>.
           </p>
                     
         </div>
@@ -32,7 +32,7 @@
 
         </article>
         <div class="mt-5 d-flex justify-content-center align-items-center">
-          
+
           <template v-if="qtdLancamentos > 3 && quantidadevisivel <= qtdLancamentos"
             class="mt-3 d-flex justify-content-center">
             <ButtonComponente :texto="'Ver mais lançamentos'" :tamanho="'grande'" :cor="'bgCinzaClaro'"
