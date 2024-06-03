@@ -12,6 +12,7 @@ O projeto foi construído sob orientação do professor Paulo Reis dos Santos.
 - Vue-Router - Roteamento baseado em componente
 - Axios -  Cliente HTTP 
 - Vite -  Pré-empacotamento de dependência
+- Json Serve - Simula uma API REST
 
 ## Backend
 O código-fonte do backend associado a este projeto pode ser encontrado no seguinte repositório do GitHub: [walldreams backend](https://github.com/louiseugenes/walldreams_backend).
