@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams'
+  baseURL: 'http://ec2-54-94-18-161.sa-east-1.compute.amazonaws.com/api/walldreams'
 });
 
 //reserva P - http://ec2-54-94-18-161.sa-east-1.compute.amazonaws.com/
+// http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/
 
 // Categorias
 export const getTodasCategorias = () => api.get('/category/');
