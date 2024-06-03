@@ -5,7 +5,7 @@
         <div class="col-12">
           <div class="img-container">
             <img
-              :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/' + card.wallpaper_id + '/?resolution=HD'"
+              :src="'http://ec2-54-94-18-161.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/' + card.wallpaper_id + '/?resolution=HD'"
               class="card-img-top rounded img-fluid tamanho" alt="...">
           </div>
         </div>
