@@ -25,7 +25,7 @@
   </div>
 
   <template v-if="exibeModal">
-    <ModalComponente :card="card" :categories="categories" @fechar-modal="fecharModal" />
+    <ModalComponente :card="card" :categories="categories" @fechar-modal="fecharModal" :like="card.like_count" />
   </template>
 </template>
 

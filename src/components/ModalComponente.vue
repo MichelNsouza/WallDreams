@@ -10,7 +10,7 @@
     
         <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="like" :class="curtida ? 'bgVermelho' : ''">
             <img src="/src/assets/icons/frame-coracao.svg" alt="icone coração">
-            <span>{{ card.like_count }}</span>
+            <span>{{ curtir }}</span>
           </button>
         <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="compartilhar">
             <img src="/src/assets/icons/frame-compartilhar.svg" alt="icone compartilhar">
@@ -67,6 +67,7 @@ export default {
       exibeModalCadastro: false,
       curtida: false,
       resolucao:'',
+      curtir: this.like,
     }
   },
   components: {
@@ -74,8 +75,9 @@ export default {
     ModalEmailComponente
   },
   props: {
-    // tituloModal: String,
-    // nomeCategoria: String,
+    like: {
+      type: Number,  
+    },
     card: {
         type: Object,
       },
@@ -130,19 +132,22 @@ export default {
       this.exibeModalCadastro = false;
     },
     like(){
-      this.curtida = !this.curtida;
 
-      if(this.curtida === true){
-
+      if(this.curtida === false){
         this.fetchLike();
-        
+
+        this.curtir++;
+     
+        this.curtida = true;
+
       }
 
     },
+    
     async fetchLike() {
       try {
         await getLikeWallpaper(this.card.wallpaper_id);
-        console.log(this.card.like_count);
+       // console.log(this.card.like_count);
 
       } catch (error) {
         console.error('Erro ao registrar like:', error);
