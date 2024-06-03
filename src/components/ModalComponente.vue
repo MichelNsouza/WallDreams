@@ -4,30 +4,18 @@
   <div class="card col12 col-md-10 col-lg-8 mb-3">
   <div class="row no-gutters d-flex align-items-stretch">
     <div class="col-md-8">
-      <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/'+card.url" class="card-img mt-3 p-3 h-auto w-100" alt="...">
+      <img :src="'http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/api/walldreams/wallpaper/v2/download_wallpaper/'+card.wallpaper_id+'/?resolution=HD'" class="card-img mt-3 p-3 h-auto w-100" alt="...">
       <div class="div d-flex justify-content-beetween">
         <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
-        
-        <ButtonComponente 
-          :texto="''" 
-          :tamanho="'icone'" 
-          :cor="'bgCinzaClaro'"
-          src="@/src/assets/icons/frame-coracao.svg"
-          :alt="'ícone botão de download'"
-          class=" p-1 m-2 d-flex justify-content-center align-items-center"
-          @click="like"
-          :iconClass="curtida ? 'bgVermelho' : ''"
-        />
-        
-        <ButtonComponente 
-          :texto="''" 
-          :tamanho="'icone'" 
-          :cor="'bgCinzaClaro'"
-          src="@/src/assets/icons/frame-compartilhar.svg"
-          :alt="'ícone botão de download'"
-          class="p-1 m-2 d-flex justify-content-center align-items-center"
-          @click="compartilhar"
-        />
+    
+        <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="like" :class="curtida ? 'bgVermelho' : ''">
+            <img src="/src/assets/icons/frame-coracao.svg" alt="icone coração">
+            <span>{{ curtir }}</span>
+          </button>
+        <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="compartilhar">
+            <img src="/src/assets/icons/frame-compartilhar.svg" alt="icone compartilhar">
+          </button>
+          
        
       </div>
     
@@ -38,48 +26,15 @@
       <div class="card-body d-flex flex-column"> 
 
         <div class="d-flex justify-content-end">
-          <ButtonComponente @click="fecharModal()"
-          :texto="''"
-          :tamanho="'icone'"
-          :cor="'bgCinza'"
-          :corTexto="''"
-          src="@/src/assets/icons/icone-x.svg"
-          :alt="'icone botão de fechar'"
-          class=""
-          
-          />
-        </div>     
+          <button class="btn icone" @click="fecharModal()">
+            <img src="/src/assets/icons/icone-x.svg" alt="icone X">
+          </button>
+        </div>    
 
-        <ButtonComponente 
-          :texto="'Baixar em 4K'" 
-          :tamanho="'pequeno'" 
-          :cor="'bgVerde'"
-          :corTexto="'branco'"
-          src="@/src/assets/icons/icone-download.svg"
-          :alt="'ícone botão de download'"
-          class="mt-4 mb-2"
-          @click="abrirModalCadastro()"
-        />
-        <ButtonComponente 
-          :texto="'Baixar em Full HD'" 
-          :tamanho="'pequeno'" 
-          :cor="'bgAzul'"
-          :corTexto="'branco'"
-          src="@/src/assets/icons/icone-download.svg"
-          :alt="'ícone botão de download'"
-          class="mb-2"
-          @click="abrirModalCadastro()"
-        />
-        <ButtonComponente 
-          :texto="'Baixar em HD'" 
-          :tamanho="'pequeno'" 
-          :cor="'bgCinzaEscuro'"
-          :corTexto="'branco'"
-          src="@/src/assets/icons/icone-download.svg"
-          :alt="'ícone botão de download'"
-          class="mb-2"
-          @click="abrirModalCadastro()"
-        />
+        <button  type="button" class="btn btn-success btn-lg mt-4 mb-2"@click="abrirModalCadastro(), resolucao = '4K'"><img src="/src/assets/icons/icone-download.svg" alt="icone download"> Baixar em 4K</button>
+        <button type="button" class="btn btn-primary btn-lg mb-2"@click="abrirModalCadastro(), resolucao = 'FullHD'"><img src="/src/assets/icons/icone-download.svg" alt="icone download"> Baixar em Full HD</button>
+        <button type="button" class="btn btn-dark btn-lg mb-2"@click="abrirModalCadastro(), resolucao = 'HD'"><img src="/src/assets/icons/icone-download.svg" alt="icone download"> Baixar em HD</button>
+
         <p class="h5 mt-3">Categoria</p>
         <p>{{  getCategoryName(card.category_id) }}</p> 
         <p class="h5"><strong>Donwloads semanais</strong></p>
@@ -92,7 +47,7 @@
 </div>
 
   <template v-if="exibeModalCadastro">
-    <ModalEmailComponente @fechar-modal-cadastro = "fecharModalCadastro"/>
+    <ModalEmailComponente @fechar-modal-cadastro = "fecharModalCadastro" :dadoResolucao="resolucao" :idWallpaper="card.wallpaper_id"/>
   </template>
 
 </template>
@@ -100,11 +55,19 @@
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
+
+import {
+  getLikeWallpaper
+} from '@/services/api';
+
+
 export default {
   data(){
     return {
       exibeModalCadastro: false,
       curtida: false,
+      resolucao:'',
+      curtir: this.like,
     }
   },
   components: {
@@ -112,8 +75,9 @@ export default {
     ModalEmailComponente
   },
   props: {
-    // tituloModal: String,
-    // nomeCategoria: String,
+    like: {
+      type: Number,  
+    },
     card: {
         type: Object,
       },
@@ -136,7 +100,7 @@ export default {
 
       // window.location.href
 
-      if (navigator.share) {
+      if (navigator.share) {// web sh não funciona em http, somente local e https, procurar alternativa
         try {
           await navigator.share({
             title: 'Confira este conteúdo!',
@@ -149,6 +113,9 @@ export default {
         }
       } else {
         console.warn('API de Web Share não suportada neste navegador.');
+        alert('API de Web Share não suportada neste navegador.');
+        alert(`copie o link: http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/buscar/${encodeURIComponent(this.card.description)}`);
+
       }
     },
     getCategoryName(category_id) {
@@ -156,6 +123,7 @@ export default {
       return category ? category.name : 'Categoria desconhecida';
     },
     abrirModalCadastro() {
+      
       this.exibeModalCadastro = true;
       //this.fecharModal();
       
@@ -164,7 +132,26 @@ export default {
       this.exibeModalCadastro = false;
     },
     like(){
-      this.curtida = !this.curtida;
+
+      if(this.curtida === false){
+        this.fetchLike();
+
+        this.curtir++;
+     
+        this.curtida = true;
+
+      }
+
+    },
+    
+    async fetchLike() {
+      try {
+        await getLikeWallpaper(this.card.wallpaper_id);
+       // console.log(this.card.like_count);
+
+      } catch (error) {
+        console.error('Erro ao registrar like:', error);
+      }
     }
    
     },
@@ -178,6 +165,14 @@ export default {
 </script>
 
 <style scoped>
+
+.icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
 
 .container{
   position: fixed;
@@ -221,6 +216,11 @@ export default {
   height: 41px;
   background: #E8E8E8;
   border: none;
+}
+
+.bgVermelho {
+  /* background-color: red ; */
+  filter: invert(29%) sepia(92%) saturate(4512%) hue-rotate(353deg) brightness(91%) contrast(112%);
 }
 
 </style>

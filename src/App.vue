@@ -1,11 +1,11 @@
 <template>
 
-    <HeaderComponente/>
+  <HeaderComponente />
 
-    <main class="content"> <router-view /> </main>
+  <main class="content"> <router-view /> </main>
 
-    <FooterComponente/>
-    
+  <FooterComponente />
+
 </template>
 
 <script>
@@ -13,7 +13,7 @@ import FooterComponente from '@/components/FooterComponente.vue';
 import HeaderComponente from '@/components/HeaderComponente.vue';
 
 export default {
-  components:{
+  components: {
     HeaderComponente,
     FooterComponente,
   },
@@ -25,7 +25,6 @@ export default {
 </script>
 
 <style>
-
 html {
   scroll-behavior: smooth;
 }
@@ -34,5 +33,4 @@ html {
 .content {
   min-height: calc(100vh - 100px);
 }
-
 </style>
