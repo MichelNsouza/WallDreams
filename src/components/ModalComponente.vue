@@ -105,7 +105,7 @@ export default {
       } else {
         console.warn('API de Web Share não suportada neste navegador.');
         alert('API de Web Share não suportada neste navegador.');
-        alert(`copie o link: http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com//buscar/${encodeURIComponent(this.card.description)}`);
+        alert(`copie o link: http://ec2-54-207-67-252.sa-east-1.compute.amazonaws.com/buscar/${encodeURIComponent(this.card.description)}`);
 
       }
     },

@@ -22,3 +22,5 @@ export const getWallpaper = (id) => api.get(`/wallpaper/${id}`);
 export const getWallpaperPesquisa = (pesquisa) => api.get(`/wallpaper/search/${pesquisa}`);
 
 export const getWallpaperImg = (idWpp, resolucao) => api.get(`/wallpaper/v2/download_wallpaper/${idWpp}/?resolution=${resolucao}`);
+
+export const createWallpaper = (formData) => api.post('/wallpaper/create', formData);
