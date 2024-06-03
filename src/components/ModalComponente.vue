@@ -8,8 +8,9 @@
       <div class="div d-flex justify-content-beetween">
         <p class="h5 p-3 text-lg flex-grow-1">{{card.description}}</p>
     
-        <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="like" :iconClass="curtida ? 'bgVermelho' : ''">
+        <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="like" :class="curtida ? 'bgVermelho' : ''">
             <img src="/src/assets/icons/frame-coracao.svg" alt="icone coração">
+            <span>{{ card.like_count }}</span>
           </button>
         <button class="p-1 m-2 d-flex justify-content-center align-items-center btn icone" @click="compartilhar">
             <img src="/src/assets/icons/frame-compartilhar.svg" alt="icone compartilhar">
@@ -54,6 +55,12 @@
 <script>
 import ButtonComponente from '@/components/ButtonComponente.vue';
 import ModalEmailComponente from '@/components/ModalEmailComponente.vue';
+
+import {
+  getLikeWallpaper
+} from '@/services/api';
+
+
 export default {
   data(){
     return {
@@ -124,6 +131,22 @@ export default {
     },
     like(){
       this.curtida = !this.curtida;
+
+      if(this.curtida === true){
+
+        this.fetchLike();
+        
+      }
+
+    },
+    async fetchLike() {
+      try {
+        await getLikeWallpaper(this.card.wallpaper_id);
+        console.log(this.card.like_count);
+
+      } catch (error) {
+        console.error('Erro ao registrar like:', error);
+      }
     }
    
     },
@@ -188,6 +211,11 @@ export default {
   height: 41px;
   background: #E8E8E8;
   border: none;
+}
+
+.bgVermelho {
+  /* background-color: red ; */
+  filter: invert(29%) sepia(92%) saturate(4512%) hue-rotate(353deg) brightness(91%) contrast(112%);
 }
 
 </style>

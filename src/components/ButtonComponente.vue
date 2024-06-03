@@ -100,8 +100,5 @@ export default {
   background-color: white;
 }
 
-.bgVermelho {
-  /* background-color: red ; */
-  filter: invert(29%) sepia(92%) saturate(4512%) hue-rotate(353deg) brightness(91%) contrast(112%);
-}
+
 </style>
