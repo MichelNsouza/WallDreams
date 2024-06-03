@@ -3,7 +3,7 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   deploy:
@@ -16,22 +16,17 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
-          host: ec2-54-207-67-252.sa-east-1.compute.amazonaws.com
+          host: ec2-54-94-18-161.sa-east-1.compute.amazonaws.com
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             
             
-            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/node --version
-
-            /home/ubuntu/.nvm/versions/node/v20.13.1/bin/npm --version
             
             cd /home/ubuntu/frontend/WallDreams
-            pwd
-            ls -l
 
-            git pull origin develop
+            git pull origin master
 
             # Build the project
             npm run build
