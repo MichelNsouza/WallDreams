@@ -63,3 +63,5 @@ Visando gerar mais engajamento na plataforma, semanalmente deve ser enviado um e
 **Prazo limite para entrega:** 03/06/2024
 
 **Valor:** 2000 oficial 2
+
+# Exportado do notion de [Paulo Reis](https://github.com/PHPauloReis)

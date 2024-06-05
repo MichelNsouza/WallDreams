@@ -3,7 +3,7 @@
 ## Sobre o Projeto
 WallDreams é um projeto acadêmico desenvolvido pela turma de Web 1 - 2024.1 do Centro Universitário UNIME de Lauro de Freitas. 
 Todas as imagens, ícones e fontes utilizados foram obtidos gratuitamente na internet através dos sites: HeroIcons, PixaBay e Google Fonts.
-O projeto foi construído sob orientação do professor Paulo Reis dos Santos.
+O projeto foi construído sob orientação do professor Paulo Reis dos Santos, veja nossas [tasks](https://github.com/MichelNsouza/WallDreams/blob/master/tasks.md).
 
 ## Tecnologias Utilizadas
 - VueJs
